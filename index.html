@@ -4,18 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IASO — Instituto Altamirense de Saúde e Odontologia | Altamira, PA</title>
-  <meta name="description" content="IASO — Instituto Altamirense de Saúde e Odontologia em Altamira/PA. Odontologia de alta precisão, implantes, prótese dentária, diagnóstico por imagem digital, harmonização orofacial e saúde integrada na Av. Djalma Dutra, 1767." />
+  <meta name="description" content="IASO — Instituto Altamirense de Saúde e Odontologia em Altamira/PA. Odontologia estética, implantes, prótese dentária, raio-x digital, harmonização orofacial e agenda online na Av. Djalma Dutra, 1767." />
   <meta name="theme-color" content="#FFFFFF" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" href="assets/logo-iaso.png" />
 
-  <!-- Editorial Typography: Cormorant Garamond, Plus Jakarta Sans & JetBrains Mono -->
+  <!-- 100% Modern Sans-Serif Typography: Plus Jakarta Sans & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Preload Hero Visuals for Instant LCP -->
+  <link rel="preload" as="image" href="assets/hero-patient.png" />
+  <link rel="preload" as="image" href="assets/logo-iaso.png" />
 
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Schema.org MedicalClinic / Dentist Structured Data -->
+  <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,6 +37,11 @@
       "postalCode": "68371-163",
       "addressCountry": "BR"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -3.2056936,
+      "longitude": -52.2120487
+    },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
@@ -43,10 +52,10 @@
 </head>
 <body>
 
-  <!-- ───────── 1. TOP INSTITUTIONAL BAR ───────── -->
+  <!-- ───────── 1. TOP BAR ───────── -->
   <div class="topbar">
     <div class="container topbar-inner">
-      <div class="topbar-items">
+      <div class="topbar-group">
         <span class="topbar-item">
           <span id="liveStatusDot" class="status-dot"></span>
           <strong id="liveStatusText">Verificando horário em Altamira…</strong>
@@ -56,11 +65,11 @@
           Av. Djalma Dutra, 1767 · Centro, Altamira - PA
         </span>
       </div>
-      <div class="topbar-items">
+      <div class="topbar-group">
         <span class="topbar-item" style="color:var(--gold-700);font-weight:700;">
-          ★ 4,9 no Google (37 avaliações verificadas)
+          ★ 4,9 no Google (37 avaliações)
         </span>
-        <a href="tel:+5593991629079" class="topbar-item" style="font-weight:600;color:var(--ink-900);">
+        <a href="tel:+5593991629079" class="topbar-item" style="font-weight:700;color:var(--ink-950);">
           (93) 99162-9079
         </a>
       </div>
@@ -71,11 +80,8 @@
   <header id="siteHeader" class="site-header">
     <div class="container header-inner">
       <a href="#inicio" class="brand" aria-label="IASO - Página Inicial">
-        <div class="brand-mark">
-          <svg width="26" height="26" viewBox="0 0 64 64" fill="none">
-            <path d="M32 11C23.8 11 18 17.2 18 25.2C18 31.5 21.5 36 23.8 42.8C25 46.4 26.7 51 29.2 51C31.1 51 31.2 45 32 45C32.8 45 32.9 51 34.8 51C37.3 51 39 46.4 40.2 42.8C42.5 36 46 31.5 46 25.2C46 17.2 40.2 11 32 11Z" stroke="#0F3D35" stroke-width="3.2" stroke-linecap="round"/>
-            <path d="M25 24C27.5 26.5 36.5 26.5 39 24" stroke="#C5A368" stroke-width="2.6" stroke-linecap="round"/>
-          </svg>
+        <div class="brand-logo-wrap">
+          <img src="assets/logo-iaso.png" alt="Logo IASO" width="42" height="42" />
         </div>
         <div class="brand-text">
           <span class="brand-name">IASO</span>
@@ -87,581 +93,595 @@
         <ul id="navLinks" class="nav-links">
           <li><a href="#instituto" class="nav-link">O Instituto</a></li>
           <li><a href="#especialidades" class="nav-link">Especialidades</a></li>
-          <li><a href="#planejamento" class="nav-link">Simulação DSD</a></li>
-          <li><a href="#diagnostico" class="nav-link">Triagem Online</a></li>
-          <li><a href="#jornada" class="nav-link">Jornada</a></li>
-          <li><a href="#avaliacoes" class="nav-link">Avaliações</a></li>
-          <li><a href="#localizacao" class="nav-link">Localização</a></li>
+          <li><a href="#resultados" class="nav-link">Antes & Depois</a></li>
+          <li><a href="#agenda" class="nav-link">Agenda Online</a></li>
+          <li><a href="#avaliacoes" class="nav-link">Pacientes</a></li>
+          <li><a href="#localizacao" class="nav-link">Contato</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
         <a href="https://wa.me/5593991629079?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20no%20IASO." target="_blank" rel="noopener" class="btn btn-outline btn-sm">
-          WhatsApp Direto
+          WhatsApp
         </a>
-        <button type="button" class="btn btn-primary btn-sm" onclick="openBookingModal()">
-          Agendar Consulta
-        </button>
+        <a href="#agenda" class="btn btn-primary btn-sm">
+          Agendar Horário
+        </a>
         <button type="button" id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Abrir menu">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
       </div>
     </div>
   </header>
 
   <main id="inicio">
-    <!-- ───────── 3. HERO SECTION (DRIBBBLE ARCHITECTURAL WHITE BENTO) ───────── -->
+    <!-- ───────── 3. HERO SECTION (100% SANS-SERIF + CUTOUT PHOTOGRAPHY & 3D RENDER) ───────── -->
     <section class="hero">
-      <div class="hero-grid-bg" aria-hidden="true"></div>
       <div class="container">
-        <div class="hero-layout">
-          <!-- Left Column: Editorial Narrative -->
+        <div class="hero-grid">
+          <!-- Left Copy -->
           <div>
-            <div class="hero-badges">
-              <span class="badge-pill badge-gold">✦ Destaque Melhores do Ano · Vale do Xingu</span>
-              <span class="badge-pill">Odontologia · Imagem · Prótese · Saúde Integrada</span>
+            <div class="gsap-hero-badge" style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+              <span class="eyebrow eyebrow-gold">✦ Destaque Melhores do Ano · Altamira/PA</span>
+              <span class="badge-pill">Odontologia · Raio-X Digital · Prótese · Estética</span>
             </div>
 
             <h1 class="hero-title">
-              A alta odontologia e a <span class="gold-italic">saúde integrada</span> em sua forma mais pura.
+              Seu sorriso e sua saúde cuidados com <span class="text-gradient-emerald">tecnologia digital</span> no centro de Altamira.
             </h1>
 
             <p class="hero-lead">
-              No coração de Altamira, o <strong>IASO — Instituto Altamirense de Saúde e Odontologia</strong> reúne reabilitação oral, laboratório protético próprio, diagnóstico por imagem digital, estética orofacial e consultas ambulatoriais em um único endereço projetado para o seu conforto.
+              No <strong>IASO — Instituto Altamirense de Saúde e Odontologia</strong>, você realiza sua consulta, exames de imagem, lentes, implantes e próteses em um único lugar, com atendimento humano e sem dor.
             </p>
 
-            <div class="hero-cta-row">
-              <button type="button" class="btn btn-primary" onclick="openBookingModal()">
-                Agendar Avaliação Individual
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </button>
-              <a href="#diagnostico" class="btn btn-outline">
-                Simular Meu Tratamento Ideal
+            <div class="hero-cta-group">
+              <a href="#agenda" class="btn btn-primary btn-lg">
+                Agendar Avaliação Online
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#diagnostico" class="btn btn-outline btn-lg">
+                Descobrir Meu Tratamento
               </a>
             </div>
 
-            <div class="hero-metrics">
-              <div>
-                <div class="hero-metric-val">4,9 <span style="color:#EAB308;font-size:1.35rem;">★</span></div>
-                <p class="hero-metric-label">Índice de excelência no Google Maps em Altamira</p>
+            <!-- Real Patient Avatars & Social Proof -->
+            <div class="hero-social-proof">
+              <div class="avatar-stack">
+                <img src="assets/patient-1.jpg" alt="Paciente Mariana C." width="44" height="44" />
+                <img src="assets/patient-2.jpg" alt="Paciente Roberto S." width="44" height="44" />
+                <img src="assets/patient-3.jpg" alt="Paciente Amanda L." width="44" height="44" />
               </div>
-              <div>
-                <div class="hero-metric-val">5 <span class="gold-italic" style="font-size:1.35rem;">núcleos</span></div>
-                <p class="hero-metric-label">Odontologia, Imagem, Prótese, Estética e Saúde</p>
-              </div>
-              <div>
-                <div class="hero-metric-val">100% <span class="emerald-italic" style="font-size:1.35rem;">digital</span></div>
-                <p class="hero-metric-label">Radiologia no local e planejamento do sorriso</p>
+              <div class="proof-copy">
+                <div style="color:#F59E0B;font-size:0.95rem;letter-spacing:0.06em;">★★★★★ <strong>4,9 no Google</strong></div>
+                <span>Avaliado por pacientes reais em Altamira · Av. Djalma Dutra, 1767</span>
               </div>
             </div>
           </div>
 
-          <!-- Right Column: Architectural Bento Showcase -->
-          <div class="hero-bento">
-            <div class="bento-main-visual">
-              <!-- Custom Swiss Medical Architectural Sculpture SVG -->
-              <svg class="bento-arch-bg" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <defs>
-                  <linearGradient id="archGold" x1="0" y1="0" x2="360" y2="360" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stop-color="#E6D2AA"/>
-                    <stop offset="0.5" stop-color="#C5A368"/>
-                    <stop offset="1" stop-color="#876833"/>
-                  </linearGradient>
-                  <radialGradient id="archGlow" cx="0.5" cy="0.5" r="0.5">
-                    <stop offset="0" stop-color="#EBF3F1" stop-opacity="0.9"/>
-                    <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
-                  </radialGradient>
-                </defs>
-                <circle cx="210" cy="185" r="145" fill="url(#archGlow)"/>
-                <circle cx="210" cy="185" r="128" stroke="url(#archGold)" stroke-width="1" stroke-dasharray="4 6"/>
-                <circle cx="210" cy="185" r="96" stroke="#0F3D35" stroke-width="0.8" opacity="0.25"/>
-                <!-- Architectural Golden Ratio Dental & Facial Harmony Lines -->
-                <path d="M135 280V165C135 123.579 168.579 90 210 90C251.421 90 285 123.579 285 165V280" stroke="url(#archGold)" stroke-width="1.5"/>
-                <path d="M210 112C179 112 156 136 156 168C156 193 170 211 179 238C184 252 191 270 200 270C207 270 207.5 247 210 247C212.5 247 213 270 220 270C229 270 236 252 241 238C250 211 264 193 264 168C264 136 241 112 210 112Z" fill="#FFFFFF" stroke="#0F3D35" stroke-width="2"/>
-                <path d="M180 160C192 172 228 172 240 160" stroke="url(#archGold)" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="210" cy="138" r="4" fill="url(#archGold)"/>
-              </svg>
-
-              <div class="bento-floating-tag">
-                <span class="status-dot"></span>
-                Centro Integrado · Av. Djalma Dutra, 1767
+          <!-- Right Visual Stage (Transparent Cutout Patient + 3D Ceramic Tooth Sculpture) -->
+          <div class="hero-visual-stage">
+            <div class="hero-main-card">
+              <!-- Floating Card 1: 3D Ceramic Tooth Cutout -->
+              <div class="hero-float-card hero-float-top">
+                <div class="hero-float-tooth gsap-float">
+                  <img src="assets/tooth-3d.png" alt="Odontologia de Alta Precisão 3D" width="44" height="44" class="cutout-img" />
+                </div>
+                <div>
+                  <p style="font-size:0.7rem;font-weight:800;text-transform:uppercase;color:var(--emerald-800);letter-spacing:0.08em;">Alta Precisão</p>
+                  <p style="font-size:0.86rem;font-weight:800;color:var(--ink-950);">Estética, Implantes & Raio-X</p>
+                  <p style="font-size:0.74rem;color:var(--ink-500);">Tudo integrado na clínica</p>
+                </div>
               </div>
 
-              <div class="bento-visual-copy">
-                <p class="font-mono" style="font-size:0.7rem;color:var(--gold-700);letter-spacing:0.15em;text-transform:uppercase;">Arquitetura Clínica White</p>
-                <h3>Tudo em um só lugar: consulta, exame de imagem e reabilitação.</h3>
-                <p>Sem precisar percorrer diferentes laboratórios pela cidade. Seu diagnóstico e planejamento acontecem de forma integrada.</p>
-              </div>
+              <!-- Main Cutout Portrait -->
+              <img src="assets/hero-patient.png" alt="Sorriso saudável e natural no Instituto IASO Altamira" class="hero-patient-img cutout-img" width="410" height="420" />
 
-              <div class="bento-visual-pillars">
-                <span class="mini-chip">✦ Lentes & Estética</span>
-                <span class="mini-chip">✦ Implantes & Prótese</span>
-                <span class="mini-chip">✦ Raio-X Digital</span>
-                <span class="mini-chip">✦ Harmonização</span>
+              <!-- Floating Card 2: Verified Clinic Badge -->
+              <div class="hero-float-card hero-float-bottom">
+                <div style="width:40px;height:40px;border-radius:12px;background:var(--emerald-50);color:var(--emerald-800);display:grid;place-items:center;flex-shrink:0;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <div>
+                  <p style="font-size:0.84rem;font-weight:800;color:var(--ink-950);">Atendimento Sem Pressa</p>
+                  <p style="font-size:0.74rem;color:var(--ink-500);">Orçamento claro na 1ª consulta</p>
+                </div>
               </div>
-            </div>
-
-            <div class="bento-subcard">
-              <div style="display:flex;align-items:center;justify-content:space-between;">
-                <span class="font-mono" style="font-size:0.72rem;color:var(--gold-700);font-weight:700;">DIAGNÓSTICO NO LOCAL</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F3D35" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-              </div>
-              <h4 class="font-serif" style="font-size:1.35rem;margin-top:0.5rem;">Radiologia & Laboratório Próprio</h4>
-              <p style="font-size:0.8rem;color:var(--ink-500);margin-top:0.35rem;">
-                Exames de imagem e prótese dentária integrados para reduzir o número de sessões.
-              </p>
-            </div>
-
-            <div class="bento-subcard">
-              <div style="display:flex;align-items:center;justify-content:space-between;">
-                <span class="font-mono" style="font-size:0.72rem;color:var(--emerald-800);font-weight:700;">CONFORTO & ÉTICA</span>
-                <span style="color:#EAB308;font-size:0.9rem;">★★★★★</span>
-              </div>
-              <h4 class="font-serif" style="font-size:1.35rem;margin-top:0.5rem;">Atendimento Sem Pressa</h4>
-              <p style="font-size:0.8rem;color:var(--ink-500);margin-top:0.35rem;">
-                Explicação visual na tela antes de qualquer procedimento e orçamento 100% transparente.
-              </p>
             </div>
           </div>
         </div>
 
         <!-- Quick Interactive Triage Bar -->
-        <div class="quick-booking-bar" aria-label="Agendamento Rápido">
-          <div class="qb-field">
-            <label for="qbSpecialty" class="qb-label">01 · Especialidade ou Necessidade</label>
+        <div class="quick-bar" aria-label="Acesso rápido à agenda">
+          <div class="qb-col">
+            <label for="qbSpecialty" class="qb-label">Procedimento desejado</label>
             <select id="qbSpecialty" class="qb-select">
               <option value="Avaliação Geral & Check-up Digital">Avaliação Geral & Check-up Digital</option>
-              <option value="Lentes de Contato Dental & Estética">Lentes de Contato Dental & Estética</option>
-              <option value="Implantes Dentários & Prótese Fixa">Implantes Dentários & Prótese Fixa</option>
-              <option value="Alinhadores & Ortodontia">Alinhadores & Ortodontia</option>
-              <option value="Clareamento Dental Clínico">Clareamento Dental Clínico</option>
-              <option value="Harmonização Orofacial (Botox / Preenchimento)">Harmonização Orofacial (Botox / Preenchimento)</option>
-              <option value="Exames de Imagem & Radiologia">Exames de Imagem & Radiologia</option>
-              <option value="Dor de Dente / Urgência / Canal">Dor de Dente / Urgência / Canal</option>
+              <option value="Lentes de Contato Dental & Facetas">Lentes de Contato Dental & Facetas</option>
+              <option value="Implantes Dentários & Carga Imediata">Implantes Dentários & Carga Imediata</option>
+              <option value="Alinhadores Invisíveis & Ortodontia">Alinhadores Invisíveis & Ortodontia</option>
+              <option value="Clareamento Clínico a Laser">Clareamento Clínico a Laser</option>
+              <option value="Harmonização Orofacial & Botox">Harmonização Orofacial & Botox</option>
+              <option value="Radiologia & Diagnóstico por Imagem">Radiologia & Diagnóstico por Imagem</option>
+              <option value="Tratamento de Canal / Alívio de Dor">Tratamento de Canal / Alívio de Dor</option>
             </select>
           </div>
-          <div class="qb-field">
-            <label for="qbShift" class="qb-label">02 · Turno de Preferência</label>
+          <div class="qb-col">
+            <label for="qbShift" class="qb-label">Melhor período</label>
             <select id="qbShift" class="qb-select">
               <option value="Manhã (08h às 12h)">Manhã (08h às 12h)</option>
               <option value="Tarde (14h às 18h)">Tarde (14h às 18h)</option>
-              <option value="Final da Tarde (18h às 19h)">Final da Tarde (18h às 19h)</option>
-              <option value="Sábado pela Manhã (08h às 13h)">Sábado pela Manhã (08h às 13h)</option>
+              <option value="Sábado (08h às 12h30)">Sábado (08h às 12h30)</option>
             </select>
           </div>
-          <div class="qb-field">
-            <span class="qb-label">03 · Unidade</span>
-            <span style="font-size:0.9rem;font-weight:600;color:var(--ink-900);padding:0.2rem 0;">Av. Djalma Dutra, 1767 · Centro</span>
+          <div class="qb-col">
+            <span class="qb-label">Localização</span>
+            <span style="font-size:0.9rem;font-weight:700;color:var(--ink-950);padding:0.15rem 0;">Av. Djalma Dutra, 1767 · Centro</span>
           </div>
-          <button type="button" class="btn btn-emerald" onclick="triggerQuickBooking()">
-            Reservar Horário
+          <button type="button" class="btn btn-primary" onclick="triggerQuickBooking()">
+            Ver Horários Disponíveis
           </button>
         </div>
       </div>
     </section>
 
-    <!-- ───────── 4. SWISS TRUST RIBBON ───────── -->
-    <section class="trust-ribbon" aria-label="Diferenciais do Instituto">
-      <div class="container trust-grid">
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <!-- ───────── 4. KPI & TRUST STRIP ───────── -->
+    <section class="kpi-strip" aria-label="Diferenciais do Instituto">
+      <div class="container kpi-grid">
+        <div class="kpi-item gsap-reveal">
+          <div class="kpi-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           </div>
           <div>
-            <p class="trust-title">Biossegurança Hospitalar</p>
-            <p class="trust-desc">Esterilização rastreada em autoclave e normas ANVISA</p>
+            <p class="kpi-title">Raio-X Digital no Local</p>
+            <p class="kpi-sub">Exames feitos na própria consulta</p>
           </div>
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+
+        <div class="kpi-item gsap-reveal">
+          <div class="kpi-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <div>
-            <p class="trust-title">Radiologia Digital Interna</p>
-            <p class="trust-desc">Exames de imagem realizados na própria consulta</p>
+            <p class="kpi-title">Biossegurança Hospitalar</p>
+            <p class="kpi-sub">Esterilização rigorosa em autoclave</p>
           </div>
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+
+        <div class="kpi-item gsap-reveal">
+          <div class="kpi-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
           <div>
-            <p class="trust-title">Laboratório Protético</p>
-            <p class="trust-desc">Próteses e coroas com ajuste fino e acabamento natural</p>
+            <p class="kpi-title">Laboratório de Prótese</p>
+            <p class="kpi-sub">Coroas e próteses com entrega ágil</p>
           </div>
         </div>
-        <div class="trust-item">
-          <div class="trust-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+
+        <div class="kpi-item gsap-reveal">
+          <div class="kpi-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
           </div>
           <div>
-            <p class="trust-title">Odontologia Humanizada</p>
-            <p class="trust-desc">Protocolo gentil para pacientes com sensibilidade ou receio</p>
+            <p class="kpi-title">Acessibilidade Total</p>
+            <p class="kpi-sub">Entrada e estrutura 100% adaptadas</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ───────── 5. ABOUT & THE MEANING OF IASO ───────── -->
+    <!-- ───────── 5. ABOUT THE CLINIC + ARCHITECTURAL PHOTO ───────── -->
     <section id="instituto" class="section">
-      <div class="container story-grid">
-        <div class="story-monument">
-          <div class="etymology-card">
-            <span class="font-mono" style="font-size:0.72rem;color:var(--gold-700);letter-spacing:0.15em;text-transform:uppercase;">A Origem do Nosso Nome</span>
-            <div class="etymology-greek" style="margin-top:0.4rem;">
-              <span>IASO · Ἰασώ</span>
-              <span class="badge-pill badge-gold">Deusa Grega da Cura</span>
+      <div class="container about-grid">
+        <div class="about-photo-frame gsap-reveal">
+          <img src="assets/clinic-interior.jpg" alt="Estrutura moderna e white da Clínica IASO em Altamira" loading="lazy" width="640" height="440" />
+          <div class="about-photo-badge">
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+              <img src="assets/logo-iaso.png" alt="IASO" width="38" height="38" style="object-fit:contain;" />
+              <div>
+                <p style="font-size:0.84rem;font-weight:800;color:var(--ink-950);">Estrutura Completa no Centro</p>
+                <p style="font-size:0.75rem;color:var(--ink-500);">Av. Djalma Dutra, 1767 · Altamira - PA</p>
+              </div>
             </div>
-            <p style="margin-top:0.85rem;font-size:0.9rem;color:var(--ink-500);line-height:1.68;">
-              Na tradição clássica grega, <strong>Iaso (Ἰασώ)</strong>, filha de Asclépio, personifica a recuperação da saúde, o cuidado restaurador e a harmonia entre ciência e bem-estar. Em Altamira, essa vocação une-se à sigla do nosso <strong>Instituto Altamirense de Saúde e Odontologia</strong>.
-            </p>
-          </div>
-
-          <div class="pillars-list">
-            <div class="pillar-box">
-              <span class="pillar-num">PILAR 01</span>
-              <h4>Visão Multidisciplinar</h4>
-              <p>Odontologia especializada, estética, prótese, imagem e consultas ambulatoriais integradas.</p>
-            </div>
-            <div class="pillar-box">
-              <span class="pillar-num">PILAR 02</span>
-              <h4>Transparência Clínica</h4>
-              <p>Você visualiza seu diagnóstico em alta definição e aprova cada etapa antes do início.</p>
-            </div>
-            <div class="pillar-box">
-              <span class="pillar-num">PILAR 03</span>
-              <h4>Precisão & Estética</h4>
-              <p>Sorrisos planejados sob medida para a fisionomia de cada paciente, sem artificialidade.</p>
-            </div>
-            <div class="pillar-box">
-              <span class="pillar-num">PILAR 04</span>
-              <h4>Referência Regional</h4>
-              <p>Destaque na premiação Melhores do Ano no Vale do Xingu e nota 4,9 ★ entre pacientes.</p>
-            </div>
+            <span class="badge-pill" style="background:var(--emerald-50);color:var(--emerald-800);font-weight:800;">5 Núcleos</span>
           </div>
         </div>
 
-        <div>
-          <span class="eyebrow">O Instituto · Altamira, Pará</span>
+        <div class="gsap-reveal">
+          <span class="eyebrow">Sobre o Instituto IASO</span>
           <h2 class="section-title">
-            Um novo padrão de <span class="gold-italic">arquitetura clínica</span> para a sua saúde bucal e integral.
+            Odontologia moderna e saúde integrada <span class="text-gradient-emerald">sem você precisar sair da clínica</span>.
           </h2>
           <p class="section-lead">
-            Localizado na Avenida Djalma Dutra, nº 1767, no Centro de Altamira, o <strong>IASO</strong> nasceu para superar a fragmentação dos tratamentos convencionais. Aqui, o paciente não precisa deslocar-se entre múltiplos endereços para radiografar, planejar uma prótese ou realizar procedimentos estéticos e ambulatoriais.
-          </p>
-          <p class="section-lead" style="margin-top:1rem;">
-            Cada sala clínica foi concebida sob o conceito <em>Pure White & Calm</em>: iluminação suave, ergonomia avançada, isolamento acústico e rigorosos protocolos de esterilização para que sua experiência seja serena do primeiro acolhimento ao pós-tratamento.
+            O <strong>IASO — Instituto Altamirense de Saúde e Odontologia</strong> reúne consultórios modernos, radiologia digital própria, laboratório de prótese, harmonização facial e atendimento ambulatorial no mesmo endereço.
           </p>
 
-          <blockquote style="margin-top:2rem;padding:1.35rem 1.65rem;border-left:3px solid var(--gold-500);background:var(--bg-alabaster);border-radius:0 var(--radius-md) var(--radius-md) 0;">
-            <p class="font-serif" style="font-size:1.45rem;font-style:italic;color:var(--ink-900);line-height:1.35;">
-              “A verdadeira excelência em saúde acontece quando a precisão técnica caminha ao lado do respeito profundo pelo tempo e pelo conforto de quem confia em nossas mãos.”
-            </p>
-            <footer style="margin-top:0.5rem;font-size:0.8rem;color:var(--ink-500);font-weight:600;">
-              Diretoria Clínica & Administrativa · IASO Altamira
-            </footer>
-          </blockquote>
+          <div class="feature-cards-2x2">
+            <div class="f-box">
+              <div style="color:var(--emerald-800);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <h4>Diagnóstico na 1ª Consulta</h4>
+              <p>Câmera intraoral HD e raio-x digital para você ver cada detalhe na tela.</p>
+            </div>
 
-          <div style="margin-top:2rem;display:flex;flex-wrap:wrap;gap:0.85rem;">
-            <button type="button" class="btn btn-primary" onclick="openBookingModal()">
-              Agendar Visita ao Instituto
-            </button>
-            <a href="#localizacao" class="btn btn-outline">
-              Ver Endereço e Mapa
-            </a>
+            <div class="f-box">
+              <div style="color:var(--emerald-800);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </div>
+              <h4>Anestesia Confortável</h4>
+              <p>Técnica gentil e sem pressa para pacientes que têm receio de dentista.</p>
+            </div>
+
+            <div class="f-box">
+              <div style="color:var(--emerald-800);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <h4>Pontualidade & Clareza</h4>
+              <p>Cronograma de sessões e valores explicados com transparência antes de iniciar.</p>
+            </div>
+
+            <div class="f-box">
+              <div style="color:var(--emerald-800);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <h4>Destaque Regional</h4>
+              <p>Reconhecida na premiação Melhores do Ano (Vale do Xingu) e nota 4,9 ★ no Google.</p>
+            </div>
+          </div>
+
+          <div style="margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:0.75rem;">
+            <a href="#agenda" class="btn btn-primary">Agendar Minha Consulta</a>
+            <a href="#especialidades" class="btn btn-outline">Conhecer Tratamentos</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ───────── 6. SPECIALTIES & 5 CLINICAL NUCLEI ───────── -->
-    <section id="especialidades" class="section section-alabaster">
+    <!-- ───────── 6. SPECIALTIES + 3D TRANSPARENT CUTOUT RENDERS ───────── -->
+    <section id="especialidades" class="section section-soft">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header gsap-reveal">
           <div>
-            <span class="eyebrow">Corpo Clínico & Especialidades</span>
+            <span class="eyebrow">Especialidades & Tratamentos</span>
             <h2 class="section-title">
-              Cinco núcleos integrados de <span class="emerald-italic">saúde e odontologia</span>.
+              Soluções completas para o seu <span class="text-gradient-emerald">sorriso e bem-estar</span>.
             </h2>
             <p class="section-lead">
-              Explore nossos protocolos clínicos. Clique em qualquer especialidade para conhecer o passo a passo técnico ou agendar diretamente a sua avaliação.
+              Tecnologia de ponta em estética dental, implantes, alinhadores, harmonização e exames de imagem.
             </p>
           </div>
         </div>
 
-        <div class="filter-tabs" role="tablist" aria-label="Filtrar especialidades por núcleo">
-          <button type="button" class="filter-tab active" data-filter="todos">Todos os Núcleos (9)</button>
-          <button type="button" class="filter-tab" data-filter="estetica">Estética & Sorriso</button>
+        <!-- 3D Cutout Featured Highlights (No-background PNGs!) -->
+        <div class="visual-pillars-grid gsap-reveal">
+          <div class="v-pillar-card">
+            <div class="v-pillar-thumb gsap-float">
+              <img src="assets/tooth-3d.png" alt="Estética Dental e Lentes em Porcelana" class="cutout-img" loading="lazy" width="72" height="72" />
+            </div>
+            <div>
+              <span style="font-size:0.7rem;font-weight:800;text-transform:uppercase;color:var(--gold-700);">Estética Avançada</span>
+              <h3 style="font-size:1.08rem;font-weight:800;margin-top:0.15rem;">Lentes & Clareamento</h3>
+              <p style="font-size:0.8rem;color:var(--ink-500);margin-top:0.2rem;">Porcelana e resina de alta naturalidade com teste do sorriso.</p>
+            </div>
+          </div>
+
+          <div class="v-pillar-card">
+            <div class="v-pillar-thumb gsap-float">
+              <img src="assets/spec-implant.png" alt="Implante Dentário de Titânio e Coroa em Zircônia" class="cutout-img" loading="lazy" width="72" height="72" />
+            </div>
+            <div>
+              <span style="font-size:0.7rem;font-weight:800;text-transform:uppercase;color:var(--emerald-800);">Reabilitação Fixa</span>
+              <h3 style="font-size:1.08rem;font-weight:800;margin-top:0.15rem;">Implantes & Zircônia</h3>
+              <p style="font-size:0.8rem;color:var(--ink-500);margin-top:0.2rem;">Mastigação firme com planejamento digital e laboratório próprio.</p>
+            </div>
+          </div>
+
+          <div class="v-pillar-card">
+            <div class="v-pillar-thumb gsap-float">
+              <img src="assets/spec-aligner.png" alt="Alinhadores Invisíveis Transparentes" class="cutout-img" loading="lazy" width="72" height="72" />
+            </div>
+            <div>
+              <span style="font-size:0.7rem;font-weight:800;text-transform:uppercase;color:var(--emerald-800);">Ortodontia Digital</span>
+              <h3 style="font-size:1.08rem;font-weight:800;margin-top:0.15rem;">Alinhadores Invisíveis</h3>
+              <p style="font-size:0.8rem;color:var(--ink-500);margin-top:0.2rem;">Placas transparentes removíveis, confortáveis e discretas.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs" role="tablist" aria-label="Filtrar especialidades">
+          <button type="button" class="filter-tab active" data-filter="todos">Todos (9)</button>
+          <button type="button" class="filter-tab" data-filter="estetica">Estética Dental</button>
           <button type="button" class="filter-tab" data-filter="implantes">Implantes & Prótese</button>
-          <button type="button" class="filter-tab" data-filter="ortodontia">Ortodontia Digital</button>
-          <button type="button" class="filter-tab" data-filter="harmonizacao">Harmonização Facial</button>
-          <button type="button" class="filter-tab" data-filter="imagem">Imagem & Saúde</button>
+          <button type="button" class="filter-tab" data-filter="ortodontia">Ortodontia</button>
+          <button type="button" class="filter-tab" data-filter="harmonizacao">Harmonização</button>
+          <button type="button" class="filter-tab" data-filter="imagem">Raio-X & Clínica</button>
         </div>
 
         <div id="specialtiesGrid" class="specialties-grid"></div>
       </div>
     </section>
 
-    <!-- ───────── 7. INTERACTIVE DIGITAL SMILE DESIGN (DSD) COMPARATOR ───────── -->
-    <section id="planejamento" class="section">
-      <div class="container dsd-layout">
-        <div>
-          <span class="eyebrow">Planejamento Digital do Sorriso (DSD)</span>
+    <!-- ───────── 7. REAL PHOTO BEFORE/AFTER SMILE COMPARATOR ───────── -->
+    <section id="resultados" class="section">
+      <div class="container dsd-grid">
+        <div class="gsap-reveal">
+          <span class="eyebrow eyebrow-gold">Planejamento Digital do Sorriso (DSD)</span>
           <h2 class="section-title">
-            Previsibilidade estética <span class="gold-italic">antes mesmo</span> de iniciar.
+            Veja a transformação de um sorriso <span class="text-gradient-emerald">natural e harmônico</span>.
           </h2>
           <p class="section-lead">
-            Através do estudo fotográfico, radiológico e do ensaio restaurador (<em>Mock-up</em>), planejamos a proporção áurea, a curvatura incisal e a luminosidade ideal para o seu rosto.
+            Planejamos o formato, o fechamento de espaços e a tonalidade ideal respeitando seus traços naturais, sem aspecto artificial.
           </p>
 
-          <div style="margin-top:1.85rem;display:flex;flex-direction:column;gap:1rem;">
-            <div style="padding:1.15rem 1.35rem;border-radius:var(--radius-md);background:var(--bg-alabaster);border:1px solid var(--line-subtle);">
-              <h4 style="font-size:0.95rem;font-weight:700;color:var(--ink-900);">01 · Análise Facial & Visagismo Odontológico</h4>
-              <p style="font-size:0.84rem;color:var(--ink-500);margin-top:0.25rem;">Avaliamos a linha do sorriso, o suporte labial e a harmonia com o tom da sua pele e olhos.</p>
+          <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:0.85rem;">
+            <div style="display:flex;align-items:flex-start;gap:0.85rem;padding:1rem 1.15rem;border-radius:var(--radius-md);background:var(--bg-soft);border:1px solid var(--border-subtle);">
+              <span style="width:28px;height:28px;border-radius:8px;background:var(--emerald-800);color:#fff;font-size:0.75rem;font-weight:800;display:grid;place-items:center;flex-shrink:0;">01</span>
+              <div>
+                <h4 style="font-size:0.92rem;font-weight:800;">Estudo Fotográfico & Mock-up</h4>
+                <p style="font-size:0.82rem;color:var(--ink-500);">Você aprova o formato no espelho antes do procedimento definitivo.</p>
+              </div>
             </div>
-            <div style="padding:1.15rem 1.35rem;border-radius:var(--radius-md);background:var(--bg-alabaster);border:1px solid var(--line-subtle);">
-              <h4 style="font-size:0.95rem;font-weight:700;color:var(--ink-900);">02 · Teste em Boca (Test-Drive do Sorriso)</h4>
-              <p style="font-size:0.84rem;color:var(--ink-500);margin-top:0.25rem;">Você vê no espelho uma simulação provisória do formato proposto antes da confecção definitiva.</p>
+
+            <div style="display:flex;align-items:flex-start;gap:0.85rem;padding:1rem 1.15rem;border-radius:var(--radius-md);background:var(--bg-soft);border:1px solid var(--border-subtle);">
+              <span style="width:28px;height:28px;border-radius:8px;background:var(--emerald-800);color:#fff;font-size:0.75rem;font-weight:800;display:grid;place-items:center;flex-shrink:0;">02</span>
+              <div>
+                <h4 style="font-size:0.92rem;font-weight:800;">Textura e Brilho Biomimético</h4>
+                <p style="font-size:0.82rem;color:var(--ink-500);">Materiais cerâmicos que imitam com perfeição a translucidez do dente natural.</p>
+              </div>
             </div>
-            <div style="padding:1.15rem 1.35rem;border-radius:var(--radius-md);background:var(--bg-alabaster);border:1px solid var(--line-subtle);">
-              <h4 style="font-size:0.95rem;font-weight:700;color:var(--ink-900);">03 · Textura e Translucidez Biomimética</h4>
-              <p style="font-size:0.84rem;color:var(--ink-500);margin-top:0.25rem;">Cerâmicas e resinas que reproduzem a reflexão natural da luz do esmalte humano saudável.</p>
-            </div>
+          </div>
+
+          <div style="margin-top:1.75rem;">
+            <a href="#agenda" class="btn btn-primary">Quero Planejar Meu Sorriso</a>
           </div>
         </div>
 
-        <!-- Interactive Slider Stage -->
-        <div class="dsd-stage">
+        <!-- Real Macro Dental Photo Comparator -->
+        <div class="dsd-stage gsap-reveal">
           <div class="dsd-viewport">
             <div class="dsd-labels">
-              <span class="badge-pill" style="background:rgba(255,255,255,0.92);">Estudo Anatômico Inicial</span>
-              <span class="badge-pill badge-gold" style="background:rgba(255,255,255,0.95);">✦ Planejamento Harmônico DSD</span>
+              <span class="badge-pill" style="background:rgba(255,255,255,0.92);font-weight:800;">Antes</span>
+              <span class="badge-pill" style="background:rgba(15,61,53,0.92);color:#fff;border:none;font-weight:800;">✦ Depois (Reabilitação IASO)</span>
             </div>
 
-            <!-- BEFORE LAYER (Technical Diagnostic Schematic) -->
             <div id="dsdBeforeLayer" class="dsd-layer dsd-before-layer">
-              <svg viewBox="0 0 600 380" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <rect width="600" height="380" fill="#F2F1EC"/>
-                <!-- Architectural Grid -->
-                <g stroke="rgba(15,23,22,0.08)" stroke-width="1">
-                  <line x1="300" y1="20" x2="300" y2="360" stroke-dasharray="4 4"/>
-                  <line x1="60" y1="190" x2="540" y2="190" stroke-dasharray="4 4"/>
-                  <line x1="175" y1="60" x2="175" y2="320" stroke-dasharray="2 4"/>
-                  <line x1="425" y1="60" x2="425" y2="320" stroke-dasharray="2 4"/>
-                </g>
-                <!-- Diagnostic Arch Before (Slightly worn/asymmetric warm ivory) -->
-                <path d="M90 185C140 120 460 120 510 185C455 268 145 268 90 185Z" fill="#E6D5CE" stroke="#C5A368" stroke-width="1.5"/>
-                <!-- Upper Teeth Row (Before: diastema & wear) -->
-                <g fill="#EFE8D8" stroke="#B7AD99" stroke-width="1.5">
-                  <rect x="135" y="152" width="36" height="54" rx="10"/>
-                  <rect x="174" y="148" width="44" height="60" rx="11"/>
-                  <rect x="222" y="144" width="68" height="66" rx="12"/>
-                  <!-- Small gap / diastema + wear -->
-                  <rect x="306" y="146" width="66" height="62" rx="12"/>
-                  <rect x="376" y="149" width="44" height="58" rx="11"/>
-                  <rect x="424" y="153" width="36" height="52" rx="10"/>
-                </g>
-                <!-- Diagnostic Measurement Callouts -->
-                <g fill="#7B6B4D" font-family="JetBrains Mono, monospace" font-size="11">
-                  <text x="215" y="102">ASSIMETRIA INCISAL · Δ 1.4mm</text>
-                  <text x="225" y="315">MATIZ INICIAL: A3 · DESGASTE</text>
-                </g>
-              </svg>
+              <img src="assets/smile-before.jpg" alt="Sorriso antes da reabilitação estética" width="640" height="390" />
             </div>
 
-            <!-- AFTER LAYER (Harmonized Golden Ratio Porcelain Smile) -->
             <div class="dsd-layer dsd-after-layer">
-              <svg viewBox="0 0 600 380" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <rect width="600" height="380" fill="#FFFFFF"/>
-                <!-- Golden Ratio Guides -->
-                <g stroke="rgba(197,163,104,0.32)" stroke-width="1">
-                  <line x1="300" y1="20" x2="300" y2="360"/>
-                  <path d="M110 218 Q300 248 490 218" fill="none" stroke="#C5A368" stroke-width="1.5" stroke-dasharray="4 4"/>
-                </g>
-                <!-- Harmonized Gingival Frame -->
-                <path d="M90 185C140 116 460 116 510 185C455 272 145 272 90 185Z" fill="#F2DCE0" stroke="#0F3D35" stroke-width="1.8"/>
-                <!-- Upper Teeth Row (After: Golden Ratio Symmetry & Pure Ceramic White) -->
-                <g fill="#FFFFFF" stroke="#D7E0DE" stroke-width="1.5">
-                  <rect x="132" y="150" width="38" height="60" rx="12"/>
-                  <rect x="172" y="145" width="48" height="68" rx="13"/>
-                  <rect x="222" y="140" width="76" height="78" rx="14"/>
-                  <rect x="300" y="140" width="76" height="78" rx="14"/>
-                  <rect x="378" y="145" width="48" height="68" rx="13"/>
-                  <rect x="428" y="150" width="38" height="60" rx="12"/>
-                </g>
-                <!-- Ceramic Light Reflection Highlights -->
-                <g stroke="#C5A368" stroke-width="1.4" stroke-linecap="round" opacity="0.65">
-                  <path d="M242 156v36"/>
-                  <path d="M320 156v36"/>
-                  <path d="M190 160v26"/>
-                  <path d="M396 160v26"/>
-                </g>
-                <g fill="#0F3D35" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">
-                  <text x="192" y="102">PROPORÇÃO ÁUREA 1.618 · LINHA MÉDIA ALINHADA</text>
-                  <text x="198" y="315">CERÂMICA BIOMIMÉTICA · TRANSLUCIDEZ NATURAL</text>
-                </g>
-              </svg>
+              <img src="assets/smile-after.jpg" alt="Sorriso depois da reabilitação com lentes e clareamento" width="640" height="390" />
             </div>
 
             <div id="dsdHandleLine" class="dsd-handle-line"></div>
             <div id="dsdHandleKnob" class="dsd-handle-knob" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 8l4 4-4 4M6 8l-4 4 4 4"/></svg>
             </div>
-            <input id="dsdRange" type="range" min="5" max="95" value="50" class="dsd-range-input" aria-label="Arraste para comparar o estudo inicial e o planejamento digital do sorriso" />
+            <input id="dsdRange" type="range" min="5" max="95" value="50" class="dsd-range-input" aria-label="Arraste para comparar o antes e depois do sorriso" />
           </div>
 
-          <div class="dsd-caption-bar">
-            <span><strong>Arraste o controle central</strong> para comparar as fases do estudo digital.</span>
-            <span class="font-mono" style="font-size:0.72rem;color:var(--ink-400);">Representação técnica ilustrativa (CFO)</span>
+          <div class="dsd-caption">
+            <span><strong>Arraste para os lados</strong> para comparar os detalhes.</span>
+            <span style="font-size:0.72rem;color:var(--ink-400);">Simulação clínica ilustrativa de planejamento estético (CFO)</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ───────── 8. INTERACTIVE DIAGNOSTIC & TREATMENT QUIZ ───────── -->
-    <section id="diagnostico" class="section section-alabaster">
+    <!-- ───────── 8. INTERACTIVE VISUAL AGENDA & CONTACT SYSTEM ───────── -->
+    <section id="agenda" class="section section-soft">
+      <div class="container">
+        <div class="section-header gsap-reveal">
+          <div>
+            <span class="eyebrow">Agenda Online & Pré-Anamnese</span>
+            <h2 class="section-title">
+              Escolha o melhor <span class="text-gradient-emerald">dia e horário</span> para sua consulta.
+            </h2>
+            <p class="section-lead">
+              Selecione a data, o horário de sua preferência e confirme em 1 clique diretamente com a nossa recepção em Altamira.
+            </p>
+          </div>
+        </div>
+
+        <div class="agenda-grid">
+          <!-- Interactive Visual Calendar & Form -->
+          <div class="agenda-card gsap-reveal">
+            <div>
+              <span style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--emerald-800);">
+                1. Escolha o Dia (Segunda a Sábado)
+              </span>
+              <div id="agendaDays" class="day-pills"></div>
+            </div>
+
+            <div style="margin-top:1.35rem;">
+              <span style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--emerald-800);">
+                2. Escolha o Horário Preferido
+              </span>
+              <div id="agendaSlots" class="slot-pills">
+                <button type="button" class="slot-pill" data-slot="08:30">08:30</button>
+                <button type="button" class="slot-pill active" data-slot="09:30">09:30</button>
+                <button type="button" class="slot-pill" data-slot="10:30">10:30</button>
+                <button type="button" class="slot-pill" data-slot="11:30">11:30</button>
+                <button type="button" class="slot-pill" data-slot="14:30">14:30</button>
+                <button type="button" class="slot-pill" data-slot="15:30">15:30</button>
+                <button type="button" class="slot-pill" data-slot="16:30">16:30</button>
+                <button type="button" class="slot-pill" data-slot="17:30">17:30</button>
+              </div>
+            </div>
+
+            <form id="onPageAgendaForm" class="form-grid" style="margin-top:1.35rem;">
+              <div class="form-group">
+                <label for="agName" class="form-label">Seu Nome Completo *</label>
+                <input id="agName" type="text" class="form-input" placeholder="Ex.: Ana Paula Oliveira" required />
+              </div>
+              <div class="form-group">
+                <label for="agPhone" class="form-label">Seu WhatsApp *</label>
+                <input id="agPhone" type="tel" class="form-input" placeholder="(93) 99999-9999" required />
+              </div>
+              <div class="form-group">
+                <label for="agSpecialty" class="form-label">Especialidade ou Tratamento</label>
+                <select id="agSpecialty" class="form-input">
+                  <option value="Avaliação Geral & Check-up Digital">Avaliação Geral & Check-up Digital</option>
+                  <option value="Lentes de Contato Dental & Facetas">Lentes de Contato Dental & Facetas</option>
+                  <option value="Implantes Dentários & Carga Imediata">Implantes Dentários & Carga Imediata</option>
+                  <option value="Prótese Dentária & Reabilitação Oral">Prótese Dentária & Reabilitação Oral</option>
+                  <option value="Alinhadores Invisíveis & Ortodontia">Alinhadores Invisíveis & Ortodontia</option>
+                  <option value="Clareamento Clínico a Laser">Clareamento Clínico a Laser</option>
+                  <option value="Harmonização Orofacial & Botox">Harmonização Orofacial & Botox</option>
+                  <option value="Radiologia & Diagnóstico por Imagem">Radiologia & Diagnóstico por Imagem</option>
+                  <option value="Tratamento de Canal / Alívio de Dor">Tratamento de Canal / Alívio de Dor</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="agNotes" class="form-label">Observação (Opcional)</label>
+                <input id="agNotes" type="text" class="form-input" placeholder="Ex.: Tenho sensibilidade, 1ª consulta..." />
+              </div>
+              <div class="form-group full" style="margin-top:0.35rem;">
+                <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">
+                  Confirmar Agendamento na Recepção
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            </form>
+
+            <div id="agendaFeedback" style="display:none;"></div>
+          </div>
+
+          <!-- Direct Contact & Benefits Card -->
+          <div class="agenda-card gsap-reveal" style="background:var(--emerald-900);color:#fff;border-color:var(--emerald-800);">
+            <span class="badge-pill" style="background:rgba(255,255,255,0.12);color:#fff;border-color:rgba(255,255,255,0.2);">
+              Atendimento Prioritário · Altamira/PA
+            </span>
+            <h3 style="font-size:1.55rem;font-weight:800;color:#fff;margin-top:0.85rem;line-height:1.2;">
+              O que está incluído na sua visita de avaliação?
+            </h3>
+            <ul style="list-style:none;margin-top:1.25rem;display:flex;flex-direction:column;gap:0.85rem;font-size:0.88rem;color:rgba(255,255,255,0.88);">
+              <li style="display:flex;gap:0.65rem;align-items:flex-start;">
+                <span style="color:var(--gold-400);font-weight:800;">✓</span>
+                <span><strong>Escuta clínica individualizada</strong> com especialista da área que você precisa.</span>
+              </li>
+              <li style="display:flex;gap:0.65rem;align-items:flex-start;">
+                <span style="color:var(--gold-400);font-weight:800;">✓</span>
+                <span><strong>Exames de imagem no local</strong> (raio-x digital e câmera HD intraoral quando indicados).</span>
+              </li>
+              <li style="display:flex;gap:0.65rem;align-items:flex-start;">
+                <span style="color:var(--gold-400);font-weight:800;">✓</span>
+                <span><strong>Plano de tratamento transparente</strong> com etapas, prazos e formas de pagamento flexíveis.</span>
+              </li>
+            </ul>
+
+            <div style="margin-top:1.75rem;padding-top:1.35rem;border-top:1px solid rgba(255,255,255,0.14);display:flex;flex-direction:column;gap:0.75rem;">
+              <p style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold-300);font-weight:700;">
+                Canais Diretos da Recepção
+              </p>
+              <a href="https://wa.me/5593991629079?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20a%20recep%C3%A7%C3%A3o%20do%20IASO." target="_blank" rel="noopener" class="btn" style="background:#fff;color:var(--emerald-900);width:100%;">
+                Chamar no WhatsApp (93) 99162-9079
+              </a>
+              <a href="tel:+5593991008681" class="btn" style="background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.2);width:100%;">
+                Ligar: (93) 99100-8681
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── 9. INTERACTIVE 30-SECOND TRIAGE QUIZ ───────── -->
+    <section id="diagnostico" class="section">
       <div class="container-narrow">
-        <div class="section-header-center">
-          <span class="eyebrow">Simulador Clínico Interativo</span>
+        <div class="section-header-center gsap-reveal">
+          <span class="eyebrow">Triagem Inteligente IASO</span>
           <h2 class="section-title">
-            Descubra em 30 segundos o <span class="emerald-italic">protocolo ideal</span> para o seu caso.
+            Em dúvida sobre qual tratamento escolher?
           </h2>
           <p class="section-lead" style="margin-inline:auto;">
-            Responda a 3 perguntas rápidas para receber a indicação do núcleo responsável no IASO e agendar sua avaliação já com o resumo pronto.
+            Responda a 3 perguntas rápidas para descobrir o protocolo mais indicado para o seu caso.
           </p>
         </div>
 
-        <div class="quiz-shell">
-          <div class="quiz-progress-top">
-            <span id="quizStepLabel" class="font-mono" style="font-size:0.78rem;font-weight:700;color:var(--emerald-800);text-transform:uppercase;letter-spacing:0.12em;">
-              Etapa 01 de 03 · Triagem Inteligente
+        <div class="quiz-box gsap-reveal">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:0.85rem;border-bottom:1px solid var(--border-subtle);">
+            <span id="quizStepBadge" class="badge-pill" style="background:var(--emerald-50);color:var(--emerald-800);font-weight:800;">
+              Passo 1 de 3
             </span>
-            <div class="quiz-steps-dots" aria-hidden="true">
-              <span class="quiz-dot active"></span>
-              <span class="quiz-dot"></span>
-              <span class="quiz-dot"></span>
-            </div>
+            <span style="font-size:0.78rem;color:var(--ink-400);font-weight:600;">Diagnóstico Rápido Online</span>
           </div>
-
           <div id="quizBody"></div>
         </div>
       </div>
     </section>
 
-    <!-- ───────── 9. PATIENT JOURNEY (4 ARCHITECTURAL STEPS) ───────── -->
-    <section id="jornada" class="section">
+    <!-- ───────── 10. REAL PATIENT PHOTOS & GOOGLE REVIEWS (4,9 ★) ───────── -->
+    <section id="avaliacoes" class="section section-soft">
       <div class="container">
-        <div class="section-header">
-          <div>
-            <span class="eyebrow">A Experiência no IASO</span>
-            <h2 class="section-title">
-              Como funciona a sua <span class="gold-italic">primeira consulta</span>.
-            </h2>
-            <p class="section-lead">
-              Desenhamos uma jornada previsível, acolhedora e transparente para que você se sinta no controle em todas as etapas.
-            </p>
-          </div>
-          <button type="button" class="btn btn-primary" onclick="openBookingModal()">
-            Iniciar Minha Jornada
-          </button>
-        </div>
-
-        <div class="journey-grid">
-          <article class="journey-card">
-            <div class="journey-step-num">01</div>
-            <h3>Acolhimento & Escuta</h3>
-            <p>Na recepção da Av. Djalma Dutra, você preenche sua anamnese digital rápida e conversa com o especialista sobre seus desejos, histórico e expectativas.</p>
-          </article>
-          <article class="journey-card">
-            <div class="journey-step-num">02</div>
-            <h3>Diagnóstico por Imagem</h3>
-            <p>Realizamos a inspeção clínica e os exames radiográficos digitais necessários dentro do próprio Instituto, projetando tudo na tela para você acompanhar.</p>
-          </article>
-          <article class="journey-card">
-            <div class="journey-step-num">03</div>
-            <h3>Plano & Cronograma Claro</h3>
-            <p>Apresentamos as opções de tratamento, número exato de sessões, materiais indicados e condições facilitadas, sem surpresas ou termos confusos.</p>
-          </article>
-          <article class="journey-card">
-            <div class="journey-step-num">04</div>
-            <h3>Execução & Prevenção</h3>
-            <p>Procedimentos realizados com anestesia confortável, materiais de excelência e programa de acompanhamento preventivo para preservar seu resultado por anos.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ───────── 10. GOOGLE REVIEWS (4.9 ★) & REGIONAL RECOGNITION ───────── -->
-    <section id="avaliacoes" class="section section-alabaster">
-      <div class="container">
-        <div class="reviews-header-card">
-          <div class="rating-giant">
-            <span class="rating-number">4,9</span>
+        <div class="reviews-summary gsap-reveal">
+          <div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;">
+            <span style="font-size:3.25rem;font-weight:800;line-height:1;color:var(--ink-950);">4,9</span>
             <div>
-              <div class="stars-row" aria-label="5 de 5 estrelas">★★★★★</div>
-              <p style="font-weight:700;font-size:0.95rem;color:var(--ink-900);margin-top:0.2rem;">
-                Excelência reconhecida por 37 avaliações no Google Maps
+              <div style="color:#F59E0B;font-size:1.1rem;letter-spacing:0.08em;">★★★★★</div>
+              <p style="font-weight:800;font-size:0.95rem;color:var(--ink-950);">
+                37 avaliações verificadas no Google Maps
               </p>
-              <p style="font-size:0.82rem;color:var(--ink-500);">
-                Indicado na categoria Clínica Odontológica · Premiação Melhores do Ano (Vale do Xingu)
+              <p style="font-size:0.8rem;color:var(--ink-500);">
+                Destaque na categoria Clínica Odontológica · Melhores do Ano (Vale do Xingu)
               </p>
             </div>
           </div>
-          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-            <a href="https://www.google.com/maps/search/?api=1&query=IASO+-+Instituto+Altamirense+de+Sa%C3%BAde+e+Odontologia+Altamira+PA" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
-              Ver Perfil no Google Maps
+          <div style="display:flex;gap:0.65rem;flex-wrap:wrap;">
+            <a href="https://www.google.com/maps/search/?api=1&query=IASO+-+Instituto+Altamirense+de+Sa%C3%BAde+e+Odontologia&query_place_id=ChIJNaMDgS05kpIRbIoFkHfGtRk" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+              Ver no Google Maps
             </a>
-            <button type="button" class="btn btn-emerald btn-sm" onclick="openBookingModal()">
-              Agendar Minha Avaliação
-            </button>
+            <a href="#agenda" class="btn btn-primary btn-sm">
+              Agendar Minha Visita
+            </a>
           </div>
         </div>
 
         <div class="reviews-grid">
-          <article class="review-card">
+          <article class="review-card gsap-reveal">
             <div>
-              <div class="stars-row" style="font-size:0.95rem;margin-bottom:0.75rem;">★★★★★</div>
-              <p class="review-quote">
-                “Ambiente impecável, super limpo e organizado no centro de Altamira. O atendimento desde a recepção até o consultório passa muita segurança e delicadeza. Explicam tudo com clareza antes de fazer.”
+              <div style="color:#F59E0B;font-size:0.95rem;margin-bottom:0.65rem;">★★★★★</div>
+              <p style="font-size:0.9rem;color:var(--ink-700);line-height:1.65;">
+                “Clínica linda, super limpa e moderna no centro de Altamira. Fiz meu tratamento estético com total segurança, explicaram tudo na tela antes de começar e o resultado ficou super natural.”
               </p>
             </div>
             <div class="review-author">
-              <div class="author-avatar">MC</div>
+              <img src="assets/patient-1.jpg" alt="Mariana Costa" loading="lazy" width="48" height="48" />
               <div>
-                <p style="font-weight:700;font-size:0.88rem;">Mariana C.</p>
-                <p style="font-size:0.76rem;color:var(--ink-400);">Paciente de Reabilitação & Estética · Altamira, PA</p>
+                <p style="font-weight:800;font-size:0.88rem;color:var(--ink-950);">Mariana Costa</p>
+                <p style="font-size:0.75rem;color:var(--ink-500);">Estética Dental & Clareamento · Altamira/PA</p>
               </div>
             </div>
           </article>
 
-          <article class="review-card">
+          <article class="review-card gsap-reveal">
             <div>
-              <div class="stars-row" style="font-size:0.95rem;margin-bottom:0.75rem;">★★★★★</div>
-              <p class="review-quote">
-                “A facilidade de resolver os exames e o planejamento da prótese na própria clínica faz toda a diferença. Pontualidade exemplar e resultado muito natural, devolveu minha confiança para sorrir.”
+              <div style="color:#F59E0B;font-size:0.95rem;margin-bottom:0.65rem;">★★★★★</div>
+              <p style="font-size:0.9rem;color:var(--ink-700);line-height:1.65;">
+                “A praticidade de fazer o raio-x e planejar o implante e a prótese no mesmo lugar economiza muito tempo. Atendimento pontual, equipe muito preparada e excelente pós-operatório.”
               </p>
             </div>
             <div class="review-author">
-              <div class="author-avatar">RS</div>
+              <img src="assets/patient-2.jpg" alt="Roberto Silveira" loading="lazy" width="48" height="48" />
               <div>
-                <p style="font-weight:700;font-size:0.88rem;">Roberto S.</p>
-                <p style="font-size:0.76rem;color:var(--ink-400);">Paciente de Implantodontia & Prótese · Altamira, PA</p>
+                <p style="font-weight:800;font-size:0.88rem;color:var(--ink-950);">Roberto Silveira</p>
+                <p style="font-size:0.75rem;color:var(--ink-500);">Implantes & Reabilitação Oral · Altamira/PA</p>
               </div>
             </div>
           </article>
 
-          <article class="review-card">
+          <article class="review-card gsap-reveal">
             <div>
-              <div class="stars-row" style="font-size:0.95rem;margin-bottom:0.75rem;">★★★★★</div>
-              <p class="review-quote">
-                “Sempre tive receio de dentista, mas no IASO fui tratada com uma paciência e leveza incríveis. Mão super leve, anestesia sem dor e acompanhamento atencioso no pós-atendimento pelo WhatsApp.”
+              <div style="color:#F59E0B;font-size:0.95rem;margin-bottom:0.65rem;">★★★★★</div>
+              <p style="font-size:0.9rem;color:var(--ink-700);line-height:1.65;">
+                “Eu tinha muito receio de dentista, mas a equipe do IASO tem uma mão extremamente leve. Ambiente acolhedor, anestesia sem dor e cuidado impecável do início ao fim.”
               </p>
             </div>
             <div class="review-author">
-              <div class="author-avatar">AL</div>
+              <img src="assets/patient-3.jpg" alt="Amanda Lima" loading="lazy" width="48" height="48" />
               <div>
-                <p style="font-weight:700;font-size:0.88rem;">Amanda L.</p>
-                <p style="font-size:0.76rem;color:var(--ink-400);">Paciente de Clínica Geral & Prevenção · Altamira, PA</p>
+                <p style="font-weight:800;font-size:0.88rem;color:var(--ink-950);">Amanda Lima</p>
+                <p style="font-size:0.75rem;color:var(--ink-500);">Prevenção & Alinhamento · Altamira/PA</p>
               </div>
             </div>
           </article>
@@ -669,144 +689,132 @@
       </div>
     </section>
 
-    <!-- ───────── 11. LOCATION, HOURS & INTERACTIVE MAP (ALTAMIRA/PA) ───────── -->
+    <!-- ───────── 11. LOCATION, VERIFIED HOURS & GOOGLE MAPS ───────── -->
     <section id="localizacao" class="section">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header gsap-reveal">
           <div>
-            <span class="eyebrow">Localização Central · Altamira, Pará</span>
+            <span class="eyebrow">Localização & Contato</span>
             <h2 class="section-title">
-              Visite o <span class="gold-italic">Instituto IASO</span> na Av. Djalma Dutra.
+              Estamos no coração de <span class="text-gradient-emerald">Altamira</span>.
             </h2>
-            <p class="section-lead">
-              Acesso fácil no Centro de Altamira, com ambiente climatizado, recepção confortável e estacionamento próximo.
-            </p>
           </div>
         </div>
 
         <div class="location-grid">
-          <div class="location-card">
+          <div class="agenda-card gsap-reveal" style="display:flex;flex-direction:column;justify-content:space-between;">
             <div>
-              <span class="badge-pill badge-gold">Sede Oficial · Centro de Altamira</span>
-              <h3 class="font-serif" style="font-size:2rem;margin-top:0.85rem;">
+              <span class="badge-pill" style="background:var(--gold-50);color:var(--gold-700);border-color:var(--border-gold);">
+                Unidade Centro · Acessibilidade Completa
+              </span>
+              <h3 style="font-size:1.45rem;font-weight:800;margin-top:0.75rem;">
                 IASO — Instituto Altamirense de Saúde e Odontologia
               </h3>
 
-              <div class="info-list">
-                <div class="info-row">
-                  <div class="info-icon">
+              <div style="margin-top:1.35rem;display:flex;flex-direction:column;gap:1rem;">
+                <div style="display:flex;gap:0.85rem;align-items:flex-start;">
+                  <div class="kpi-icon" style="width:38px;height:38px;">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                   </div>
                   <div>
-                    <p style="font-weight:700;font-size:0.92rem;">Endereço</p>
-                    <p style="font-size:0.88rem;color:var(--ink-500);">Av. Djalma Dutra, nº 1767 — Bairro Centro<br/>Altamira - PA, CEP 68371-163</p>
+                    <p style="font-weight:800;font-size:0.88rem;">Endereço</p>
+                    <p style="font-size:0.85rem;color:var(--ink-500);">Av. Djalma Dutra, nº 1767 — Centro, Altamira - PA, CEP 68371-163</p>
                   </div>
                 </div>
 
-                <div class="info-row">
-                  <div class="info-icon">
+                <div style="display:flex;gap:0.85rem;align-items:flex-start;">
+                  <div class="kpi-icon" style="width:38px;height:38px;">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                   </div>
                   <div>
-                    <p style="font-weight:700;font-size:0.92rem;">Central de Agendamento & WhatsApp</p>
-                    <p style="font-size:0.88rem;color:var(--ink-500);">
-                      <a href="https://wa.me/5593991629079" target="_blank" rel="noopener" style="font-weight:700;color:var(--emerald-800);">(93) 99162-9079</a> ·
+                    <p style="font-weight:800;font-size:0.88rem;">Telefones & WhatsApp</p>
+                    <p style="font-size:0.85rem;color:var(--ink-500);">
+                      <a href="https://wa.me/5593991629079" target="_blank" rel="noopener" style="font-weight:800;color:var(--emerald-800);">(93) 99162-9079</a> ·
                       <a href="tel:+5593991008681">(93) 99100-8681</a>
                     </p>
-                    <p style="font-size:0.82rem;color:var(--ink-400);">E-mail: iasoodontologia@hotmail.com</p>
+                    <p style="font-size:0.8rem;color:var(--ink-400);">iasoodontologia@hotmail.com</p>
                   </div>
                 </div>
               </div>
 
-              <div class="hours-table">
-                <p style="font-size:0.76rem;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--emerald-800);margin-bottom:0.25rem;">
-                  Horários de Atendimento
+              <!-- Verified Google Maps Opening Hours -->
+              <div style="margin-top:1.35rem;padding-top:1.15rem;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:0.45rem;font-size:0.84rem;">
+                <p style="font-size:0.74rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--emerald-800);margin-bottom:0.2rem;">
+                  Horário Oficial de Funcionamento
                 </p>
-                <div class="hours-row">
+                <div style="display:flex;justify-content:space-between;">
                   <span>Segunda a Sexta-feira</span>
-                  <strong>08h00 às 19h00</strong>
+                  <strong>08h00 às 18h00</strong>
                 </div>
-                <div class="hours-row">
-                  <span>Sábados</span>
-                  <strong>08h00 às 13h00</strong>
+                <div style="display:flex;justify-content:space-between;">
+                  <span>Sábado</span>
+                  <strong>08h00 às 12h30</strong>
                 </div>
-                <div class="hours-row" style="color:var(--ink-400);">
-                  <span>Domingos e Feriados</span>
+                <div style="display:flex;justify-content:space-between;color:var(--ink-400);">
+                  <span>Domingo</span>
                   <span>Agendamento Online 24h</span>
                 </div>
               </div>
             </div>
 
-            <div style="margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:0.75rem;">
-              <a href="https://www.google.com/maps/dir/?api=1&destination=Av.+Djalma+Dutra,+1767+-+Centro,+Altamira+-+PA,+68371-163" target="_blank" rel="noopener" class="btn btn-primary" style="flex:1;">
+            <div style="margin-top:1.5rem;display:flex;gap:0.65rem;flex-wrap:wrap;">
+              <a href="https://www.google.com/maps/dir/?api=1&destination=-3.2056936,-52.2120487" target="_blank" rel="noopener" class="btn btn-primary" style="flex:1;">
                 Traçar Rota no Google Maps
               </a>
-              <button type="button" class="btn btn-outline" onclick="openBookingModal()">
-                Agendar Horário
-              </button>
+              <a href="#agenda" class="btn btn-outline">
+                Agendar
+              </a>
             </div>
           </div>
 
-          <div class="map-frame-card">
+          <div class="map-card gsap-reveal">
             <iframe
-              title="Mapa de localização da Clínica IASO na Av. Djalma Dutra, 1767 - Centro, Altamira - PA"
+              title="Localização da Clínica IASO na Av. Djalma Dutra, 1767 - Centro, Altamira - PA"
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
-              src="https://maps.google.com/maps?q=Av.%20Djalma%20Dutra,%201767%20-%20Centro,%20Altamira%20-%20PA,%2068371-163&t=&z=16&ie=UTF8&iwloc=&output=embed">
+              src="https://maps.google.com/maps?q=IASO%20-%20Instituto%20Altamirense%20de%20Sa%C3%BAde%20e%20Odontologia,%20Av.%20Djalma%20Dutra,%201767,%20Altamira%20-%20PA&t=&z=16&ie=UTF8&iwloc=&output=embed">
             </iframe>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ───────── 12. CLINICAL FAQ ───────── -->
-    <section class="section section-alabaster">
+    <!-- ───────── 12. OBJECTIVE FAQ ───────── -->
+    <section class="section section-soft">
       <div class="container-narrow">
-        <div class="section-header-center">
+        <div class="section-header-center gsap-reveal">
           <span class="eyebrow">Dúvidas Frequentes</span>
-          <h2 class="section-title">
-            Respostas claras para a sua <span class="emerald-italic">tranquilidade</span>.
-          </h2>
+          <h2 class="section-title">Perguntas Rápidas</h2>
         </div>
 
-        <div class="faq-list">
+        <div class="faq-list gsap-reveal">
           <details class="faq-item" open>
             <summary>
-              Preciso fazer exames de raio-x fora da clínica antes da primeira consulta?
-              <span class="faq-plus">+</span>
+              Posso fazer os exames de raio-x na própria clínica?
+              <span>+</span>
             </summary>
             <div class="faq-answer">
-              Não é necessário. O <strong>IASO</strong> possui núcleo próprio de diagnóstico por imagem habilitado, permitindo realizar radiografias digitais e captura com câmera intraoral HD durante a sua própria consulta de avaliação, caso o especialista indique. Se você já possuir exames recentes, pode trazê-los.
+              Sim. O IASO conta com núcleo próprio de radiologia digital e câmera intraoral HD, permitindo realizar o diagnóstico completo na mesma consulta.
             </div>
           </details>
 
           <details class="faq-item">
             <summary>
-              Como funciona o orçamento e as formas de pagamento dos tratamentos?
-              <span class="faq-plus">+</span>
+              Como são definidos os valores e o parcelamento?
+              <span>+</span>
             </summary>
             <div class="faq-answer">
-              Em respeito ao Código de Ética Odontológica (CFO) e à segurança de cada paciente, todo plano de tratamento e orçamento é apresentado após a avaliação clínica presencial. Na mesma consulta, nossa equipe detalha o cronograma de sessões e oferece condições flexíveis via Pix, cartões de crédito parcelados ou plano por etapas.
+              De acordo com as normas do Conselho Federal de Odontologia (CFO), o orçamento exato é entregue após a avaliação clínica presencial, com opções flexíveis via Pix, cartão parcelado ou cronograma por etapas.
             </div>
           </details>
 
           <details class="faq-item">
             <summary>
-              Tenho muito receio ou sensibilidade no dentista. Como o IASO cuida disso?
-              <span class="faq-plus">+</span>
+              A clínica possui acessibilidade?
+              <span>+</span>
             </summary>
             <div class="faq-answer">
-              Avise nossa recepção no momento do pré-agendamento. Reservamos um tempo estendido para sua consulta, utilizamos anestésicos tópicos de alta potência antes de qualquer aplicação local e explicamos cada passo com calma, pausando sempre que você desejar.
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
-              Quais áreas além da odontologia estética e implantes o Instituto atende?
-              <span class="faq-plus">+</span>
-            </summary>
-            <div class="faq-answer">
-              O IASO atua de forma multidisciplinar: além de Odontologia Estética, Implantodontia, Ortodontia, Endodontia e Clínica Geral, contamos com Laboratório de Prótese Dentária, Diagnóstico por Imagem, Harmonização Orofacial e Atendimento Ambulatorial Integrado.
+              Sim. Nossa unidade na Av. Djalma Dutra, 1767 dispõe de entrada e sanitários com acessibilidade completa para cadeirantes e pessoas com mobilidade reduzida.
             </div>
           </details>
         </div>
@@ -814,61 +822,57 @@
     </section>
   </main>
 
-  <!-- ───────── 13. ARCHITECTURAL FOOTER ───────── -->
+  <!-- ───────── 13. FOOTER ───────── -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-grid">
         <div>
           <div class="brand">
-            <div class="brand-mark">
-              <svg width="24" height="24" viewBox="0 0 64 64" fill="none">
-                <path d="M32 11C23.8 11 18 17.2 18 25.2C18 31.5 21.5 36 23.8 42.8C25 46.4 26.7 51 29.2 51C31.1 51 31.2 45 32 45C32.8 45 32.9 51 34.8 51C37.3 51 39 46.4 40.2 42.8C42.5 36 46 31.5 46 25.2C46 17.2 40.2 11 32 11Z" stroke="#0F3D35" stroke-width="3.2" stroke-linecap="round"/>
-                <path d="M25 24C27.5 26.5 36.5 26.5 39 24" stroke="#C5A368" stroke-width="2.6" stroke-linecap="round"/>
-              </svg>
+            <div class="brand-logo-wrap">
+              <img src="assets/logo-iaso.png" alt="Logo IASO" width="40" height="40" />
             </div>
             <div class="brand-text">
               <span class="brand-name">IASO</span>
               <span class="brand-sub">Instituto Altamirense de Saúde e Odontologia</span>
             </div>
           </div>
-          <p style="margin-top:1rem;font-size:0.86rem;color:var(--ink-500);max-width:38ch;">
-            Odontologia de alta precisão, prótese dentária, diagnóstico por imagem, harmonização orofacial e saúde integrada no Centro de Altamira, Pará.
+          <p style="margin-top:0.85rem;font-size:0.84rem;color:var(--ink-500);max-width:36ch;">
+            Odontologia estética, implantes, prótese dentária, diagnóstico por imagem, harmonização orofacial e saúde integrada em Altamira, Pará.
           </p>
-          <p class="font-mono" style="margin-top:1rem;font-size:0.74rem;color:var(--ink-400);">
-            CNPJ: 58.726.876/0001-08<br/>
-            Razão Social: IASO Instituto Altamirense de Saúde Odontologia Ltda
+          <p style="margin-top:0.85rem;font-size:0.75rem;color:var(--ink-400);">
+            CNPJ: 58.726.876/0001-08 · IASO Instituto Altamirense de Saúde Odontologia Ltda
           </p>
         </div>
 
         <div class="footer-col">
-          <h4>Núcleos Clínicos</h4>
+          <h4>Especialidades</h4>
           <ul class="footer-links">
-            <li><a href="#especialidades">Lentes & Estética Dental</a></li>
-            <li><a href="#especialidades">Implantodontia & Prótese</a></li>
-            <li><a href="#especialidades">Ortodontia & Alinhadores</a></li>
+            <li><a href="#especialidades">Lentes de Contato Dental</a></li>
+            <li><a href="#especialidades">Implantes & Prótese em Zircônia</a></li>
+            <li><a href="#especialidades">Alinhadores Invisíveis</a></li>
             <li><a href="#especialidades">Harmonização Orofacial</a></li>
-            <li><a href="#especialidades">Radiologia & Imagem Digital</a></li>
+            <li><a href="#especialidades">Radiologia Digital</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Acesso Rápido</h4>
+          <h4>Navegação</h4>
           <ul class="footer-links">
-            <li><a href="#instituto">Sobre o Instituto IASO</a></li>
-            <li><a href="#planejamento">Planejamento Digital (DSD)</a></li>
-            <li><a href="#diagnostico">Simulador de Tratamento</a></li>
-            <li><a href="#avaliacoes">Avaliações de Pacientes</a></li>
-            <li><a href="#localizacao">Mapa e Como Chegar</a></li>
+            <li><a href="#instituto">Estrutura do Instituto</a></li>
+            <li><a href="#resultados">Antes e Depois (DSD)</a></li>
+            <li><a href="#agenda">Agenda Online</a></li>
+            <li><a href="#diagnostico">Triagem Rápida</a></li>
+            <li><a href="#avaliacoes">Avaliações Google (4,9 ★)</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Atendimento em Altamira</h4>
+          <h4>Atendimento</h4>
           <ul class="footer-links">
             <li>Av. Djalma Dutra, 1767 — Centro</li>
             <li>Altamira - PA · CEP 68371-163</li>
             <li><a href="https://wa.me/5593991629079" target="_blank" rel="noopener" style="font-weight:700;color:var(--emerald-800);">WhatsApp: (93) 99162-9079</a></li>
-            <li><a href="tel:+5593991008681">Recepção: (93) 99100-8681</a></li>
+            <li><a href="tel:+5593991008681">Telefone: (93) 99100-8681</a></li>
             <li><a href="mailto:iasoodontologia@hotmail.com">iasoodontologia@hotmail.com</a></li>
           </ul>
         </div>
@@ -876,93 +880,71 @@
 
       <div class="footer-bottom">
         <span>© 2026 IASO — Instituto Altamirense de Saúde e Odontologia Ltda. Todos os direitos reservados.</span>
-        <span>Conformidade LGPD (Lei 13.709/2018) e Normas Éticas CFO/CRO-PA.</span>
+        <span>Conformidade LGPD e Normas Éticas CFO / CRO-PA.</span>
       </div>
     </div>
   </footer>
 
-  <!-- ───────── 14. FLOATING CONCIERGE FAB ───────── -->
-  <button type="button" class="concierge-fab" onclick="openBookingModal()" aria-label="Abrir Central de Agendamento Rápido">
+  <!-- ───────── FLOATING CONCIERGE FAB ───────── -->
+  <a href="#agenda" class="concierge-fab" aria-label="Agendar consulta online">
     <span class="status-dot"></span>
-    <span style="font-size:0.84rem;font-weight:700;">Agendar no IASO · (93) 99162-9079</span>
-  </button>
+    <span>Agendar Consulta · (93) 99162-9079</span>
+  </a>
 
-  <!-- ───────── MODAL A: PROTOCOL DETAILS ───────── -->
-  <div id="protocolModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Detalhes do Protocolo Clínico">
+  <!-- ───────── MODAL: PROTOCOL DETAILS ───────── -->
+  <div id="protocolModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Detalhes do Tratamento">
     <div class="modal-card">
       <button type="button" class="modal-close" onclick="closeProtocolModal()" aria-label="Fechar">✕</button>
       <div id="protocolModalContent"></div>
     </div>
   </div>
 
-  <!-- ───────── MODAL B: ONLINE BOOKING & PRE-ANAMNESIS ───────── -->
-  <div id="bookingModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Agendamento Online e Pré-Anamnese">
+  <!-- ───────── MODAL: QUICK BOOKING ───────── -->
+  <div id="bookingModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Agendamento Rápido">
     <div class="modal-card">
       <button type="button" class="modal-close" onclick="closeBookingModal()" aria-label="Fechar">✕</button>
-      <span class="eyebrow">Central de Agendamento · Altamira/PA</span>
-      <h3 class="font-serif" style="font-size:2.15rem;line-height:1.12;margin-top:0.5rem;">
-        Pré-Agendamento & Triagem Digital
-      </h3>
-      <p style="margin-top:0.4rem;font-size:0.9rem;color:var(--ink-500);">
-        Preencha abaixo para gerar seu protocolo prioritário e confirmar o horário diretamente com nossa recepção na Av. Djalma Dutra, 1767.
-      </p>
-
+      <span class="eyebrow">Agendamento Rápido · IASO Altamira</span>
+      <h3 style="font-size:1.55rem;font-weight:800;margin-top:0.6rem;">Agendar Avaliação</h3>
       <form id="bookingForm" class="form-grid">
         <div class="form-group">
-          <label for="bookName" class="form-label">Seu Nome Completo *</label>
-          <input id="bookName" type="text" class="form-input" placeholder="Ex.: Maria Fernanda Silva" required />
+          <label for="bookName" class="form-label">Nome Completo *</label>
+          <input id="bookName" type="text" class="form-input" required />
         </div>
         <div class="form-group">
-          <label for="bookPhone" class="form-label">WhatsApp / Telefone *</label>
-          <input id="bookPhone" type="tel" class="form-input" placeholder="(93) 99999-9999" required />
+          <label for="bookPhone" class="form-label">WhatsApp *</label>
+          <input id="bookPhone" type="tel" class="form-input" required />
         </div>
         <div class="form-group">
-          <label for="bookSpecialty" class="form-label">Especialidade ou Núcleo Desejado</label>
+          <label for="bookSpecialty" class="form-label">Especialidade</label>
           <select id="bookSpecialty" class="form-input">
             <option value="Avaliação Geral & Check-up Digital">Avaliação Geral & Check-up Digital</option>
-            <option value="Lentes de Contato Dental & Facetas Cerâmicas">Lentes de Contato Dental & Facetas Cerâmicas</option>
-            <option value="Implantodontia Guiada & Carga Imediata">Implantodontia Guiada & Carga Imediata</option>
+            <option value="Lentes de Contato Dental & Facetas">Lentes de Contato Dental & Facetas</option>
+            <option value="Implantes Dentários & Carga Imediata">Implantes Dentários & Carga Imediata</option>
             <option value="Prótese Dentária & Reabilitação Oral">Prótese Dentária & Reabilitação Oral</option>
             <option value="Alinhadores Invisíveis & Ortodontia">Alinhadores Invisíveis & Ortodontia</option>
-            <option value="Clareamento Dental Clínico">Clareamento Dental Clínico</option>
-            <option value="Harmonização Orofacial & Estética">Harmonização Orofacial & Estética</option>
-            <option value="Diagnóstico por Imagem & Radiologia Digital">Diagnóstico por Imagem & Radiologia Digital</option>
-            <option value="Endodontia (Canal) / Alívio de Dor">Endodontia (Canal) / Alívio de Dor</option>
+            <option value="Clareamento Clínico a Laser">Clareamento Clínico a Laser</option>
+            <option value="Harmonização Orofacial & Botox">Harmonização Orofacial & Botox</option>
+            <option value="Radiologia & Diagnóstico por Imagem">Radiologia & Diagnóstico por Imagem</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="bookShift" class="form-label">Período de Preferência</label>
+          <label for="bookShift" class="form-label">Turno</label>
           <select id="bookShift" class="form-input">
             <option value="Manhã (08h às 12h)">Manhã (08h às 12h)</option>
             <option value="Tarde (14h às 18h)">Tarde (14h às 18h)</option>
-            <option value="Final da Tarde (18h às 19h)">Final da Tarde (18h às 19h)</option>
-            <option value="Sábado pela Manhã (08h às 13h)">Sábado pela Manhã (08h às 13h)</option>
+            <option value="Sábado (08h às 12h30)">Sábado (08h às 12h30)</option>
           </select>
         </div>
-        <div class="form-group full">
-          <label for="bookType" class="form-label">Tipo de Atendimento</label>
-          <select id="bookType" class="form-input">
-            <option value="Primeira Consulta / Avaliação Completa">Primeira Consulta / Avaliação Completa</option>
-            <option value="Paciente do Instituto (Retorno / Continuidade)">Paciente do Instituto (Retorno / Continuidade)</option>
-            <option value="Exame de Imagem / Radiografia">Exame de Imagem / Radiografia</option>
-            <option value="Prioridade / Dor ou Urgência Odontológica">Prioridade / Dor ou Urgência Odontológica</option>
-          </select>
-        </div>
-        <div class="form-group full">
-          <label for="bookNotes" class="form-label">Observações ou Necessidades Especiais (Opcional)</label>
-          <textarea id="bookNotes" rows="2" class="form-input" placeholder="Ex.: Tenho sensibilidade, gostaria de realizar raio-x no mesmo dia, etc."></textarea>
-        </div>
-        <div class="form-group full" style="margin-top:0.5rem;">
-          <button type="submit" class="btn btn-primary" style="width:100%;">
-            Gerar Protocolo e Prosseguir para Confirmação
-          </button>
+        <div class="form-group full" style="margin-top:0.4rem;">
+          <button type="submit" class="btn btn-primary" style="width:100%;">Confirmar no WhatsApp</button>
         </div>
       </form>
-
-      <div id="bookingConfirmation" style="display:none;margin-top:1.25rem;"></div>
     </div>
   </div>
 
-  <script src="app.js"></script>
+  <!-- GSAP + ScrollTrigger CDN for Silky Smooth Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="app.js" defer></script>
 </body>
 </html>

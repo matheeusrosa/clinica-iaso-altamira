@@ -1,6 +1,6 @@
 /* ==========================================================================
    IASO — INSTITUTO ALTAMIRENSE DE SAÚDE E ODONTOLOGIA
-   Interactive Clinical Engine: Specialties, DSD Comparator, Quiz & Booking
+   Interactive Engine: GSAP Animations, Visual Agenda, DSD Slider & Quiz
    ========================================================================== */
 
 const IASO_CONFIG = {
@@ -20,233 +20,223 @@ const SPECIALTIES = [
   {
     id: "lentes-porcelana",
     category: "estetica",
-    categoryLabel: "Estética & Sorriso",
-    title: "Lentes de Contato Dental & Facetas Cerâmicas",
+    categoryLabel: "Estética Dental",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>`,
+    title: "Lentes de Contato Dental & Facetas",
     duration: "2 a 3 sessões · Planejamento DSD",
-    summary: "Lâminas ultradelgadas em porcelana pura ou resina nanoparticulada de alta translucidez, desenhadas digitalmente para harmonizar cor, forma e proporção áurea do sorriso.",
+    summary: "Lâminas ultrafinas em porcelana ou resina de alta estética para corrigir cor, formato e alinhamento com naturalidade.",
     highlights: [
-      "Ensaio estético (Mock-up) antes de iniciar",
-      "Preservação máxima da estrutura dental sadia",
-      "Naturalidade óptica e estabilidade de cor a longo prazo"
+      "Teste do sorriso (Mock-up) antes de iniciar",
+      "Preservação máxima da estrutura dental",
+      "Brilho e translucidez idênticos ao esmalte natural"
     ],
     protocolSteps: [
-      "Escaneamento fotográfico facial e intraoral com estudo de visagismo.",
-      "Teste do novo sorriso em boca (Mock-up) para aprovação estética prévia.",
-      "Cimentação adesiva sob isolamento absoluto e microscopia/lupas de magnificação."
+      "Fotografia clínica e planejamento digital das proporções faciais.",
+      "Ensaio estético em boca (Mock-up) para aprovação prévia do formato.",
+      "Cimentação adesiva de alta precisão sob isolamento absoluto."
     ],
-    indication: "Fechamento de diastemas, dentes desgastados, alterações de forma ou rejuvenescimento do sorriso."
+    indication: "Dentes desgastados, espaços (diastemas), alteração de cor ou rejuvenescimento do sorriso."
   },
   {
     id: "implantes-carga-imediata",
     category: "implantes",
     categoryLabel: "Implantes & Prótese",
-    title: "Implantodontia Guiada & Carga Imediata",
-    duration: "Planejamento 3D · Reabilitação fixa",
-    summary: "Reposição de um ou múltiplos dentes com implantes de titânio de grau médico e coroas em zircônia ou porcelana, devolvendo segurança mastigatória e estética natural.",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M9 4h6M8 8h8l-1 12a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2L8 8z"/><path d="M9 12h6M9.5 16h5"/></svg>`,
+    title: "Implantes Dentários & Carga Imediata",
+    duration: "Planejamento Digital · Reabilitação Fixa",
+    summary: "Reposição segura de um ou mais dentes com implantes de titânio e coroas em zircônia, devolvendo mastigação firme.",
     highlights: [
-      "Radiologia digital no próprio Instituto para avaliação óssea",
-      "Cirurgia minimamente invasiva e pós-operatório confortável",
-      "Laboratório de prótese integrado (CNAE 3250-7/06)"
+      "Raio-X digital realizado na própria clínica",
+      "Técnica minimamente invasiva e anestesia confortável",
+      "Laboratório de prótese integrado ao Instituto"
     ],
     protocolSteps: [
-      "Avaliação clínica e exame radiográfico digital realizado na própria clínica.",
-      "Planejamento cirúrgico individualizado com anestesia local de alta eficácia.",
-      "Instalação da prótese provisória ou definitiva com ajuste oclusal milimétrico."
+      "Avaliação clínica e exame radiográfico digital no próprio IASO.",
+      "Instalação atraumática do implante com protocolo anestésico seguro.",
+      "Reabilitação com coroa ou prótese fixa de ajuste milimétrico."
     ],
-    indication: "Ausência unitária, parcial ou reabilitação total com protocolo fixo sobre implantes."
+    indication: "Perda de um dente, múltiplos dentes ou substituição de dentadura por protocolo fixo."
   },
   {
     id: "protese-zirconia",
     category: "implantes",
     categoryLabel: "Implantes & Prótese",
-    title: "Prótese Dentária & Reabilitação Oral Completa",
-    duration: "Laboratório Integrado · Alta Precisão",
-    summary: "Coroas livres de metal (metal-free), próteses fixas, sobre implantes e reabilitações oclusais desenhadas para restituir a dimensão vertical e o conforto ao sorrir e mastigar.",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>`,
+    title: "Prótese Dentária & Reabilitação Oral",
+    duration: "Laboratório Próprio · Alta Precisão",
+    summary: "Coroas livres de metal (zircônia e porcelana) e próteses projetadas para devolver conforto ao mastigar e segurança ao falar.",
     highlights: [
-      "Integração direta entre cirurgião-dentista e laboratório protético",
-      "Materiais cerâmicos biocompatíveis sem bordas escuras",
-      "Ajuste anatômico personalizado para fonética e conforto"
+      "Sem bordas metálicas escuras na gengiva",
+      "Integração direta entre dentista e protético",
+      "Ajuste anatômico da mordida (oclusão)"
     ],
     protocolSteps: [
-      "Diagnóstico funcional da mordida (oclusão) e articulação (ATM).",
-      "Provas estéticas e funcionais intermediárias para validação do paciente.",
-      "Entrega definitiva com protocolo de manutenção preventiva semestral."
+      "Análise funcional da mordida e escaneamento/moldagem de precisão.",
+      "Prova estética e funcional para validação do conforto e da cor.",
+      "Instalação definitiva e orientação de manutenção preventiva."
     ],
-    indication: "Substituição de próteses antigas, dentes extensamente restaurados ou reabilitação mastigatória."
+    indication: "Troca de próteses antigas, dentes fraturados ou reabilitação completa da mastigação."
   },
   {
     id: "alinhadores-ortodontia",
     category: "ortodontia",
     categoryLabel: "Ortodontia",
-    title: "Alinhadores Invisíveis & Ortodontia Autoligada",
-    duration: "Acompanhamento mensal · Estético",
-    summary: "Correção do alinhamento dental e da mordida através de alinhadores transparentes removíveis ou aparelhos autoligados estéticos em safira, com previsibilidade e higiene facilitada.",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="8" rx="4"/><path d="M8 8v8M12 8v8M16 8v8"/></svg>`,
+    title: "Alinhadores Invisíveis & Ortodontia",
+    duration: "Transparente · Removível · Rápido",
+    summary: "Alinhamento dental com placas transparentes removíveis ou aparelhos autoligados estéticos em safira.",
     highlights: [
-      "Documentação e radiografia digital sem deslocamentos externos",
-      "Opções quase imperceptíveis para adultos e executivos",
-      "Menor tempo de cadeira e forças biológicas suaves"
+      "Quase imperceptível no dia a dia e no trabalho",
+      "Removível para comer e passar fio dental",
+      "Documentação radiográfica feita no próprio Instituto"
     ],
     protocolSteps: [
-      "Levantamento radiográfico e fotográfico completo no núcleo de imagem IASO.",
-      "Apresentação do plano de movimentação ortodôntica e cronograma estimado.",
-      "Consultas periódicas pontuais de evolução e profilaxia."
+      "Exame clínico e radiográfico digital na própria consulta.",
+      "Planejamento sequencial das movimentações dentárias.",
+      "Acompanhamento mensal objetivo e sem urgências com fios."
     ],
-    indication: "Apinhamento dental, mordida cruzada, sobremordida ou alinhamento pré-reabilitação estética."
+    indication: "Dentes desalinhados, apinhados, mordida cruzada ou preparo estético do sorriso."
   },
   {
     id: "clareamento-laser",
     category: "estetica",
-    categoryLabel: "Estética & Sorriso",
-    title: "Clareamento Dental Clínico & Combinado",
-    duration: "1 a 2 sessões + protocolo assistido",
-    summary: "Protocolo seguro de clareamento com controle rigoroso de sensibilidade, combinando tecnologia de ativação em consultório e moldeiras personalizadas de alta adaptação.",
+    categoryLabel: "Estética Dental",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`,
+    title: "Clareamento Clínico a Laser & Combinado",
+    duration: "1 a 2 sessões · Baixa Sensibilidade",
+    summary: "Protocolo de clareamento com proteção gengival e controle de sensibilidade para um sorriso mais jovem e iluminado.",
     highlights: [
-      "Dessensibilização prévia e proteção gengival fotopolimerizável",
-      "Branco luminoso e natural, respeitando a vitalidade do esmalte",
-      "Kit personalizado com supervisão clínica direta"
+      "Dessensibilizante aplicado antes do gel clareador",
+      "Resultado visível já na primeira sessão clínica",
+      "Branco natural sem agredir o esmalte"
     ],
     protocolSteps: [
-      "Profilaxia ultrassônica com jato de bicarbonato/glicina e avaliação do esmalte.",
-      "Sessão clínica com barreira gengival protetora e gel clareador de pH neutro.",
-      "Acompanhamento de matiz e polimento final de alto brilho."
+      "Limpeza ultrassônica prévia e avaliação da saúde do esmalte.",
+      "Aplicação de barreira gengival protetora e sessão clínica assistida.",
+      "Polimento de alto brilho e protocolo de manutenção."
     ],
-    indication: "Escurecimento dental por pigmentos alimentares, idade ou preparo para lentes e restaurações."
+    indication: "Dentes amarelados por café, vinho, idade ou preparo antes de restaurações estéticas."
   },
   {
     id: "harmonizacao-orofacial",
     category: "harmonizacao",
-    categoryLabel: "Harmonização Facial",
-    title: "Harmonização Orofacial & Estética Integrada",
-    duration: "Sessão de 45 a 60 min · Resultados sutis",
-    summary: "Procedimentos estéticos e terapêuticos faciais que equilibram o sorriso e as proporções do rosto com naturalidade, elegância e respeito à anatomia individual.",
+    categoryLabel: "Harmonização",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+    title: "Harmonização Orofacial & Botox",
+    duration: "45 min · Resultados Naturais",
+    summary: "Equilíbrio entre o sorriso e os traços do rosto com toxina botulínica, preenchimento labial e bioestimuladores de colágeno.",
     highlights: [
-      "Toxina botulínica estética e funcional (bruxismo e sorriso gengival)",
-      "Preenchimento labial e estrutural com ácido hialurônico premium",
-      "Bioestimuladores de colágeno para firmeza e qualidade da pele"
+      "Botox estético e terapêutico (alívio de bruxismo)",
+      "Preenchimento labial delicado com ácido hialurônico",
+      "Bioestimuladores para firmeza e viço da pele"
     ],
     protocolSteps: [
-      "Mapeamento anatômico facial e análise dinâmica da expressão.",
-      "Aplicação confortável sob anestesia tópica/local com microcânulas atraumáticas.",
-      "Consulta de revisão em 15 dias incluída no protocolo."
+      "Mapeamento anatômico facial e alinhamento de expectativas.",
+      "Aplicação com anestesia local/tópica e microcânulas atraumáticas.",
+      "Retorno de avaliação em 15 dias incluído no atendimento."
     ],
-    indication: "Linhas de expressão, assimetria ou perda de volume labial, bruxismo, cefaleia tensional e contorno facial."
+    indication: "Linhas de expressão, sorriso gengival, bruxismo/apertamento, contorno labial e facial."
   },
   {
     id: "diagnostico-imagem",
     category: "imagem",
     categoryLabel: "Imagem & Saúde",
-    title: "Diagnóstico por Imagem & Radiologia Digital",
-    duration: "Resultado imediato · No próprio Instituto",
-    summary: "Exames radiográficos digitais de alta definição com baixa dose de radiação realizados dentro da própria clínica, agilizando diagnósticos precisos na mesma consulta.",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>`,
+    title: "Radiologia & Diagnóstico por Imagem",
+    duration: "Na própria consulta · 100% Digital",
+    summary: "Exames radiográficos digitais de alta definição e câmera intraoral HD realizados dentro da própria clínica.",
     highlights: [
-      "CNAE habilitado para diagnóstico por imagem (8640-2/05)",
-      "Sensores digitais instantâneos sem espera de revelação química",
-      "Câmera intraoral HD para o paciente visualizar cada detalhe na tela"
+      "Sem deslocamento para laboratórios externos",
+      "Menor dose de radiação com sensores digitais",
+      "Você vê o diagnóstico ampliado no monitor"
     ],
     protocolSteps: [
-      "Posicionamento ergonômico com proteção radiológica completa.",
-      "Captura digital instantânea com processamento de contraste em alta resolução.",
-      "Explicação visual do exame pelo especialista diretamente no monitor clínico."
+      "Posicionamento rápido com proteção radiológica completa.",
+      "Captura digital instantânea em alta resolução.",
+      "Análise conjunta entre paciente e especialista no consultório."
     ],
-    indication: "Check-up preventivo, planejamento de implantes, avaliação de canais, sisos e cáries ocultas."
+    indication: "Check-up preventivo, estudo para implantes, avaliação de canais, raízes e sisos."
   },
   {
     id: "endodontia-clinica",
     category: "imagem",
     categoryLabel: "Imagem & Saúde",
-    title: "Endodontia Mecanizada & Alívio Imediato da Dor",
-    duration: "Frequentemente em sessão única",
-    summary: "Tratamento e retratamento de canal com instrumentação rotatória mecanizada e localizador apical eletrônico, proporcionando rapidez, precisão e total conforto ao paciente.",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+    title: "Tratamento de Canal Mecanizado (Sem Dor)",
+    duration: "Rápido · Frequentemente em 1 Sessão",
+    summary: "Endodontia com tecnologia rotatória e localizador digital, aliviando a dor de forma rápida, segura e silenciosa.",
     highlights: [
-      "Tecnologia rotatória que reduz drasticamente o tempo de consulta",
-      "Protocolo anestésico profundo para atendimento sem dor",
-      "Radiografia digital periapical imediata em cada etapa"
+      "Instrumentação mecanizada que reduz o tempo na cadeira",
+      "Anestesia profunda e atendimento acolhedor",
+      "Raio-X digital imediato durante o procedimento"
     ],
     protocolSteps: [
-      "Diagnóstico radiográfico digital e anestesia local de ação rápida.",
-      "Desinfecção mecanizada dos canais radiculares sob isolamento absoluto.",
-      "Blindagem coronária imediata para proteger o dente reabilitado."
+      "Diagnóstico digital preciso e anestesia local de alta eficácia.",
+      "Desinfecção mecanizada sob isolamento absoluto.",
+      "Restauração protetora imediata do dente tratado."
     ],
-    indication: "Dor de dente aguda, sensibilidade prolongada ao frio/calor, fraturas ou infecções endodônticas."
+    indication: "Dor aguda, sensibilidade intensa ao frio/calor, cáries profundas ou traumas dentários."
   },
   {
     id: "saude-ambulatorial",
     category: "imagem",
     categoryLabel: "Imagem & Saúde",
-    title: "Prevenção, Periodontia & Saúde Integrada",
-    duration: "Check-up completo · Atendimento humanizado",
-    summary: "Cuidado integral da saúde gengival, profilaxia ultrassônica, cirurgia oral menor (sisos) e atendimento ambulatorial multiprofissional em ambiente clínico acolhedor.",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+    title: "Check-up, Limpeza Ultrassônica & Saúde",
+    duration: "Prevenção Completa · Atendimento Familiar",
+    summary: "Profilaxia com ultrassom, saúde da gengiva, remoção segura de sisos e consultas ambulatoriais integradas.",
     highlights: [
-      "Atendimento médico ambulatorial e multiprofissional integrado",
-      "Tratamento especializado de gengivite, periodontite e halitose",
-      "Programa de manutenção preventiva para famílias em Altamira"
+      "Limpeza profunda com ultrassom e jato suave",
+      "Prevenção de gengivite, tártaro e mau hálito",
+      "Cuidado humanizado para adultos, crianças e idosos"
     ],
     protocolSteps: [
-      "Anamnese integral de saúde sistêmica e inspeção clínica detalhada.",
-      "Remoção atraumática de tártaro e biofilme por ultrassom odontológico.",
-      "Orientação personalizada de higiene e plano preventivo anual."
+      "Inspeção completa com câmera intraoral e avaliação gengival.",
+      "Remoção atraumática de tártaro e polimento coronário.",
+      "Plano preventivo semestral personalizado."
     ],
-    indication: "Check-up semestral, sangramento gengival, extração segura de sisos e acompanhamento familiar."
+    indication: "Manutenção a cada 6 meses, sangramento gengival, cirurgia de siso e saúde bucal familiar."
   }
 ];
 
-const DSD_CASES = [
-  {
-    id: "reabilitacao",
-    title: "Reabilitação Estética com Lentes Cerâmicas",
-    subtitle: "Simulação ilustrativa de Planejamento Digital do Sorriso (DSD)",
-    beforeLabel: "Fase 01 · Estudo Inicial & Desgaste Natural",
-    afterLabel: "Fase 02 · Harmonia, Proporção Áurea & Luminosidade",
-    metrics: "Proporção 80% central · Cor Natural B1/BL4 · Gengiva Saudável"
-  },
-  {
-    id: "alinhamento",
-    title: "Alinhamento Ortodôntico + Clareamento Clínico",
-    subtitle: "Simulação ilustrativa de Nivelamento de Arco e Matiz",
-    beforeLabel: "Fase 01 · Assimetria de Corredor Bucal",
-    afterLabel: "Fase 02 · Arco Alinhado & Matiz Equilibrado",
-    metrics: "Simetria de linha média · Curva do sorriso harmônica"
-  }
-];
-
-/* ───────── 1. Live Opening Status (Altamira/PA UTC-3) ───────── */
+/* ───────── 1. Live Opening Status (Google Maps Verified Hours) ───────── */
 function updateLiveStatus() {
   const dot = document.getElementById("liveStatusDot");
   const text = document.getElementById("liveStatusText");
   if (!dot || !text) return;
 
   const now = new Date();
-  const day = now.getDay(); // 0 = Sun, 1..5 = Mon..Fri, 6 = Sat
+  const day = now.getDay(); // 0=Sun, 1..5=Mon..Fri, 6=Sat
   const hour = now.getHours() + now.getMinutes() / 60;
 
   let isOpen = false;
-  let statusMsg = "";
+  let msg = "";
 
   if (day >= 1 && day <= 5) {
-    if (hour >= 8 && hour < 19) {
+    if (hour >= 8 && hour < 18) {
       isOpen = true;
-      statusMsg = "Aberto agora em Altamira · Atendimento hoje até 19h";
+      msg = "Aberto agora em Altamira · Atendimento hoje até 18h";
     } else if (hour < 8) {
-      statusMsg = "Abre hoje às 08h00 · Agendamento online 24h";
+      msg = "Abre hoje às 08h00 · Agendamento online disponível";
     } else {
-      statusMsg = "Atendimento encerrado hoje · Abre amanhã às 08h00";
+      msg = "Encerrado hoje · Abre amanhã às 08h00";
     }
   } else if (day === 6) {
-    if (hour >= 8 && hour < 13) {
+    if (hour >= 8 && hour < 12.5) {
       isOpen = true;
-      statusMsg = "Aberto agora (Sábado) · Atendimento até 13h";
+      msg = "Aberto agora (Sábado) · Atendimento até 12h30";
     } else {
-      statusMsg = "Fim de semana · Pré-agendamento online aberto 24h";
+      msg = "Fim de semana · Agendamento online aberto 24h";
     }
   } else {
-    statusMsg = "Domingo · Pré-agendamento online aberto para Segunda às 08h";
+    msg = "Domingo · Agende online para Segunda-feira às 08h";
   }
 
   dot.classList.toggle("closed", !isOpen);
-  text.textContent = statusMsg;
+  text.textContent = msg;
 }
 
-/* ───────── 2. Render Specialties Grid & Filter ───────── */
+/* ───────── 2. Specialties Grid & Filters ───────── */
 function renderSpecialties(filter = "todos") {
   const grid = document.getElementById("specialtiesGrid");
   if (!grid) return;
@@ -255,27 +245,25 @@ function renderSpecialties(filter = "todos") {
     ? SPECIALTIES
     : SPECIALTIES.filter(item => item.category === filter);
 
-  grid.innerHTML = list.map((item, idx) => `
+  grid.innerHTML = list.map((item) => `
     <article class="spec-card" data-category="${item.category}">
       <div>
-        <div class="spec-top">
-          <div class="spec-icon-wrap" aria-hidden="true">
-            <span class="font-mono" style="font-size:0.78rem;font-weight:700;">0${idx + 1}</span>
-          </div>
-          <span class="spec-tag">${item.categoryLabel}</span>
+        <div class="spec-header">
+          <div class="spec-icon-box" aria-hidden="true">${item.icon}</div>
+          <span class="spec-badge">${item.categoryLabel}</span>
         </div>
         <h3 class="spec-title">${item.title}</h3>
         <p class="spec-desc">${item.summary}</p>
-        <ul class="spec-highlights">
+        <ul class="spec-bullets">
           ${item.highlights.map(h => `<li>${h}</li>`).join("")}
         </ul>
       </div>
-      <div class="spec-actions">
+      <div class="spec-footer">
         <button type="button" class="link-btn" onclick="openProtocolModal('${item.id}')">
-          Ver protocolo clínico
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          Como funciona
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
-        <button type="button" class="btn btn-outline btn-sm" onclick="openBookingModal('${item.title}')">
+        <button type="button" class="btn btn-outline btn-sm" onclick="scrollToAgendaWithSpec('${item.title}')">
           Agendar
         </button>
       </div>
@@ -294,6 +282,34 @@ function initSpecialtyFilters() {
   });
 }
 
+window.scrollToAgendaWithSpec = function(specTitle) {
+  const sel = document.getElementById("agSpecialty");
+  if (sel && specTitle) {
+    let found = false;
+    for (const opt of sel.options) {
+      if (opt.value.toLowerCase().includes(specTitle.toLowerCase().slice(0, 8)) ||
+          specTitle.toLowerCase().includes(opt.value.toLowerCase().slice(0, 8))) {
+        sel.value = opt.value;
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      const o = document.createElement("option");
+      o.value = specTitle;
+      o.textContent = specTitle;
+      sel.appendChild(o);
+      sel.value = specTitle;
+    }
+  }
+  const agendaEl = document.getElementById("agenda");
+  if (agendaEl) {
+    agendaEl.scrollIntoView({ behavior: "smooth" });
+  } else {
+    openBookingModal(specTitle);
+  }
+};
+
 /* ───────── 3. Protocol Detail Modal ───────── */
 window.openProtocolModal = function(specId) {
   const item = SPECIALTIES.find(s => s.id === specId);
@@ -304,26 +320,26 @@ window.openProtocolModal = function(specId) {
   if (!modal || !content) return;
 
   content.innerHTML = `
-    <span class="eyebrow">${item.categoryLabel} · Protocolo Clínico IASO</span>
-    <h3 class="font-serif" style="font-size:2.2rem;line-height:1.12;margin-top:0.6rem;">${item.title}</h3>
-    <p style="margin-top:0.4rem;font-size:0.84rem;color:var(--gold-700);font-weight:600;">⏱ ${item.duration}</p>
-    <p style="margin-top:1rem;color:var(--ink-500);font-size:0.96rem;line-height:1.7;">${item.summary}</p>
+    <span class="eyebrow">${item.categoryLabel} · Protocolo IASO</span>
+    <h3 style="font-size:1.65rem;font-weight:800;line-height:1.2;margin-top:0.75rem;">${item.title}</h3>
+    <p style="margin-top:0.35rem;font-size:0.84rem;color:var(--gold-700);font-weight:700;">⏱ ${item.duration}</p>
+    <p style="margin-top:0.85rem;color:var(--ink-500);font-size:0.94rem;">${item.summary}</p>
 
-    <div style="margin-top:1.5rem;padding:1.25rem;background:var(--bg-alabaster);border-radius:var(--radius-md);border:1px solid var(--line-subtle);">
-      <h4 style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--emerald-800);margin-bottom:0.85rem;">Etapas do Atendimento no Instituto</h4>
-      <ol style="padding-left:1.2rem;display:flex;flex-direction:column;gap:0.6rem;font-size:0.9rem;color:var(--ink-700);">
+    <div style="margin-top:1.25rem;padding:1.15rem;background:var(--bg-soft);border-radius:var(--radius-md);border:1px solid var(--border-subtle);">
+      <h4 style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--emerald-800);margin-bottom:0.75rem;">Passo a Passo Clínico</h4>
+      <ol style="padding-left:1.15rem;display:flex;flex-direction:column;gap:0.5rem;font-size:0.88rem;color:var(--ink-700);">
         ${item.protocolSteps.map(step => `<li>${step}</li>`).join("")}
       </ol>
     </div>
 
-    <div style="margin-top:1.15rem;padding:1rem 1.25rem;background:var(--gold-soft);border-radius:var(--radius-md);border:1px solid var(--line-gold);font-size:0.86rem;color:var(--ink-700);">
-      <strong>Indicação Clínica:</strong> ${item.indication}
+    <div style="margin-top:1rem;padding:0.95rem 1.15rem;background:var(--gold-50);border-radius:var(--radius-md);border:1px solid var(--border-gold);font-size:0.84rem;color:var(--ink-700);">
+      <strong>Quando é indicado:</strong> ${item.indication}
     </div>
 
-    <div style="margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:flex-end;">
-      <button type="button" class="btn btn-outline" onclick="closeProtocolModal()">Fechar</button>
-      <button type="button" class="btn btn-primary" onclick="closeProtocolModal(); openBookingModal('${item.title}')">
-        Agendar Avaliação deste Protocolo
+    <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:0.65rem;justify-content:flex-end;">
+      <button type="button" class="btn btn-outline btn-sm" onclick="closeProtocolModal()">Fechar</button>
+      <button type="button" class="btn btn-primary btn-sm" onclick="closeProtocolModal(); scrollToAgendaWithSpec('${item.title}')">
+        Escolher Horário para este Procedimento
       </button>
     </div>
   `;
@@ -336,7 +352,7 @@ window.closeProtocolModal = function() {
   if (modal) modal.classList.remove("open");
 };
 
-/* ───────── 4. Interactive DSD Comparator Slider ───────── */
+/* ───────── 4. Interactive DSD Photo Comparator ───────── */
 function initDsdSlider() {
   const range = document.getElementById("dsdRange");
   const beforeLayer = document.getElementById("dsdBeforeLayer");
@@ -356,102 +372,162 @@ function initDsdSlider() {
   updateSlider(50);
 }
 
-/* ───────── 5. Interactive Clinical Quiz (3 Steps) ───────── */
+/* ───────── 5. Interactive On-Page Visual Agenda & Slot Picker ───────── */
+let selectedAgendaDay = "";
+let selectedAgendaSlot = "09:30";
+
+function initVisualAgenda() {
+  const dayContainer = document.getElementById("agendaDays");
+  const slotContainer = document.getElementById("agendaSlots");
+  const form = document.getElementById("onPageAgendaForm");
+  if (!dayContainer || !slotContainer) return;
+
+  const weekNames = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+  const monthNames = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+
+  const days = [];
+  let cursor = new Date();
+  while (days.length < 5) {
+    if (cursor.getDay() !== 0) { // Skip Sundays
+      const w = weekNames[cursor.getDay()];
+      const d = String(cursor.getDate()).padStart(2, "0");
+      const m = monthNames[cursor.getMonth()];
+      days.push({ label: `${w}, ${d} ${m}`, shortWeek: w, dayNum: `${d}/${cursor.getMonth() + 1}` });
+    }
+    cursor.setDate(cursor.getDate() + 1);
+  }
+
+  selectedAgendaDay = days[0].label;
+
+  dayContainer.innerHTML = days.map((d, i) => `
+    <button type="button" class="day-pill ${i === 0 ? "active" : ""}" data-day="${d.label}">
+      <span class="d-week">${i === 0 ? "Hoje/Próx" : d.shortWeek}</span>
+      <span class="d-num">${d.dayNum}</span>
+    </button>
+  `).join("");
+
+  dayContainer.querySelectorAll(".day-pill").forEach(btn => {
+    btn.addEventListener("click", () => {
+      dayContainer.querySelectorAll(".day-pill").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedAgendaDay = btn.dataset.day;
+    });
+  });
+
+  slotContainer.querySelectorAll(".slot-pill").forEach(btn => {
+    btn.addEventListener("click", () => {
+      slotContainer.querySelectorAll(".slot-pill").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedAgendaSlot = btn.dataset.slot;
+    });
+  });
+
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("agName").value.trim();
+      const phone = document.getElementById("agPhone").value.trim();
+      const spec = document.getElementById("agSpecialty").value;
+      const notes = document.getElementById("agNotes").value.trim();
+
+      const protocol = "IASO-" + Math.floor(100000 + Math.random() * 900000);
+      const text = `Olá, equipe da Clínica IASO! Fiz meu agendamento na agenda online do site:\n\n` +
+        `• *Protocolo:* #${protocol}\n` +
+        `• *Paciente:* ${name}\n` +
+        `• *WhatsApp:* ${phone}\n` +
+        `• *Procedimento:* ${spec}\n` +
+        `• *Data solicitada:* ${selectedAgendaDay}\n` +
+        `• *Horário preferido:* ${selectedAgendaSlot}\n` +
+        (notes ? `• *Observação:* ${notes}\n` : "") +
+        `\nAguardo confirmação na unidade Av. Djalma Dutra, 1767.`;
+
+      const waUrl = `https://wa.me/${IASO_CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
+
+      const feedback = document.getElementById("agendaFeedback");
+      if (feedback) {
+        feedback.style.display = "block";
+        feedback.innerHTML = `
+          <div style="margin-top:1rem;padding:1.25rem;background:var(--emerald-50);border:1px solid var(--emerald-800);border-radius:var(--radius-md);">
+            <p style="font-size:0.75rem;font-weight:800;text-transform:uppercase;color:var(--emerald-800);">✓ Horário Pré-Reservado · Protocolo #${protocol}</p>
+            <p style="font-size:0.88rem;color:var(--ink-700);margin-top:0.3rem;">
+              <strong>${name}</strong>, sua solicitação para <strong>${selectedAgendaDay} às ${selectedAgendaSlot}</strong> (${spec}) está pronta. Clique para enviar à recepção:
+            </p>
+            <div style="margin-top:0.85rem;display:flex;gap:0.65rem;flex-wrap:wrap;">
+              <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                Confirmar no WhatsApp (93) 99162-9079
+              </a>
+            </div>
+          </div>
+        `;
+      }
+      window.open(waUrl, "_blank", "noopener");
+    });
+  }
+}
+
+/* ───────── 6. Interactive 3-Step Triage Quiz ───────── */
 const QUIZ_QUESTIONS = [
   {
     step: 1,
-    title: "Qual é a sua principal prioridade para o seu sorriso ou saúde hoje?",
-    subtitle: "Selecione a opção que melhor descreve o que você deseja conquistar no IASO:",
+    title: "1. Qual é o seu objetivo principal hoje?",
     options: [
-      { id: "estetica", title: "Estética, Lentes ou Clareamento", sub: "Quero um sorriso mais branco, harmônico e alinhado ao meu rosto", rec: "Estética Dental & Planejamento Digital (DSD)" },
-      { id: "implante", title: "Implantes ou Prótese Fixa", sub: "Repor dentes ausentes ou substituir prótese antiga com segurança", rec: "Implantodontia & Laboratório de Prótese IASO" },
-      { id: "ortodontia", title: "Alinhar os Dentes (Ortodontia)", sub: "Alinhadores transparentes ou aparelhos estéticos modernos", rec: "Ortodontia Digital & Ortopedia Facial" },
-      { id: "harmonizacao", title: "Harmonização Orofacial", sub: "Botox, preenchimento labial, bioestimuladores ou bruxismo", rec: "Núcleo de Estética & Harmonização Orofacial" },
-      { id: "dor", title: "Alívio de Dor, Canal ou Urgência", sub: "Sensibilidade, dor aguda, fratura ou dente do siso", rec: "Endodontia Mecanizada & Urgência Odontológica" },
-      { id: "checkup", title: "Check-up, Limpeza & Raio-X Digital", sub: "Prevenção completa, saúde gengival e exames no mesmo local", rec: "Prevenção Integrada & Diagnóstico por Imagem" }
+      { title: "Estética, Lentes ou Clareamento", sub: "Transformar a cor e harmonia do sorriso", rec: "Estética Dental & Planejamento DSD" },
+      { title: "Implantes ou Prótese Fixa", sub: "Repor dentes com segurança e mastigação firme", rec: "Implantodontia & Prótese Integrada" },
+      { title: "Alinhar Dentes (Ortodontia)", sub: "Alinhadores invisíveis ou aparelho estético", rec: "Ortodontia Digital IASO" },
+      { title: "Harmonização Facial & Botox", sub: "Rejuvenescimento, lábios ou alívio de bruxismo", rec: "Harmonização Orofacial" },
+      { title: "Dor de Dente, Canal ou Urgência", sub: "Alívio imediato com anestesia sem dor", rec: "Endodontia Mecanizada & Urgência" },
+      { title: "Check-up, Limpeza & Raio-X", sub: "Prevenção completa e exames no mesmo local", rec: "Prevenção & Diagnóstico por Imagem" }
     ]
   },
   {
     step: 2,
-    title: "Como você prefere que seja conduzida a sua avaliação inicial?",
-    subtitle: "No IASO, adaptamos o ritmo da consulta à sua rotina e conforto:",
+    title: "2. Como prefere realizar sua avaliação?",
     options: [
-      { id: "completo", title: "Avaliação + Raio-X no Mesmo Dia", sub: "Já quero realizar exames necessários na própria clínica e sair com o plano" },
-      { id: "conversa", title: "Escuta Acolhedora (Tenho Receio)", sub: "Prefiro um atendimento calmo, passo a passo e sem pressa" },
-      { id: "objetivo", title: "Planejamento Executivo Rápido", sub: "Tenho agenda corrida e busco pontualidade máxima" }
+      { title: "Consulta + Raio-X no Mesmo Dia", sub: "Já quero fazer exames na clínica e sair com o plano" },
+      { title: "Atendimento Calmo (Tenho Receio)", sub: "Passo a passo gentil e tempo estendido" },
+      { title: "Avaliação Executiva Objetiva", sub: "Pontualidade máxima para rotina corrida" }
     ]
   },
   {
     step: 3,
-    title: "Qual o melhor período para agendarmos a sua visita na Av. Djalma Dutra?",
-    subtitle: "Nossa recepção confirmará o horário mais próximo dentro da sua preferência:",
+    title: "3. Qual o melhor turno para você?",
     options: [
-      { id: "manha", title: "Período da Manhã (08h às 12h)", sub: "Ideal para iniciar o dia com tranquilidade" },
-      { id: "tarde", title: "Período da Tarde (14h às 18h)", sub: "Horário amplo durante a semana" },
-      { id: "flexivel", title: "Horário Especial / Sábado Manhã", sub: "Final de tarde (18h-19h) ou sábado pela manhã" }
+      { title: "Manhã (08h às 12h)", sub: "Segunda a Sábado" },
+      { title: "Tarde (14h às 18h)", sub: "Segunda a Sexta-feira" },
+      { title: "Primeiro Horário Disponível", sub: "Prioridade na agenda da semana" }
     ]
   }
 ];
 
-let quizState = {
-  currentStep: 0,
-  answers: []
-};
+let quizState = { step: 0, answers: [] };
 
 function renderQuiz() {
   const container = document.getElementById("quizBody");
-  const stepLabel = document.getElementById("quizStepLabel");
-  const dots = document.querySelectorAll(".quiz-dot");
+  const badge = document.getElementById("quizStepBadge");
   if (!container) return;
 
-  dots.forEach((d, idx) => {
-    d.classList.remove("active", "done");
-    if (idx < quizState.currentStep) d.classList.add("done");
-    else if (idx === quizState.currentStep) d.classList.add("active");
-  });
-
-  if (quizState.currentStep >= QUIZ_QUESTIONS.length) {
-    const a1 = quizState.answers[0];
-    const a2 = quizState.answers[1];
-    const a3 = quizState.answers[2];
-
-    if (stepLabel) stepLabel.textContent = "Recomendação Clínica Concluída";
-
-    const msg = `Olá, equipe da Clínica IASO! Fiz o diagnóstico rápido no site:\n• Objetivo: ${a1.title}\n• Núcleo recomendado: ${a1.rec}\n• Formato preferido: ${a2.title}\n• Turno: ${a3.title}\nGostaria de verificar os horários disponíveis na Av. Djalma Dutra, 1767.`;
+  if (quizState.step >= QUIZ_QUESTIONS.length) {
+    const [a1, a2, a3] = quizState.answers;
+    if (badge) badge.textContent = "Resultado da Triagem";
+    const msg = `Olá, Clínica IASO! Fiz a triagem rápida no site:\n• Objetivo: ${a1.title}\n• Núcleo indicado: ${a1.rec}\n• Formato: ${a2.title}\n• Turno: ${a3.title}\nGostaria de agendar minha avaliação na Av. Djalma Dutra, 1767.`;
     const waUrl = `https://wa.me/${IASO_CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
 
     container.innerHTML = `
-      <div class="quiz-result-box">
-        <span class="eyebrow">Plano de Triagem Personalizado IASO</span>
-        <h3 class="font-serif" style="font-size:2.1rem;margin-top:0.5rem;color:var(--ink-900);">
-          Núcleo Recomendado: <span class="emerald-italic">${a1.rec}</span>
-        </h3>
-        <p style="margin-top:0.75rem;font-size:0.95rem;color:var(--ink-500);max-width:65ch;">
-          Com base nas suas respostas, preparamos sua recomendação para atendimento na nossa unidade central (Av. Djalma Dutra, 1767 — Altamira/PA), com suporte do nosso núcleo próprio de diagnóstico por imagem e protocolo de conforto individualizado.
+      <div style="background:var(--emerald-50);border:1px solid rgba(15,61,53,0.2);border-radius:var(--radius-lg);padding:1.5rem;">
+        <span class="eyebrow">Indicação Clínica Personalizada</span>
+        <h3 style="font-size:1.5rem;font-weight:800;margin-top:0.65rem;">Núcleo Recomendado: <span class="text-gradient-emerald">${a1.rec}</span></h3>
+        <p style="font-size:0.9rem;color:var(--ink-700);margin-top:0.4rem;">
+          Você pode realizar a avaliação clínica e os exames de imagem necessários no mesmo endereço (Av. Djalma Dutra, 1767 — Centro).
         </p>
-        <div style="margin-top:1.25rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.85rem;">
-          <div style="background:var(--bg-pure);padding:0.95rem 1.1rem;border-radius:12px;border:1px solid var(--line-subtle);">
-            <span style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-400);font-weight:700;">Foco Principal</span>
-            <p style="font-weight:700;font-size:0.9rem;margin-top:0.2rem;">${a1.title}</p>
-          </div>
-          <div style="background:var(--bg-pure);padding:0.95rem 1.1rem;border-radius:12px;border:1px solid var(--line-subtle);">
-            <span style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-400);font-weight:700;">Abordagem</span>
-            <p style="font-weight:700;font-size:0.9rem;margin-top:0.2rem;">${a2.title}</p>
-          </div>
-          <div style="background:var(--bg-pure);padding:0.95rem 1.1rem;border-radius:12px;border:1px solid var(--line-subtle);">
-            <span style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-400);font-weight:700;">Período Preferido</span>
-            <p style="font-weight:700;font-size:0.9rem;margin-top:0.2rem;">${a3.title}</p>
-          </div>
-        </div>
-        <div style="margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:0.85rem;align-items:center;">
-          <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-emerald">
-            Enviar Triagem para a Recepção no WhatsApp
+        <div style="margin-top:1.15rem;display:flex;flex-wrap:wrap;gap:0.65rem;">
+          <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+            Agendar pelo WhatsApp com este Resumo
           </a>
-          <button type="button" class="btn btn-outline" onclick="openBookingModal('${a1.rec}', '${a3.title}')">
-            Preencher Pré-Agendamento no Site
+          <button type="button" class="btn btn-outline btn-sm" onclick="scrollToAgendaWithSpec('${a1.title}')">
+            Escolher Dia e Horário na Agenda
           </button>
           <button type="button" class="link-btn" style="margin-left:auto;" onclick="resetQuiz()">
-            Refazer simulação
+            Refazer
           </button>
         </div>
       </div>
@@ -459,68 +535,48 @@ function renderQuiz() {
     return;
   }
 
-  const q = QUIZ_QUESTIONS[quizState.currentStep];
-  if (stepLabel) stepLabel.textContent = `Etapa 0${q.step} de 03 · Triagem Inteligente`;
+  const q = QUIZ_QUESTIONS[quizState.step];
+  if (badge) badge.textContent = `Passo ${q.step} de 3`;
 
   container.innerHTML = `
-    <h3 class="font-serif" style="font-size:1.95rem;line-height:1.18;">${q.title}</h3>
-    <p style="margin-top:0.4rem;font-size:0.92rem;color:var(--ink-500);">${q.subtitle}</p>
+    <h3 style="font-size:1.35rem;font-weight:800;">${q.title}</h3>
     <div class="quiz-options-grid">
-      ${q.options.map((opt, i) => `
-        <button type="button" class="quiz-opt" onclick="selectQuizOption(${i})">
-          <span class="font-mono" style="font-size:0.72rem;color:var(--gold-600);font-weight:700;">OPÇÃO 0${i + 1}</span>
-          <span class="quiz-opt-title">${opt.title}</span>
-          <span class="quiz-opt-sub">${opt.sub}</span>
+      ${q.options.map((opt, idx) => `
+        <button type="button" class="quiz-opt" onclick="selectQuizOption(${idx})">
+          <span style="font-size:0.92rem;font-weight:800;color:var(--ink-950);">${opt.title}</span>
+          <span style="font-size:0.78rem;color:var(--ink-500);">${opt.sub}</span>
         </button>
       `).join("")}
     </div>
   `;
 }
 
-window.selectQuizOption = function(optIndex) {
-  const q = QUIZ_QUESTIONS[quizState.currentStep];
-  quizState.answers.push(q.options[optIndex]);
-  quizState.currentStep += 1;
+window.selectQuizOption = function(idx) {
+  quizState.answers.push(QUIZ_QUESTIONS[quizState.step].options[idx]);
+  quizState.step += 1;
   renderQuiz();
 };
 
 window.resetQuiz = function() {
-  quizState.currentStep = 0;
-  quizState.answers = [];
+  quizState = { step: 0, answers: [] };
   renderQuiz();
 };
 
-/* ───────── 6. Booking Modal & Quick Triage Bar ───────── */
+/* ───────── 7. Modal Booking & Quick Bar ───────── */
 window.openBookingModal = function(specialty = "", shift = "") {
   const modal = document.getElementById("bookingModal");
   const specSelect = document.getElementById("bookSpecialty");
   const shiftSelect = document.getElementById("bookShift");
-  const resultArea = document.getElementById("bookingConfirmation");
-  const form = document.getElementById("bookingForm");
-
   if (!modal) return;
-  if (resultArea) resultArea.style.display = "none";
-  if (form) form.style.display = "grid";
 
   if (specSelect && specialty) {
-    let matched = false;
     for (const opt of specSelect.options) {
-      if (opt.value.toLowerCase().includes(specialty.toLowerCase().slice(0, 10)) ||
-          specialty.toLowerCase().includes(opt.value.toLowerCase().slice(0, 10))) {
+      if (opt.value.toLowerCase().includes(specialty.toLowerCase().slice(0, 8))) {
         specSelect.value = opt.value;
-        matched = true;
         break;
       }
     }
-    if (!matched) {
-      const customOpt = document.createElement("option");
-      customOpt.value = specialty;
-      customOpt.textContent = specialty;
-      specSelect.appendChild(customOpt);
-      specSelect.value = specialty;
-    }
   }
-
   if (shiftSelect && shift) {
     for (const opt of shiftSelect.options) {
       if (shift.toLowerCase().includes(opt.value.toLowerCase().slice(0, 5))) {
@@ -529,7 +585,6 @@ window.openBookingModal = function(specialty = "", shift = "") {
       }
     }
   }
-
   modal.classList.add("open");
 };
 
@@ -540,11 +595,10 @@ window.closeBookingModal = function() {
 
 window.triggerQuickBooking = function() {
   const spec = document.getElementById("qbSpecialty")?.value || "";
-  const shift = document.getElementById("qbShift")?.value || "";
-  openBookingModal(spec, shift);
+  scrollToAgendaWithSpec(spec);
 };
 
-function initBookingForm() {
+function initModalForm() {
   const form = document.getElementById("bookingForm");
   if (!form) return;
 
@@ -552,80 +606,84 @@ function initBookingForm() {
     e.preventDefault();
     const name = document.getElementById("bookName").value.trim();
     const phone = document.getElementById("bookPhone").value.trim();
-    const specialty = document.getElementById("bookSpecialty").value;
+    const spec = document.getElementById("bookSpecialty").value;
     const shift = document.getElementById("bookShift").value;
-    const visitType = document.getElementById("bookType").value;
-    const notes = document.getElementById("bookNotes").value.trim();
 
-    const protocolCode = "IASO-" + Math.floor(100000 + Math.random() * 900000);
-    const waText = `Olá, recepção do IASO! Gostaria de confirmar meu pré-agendamento pelo site:\n\n` +
-      `• *Protocolo:* #${protocolCode}\n` +
-      `• *Paciente:* ${name}\n` +
-      `• *Telefone:* ${phone}\n` +
-      `• *Especialidade:* ${specialty}\n` +
-      `• *Modalidade:* ${visitType}\n` +
-      `• *Período preferido:* ${shift}\n` +
-      (notes ? `• *Observações:* ${notes}\n` : "") +
-      `\nAguardo a confirmação de data e horário na Av. Djalma Dutra, 1767.`;
-
+    const protocol = "IASO-" + Math.floor(100000 + Math.random() * 900000);
+    const waText = `Olá, Clínica IASO! Gostaria de agendar uma consulta:\n• Protocolo: #${protocol}\n• Paciente: ${name}\n• Telefone: ${phone}\n• Especialidade: ${spec}\n• Turno: ${shift}`;
     const waUrl = `https://wa.me/${IASO_CONFIG.whatsapp}?text=${encodeURIComponent(waText)}`;
-
-    form.style.display = "none";
-    const conf = document.getElementById("bookingConfirmation");
-    if (conf) {
-      conf.style.display = "block";
-      conf.innerHTML = `
-        <div style="padding:1.75rem;background:var(--emerald-50);border:1px solid var(--emerald-800);border-radius:var(--radius-lg);">
-          <span class="eyebrow">Solicitação Pronta · Protocolo #${protocolCode}</span>
-          <h4 class="font-serif" style="font-size:1.85rem;margin-top:0.5rem;">Tudo pronto, ${name.split(" ")[0]}!</h4>
-          <p style="margin-top:0.5rem;font-size:0.92rem;color:var(--ink-700);">
-            Sua ficha de pré-agendamento para <strong>${specialty}</strong> (${shift}) foi estruturada. Clique abaixo para enviar diretamente ao WhatsApp oficial da recepção do IASO em Altamira:
-          </p>
-          <div style="margin-top:1.35rem;display:flex;flex-wrap:wrap;gap:0.75rem;">
-            <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-emerald">
-              Confirmar Agora no WhatsApp (93) 99162-9079
-            </a>
-            <button type="button" class="btn btn-outline" onclick="closeBookingModal()">
-              Concluir
-            </button>
-          </div>
-        </div>
-      `;
-    }
+    window.open(waUrl, "_blank", "noopener");
+    closeBookingModal();
   });
 }
 
-/* ───────── 7. Header Scroll & Mobile Menu ───────── */
+/* ───────── 8. Elegant GSAP + ScrollTrigger Animations ───────── */
+function initGsapAnimations() {
+  if (typeof gsap === "undefined") return;
+  if (typeof ScrollTrigger !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+  // Hero entrance timeline
+  const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 0.85 } });
+  tl.from(".gsap-hero-badge", { y: 18, opacity: 0 })
+    .from(".hero-title", { y: 26, opacity: 0 }, "-=0.6")
+    .from(".hero-lead", { y: 20, opacity: 0 }, "-=0.6")
+    .from(".hero-cta-group", { y: 18, opacity: 0 }, "-=0.6")
+    .from(".hero-social-proof", { y: 16, opacity: 0 }, "-=0.6")
+    .from(".hero-main-card", { scale: 0.96, opacity: 0, duration: 1 }, "-=0.8")
+    .from(".hero-float-card", { y: 20, opacity: 0, stagger: 0.15 }, "-=0.6")
+    .from(".quick-bar", { y: 24, opacity: 0 }, "-=0.5");
+
+  // Subtle floating motion for 3D cutouts
+  gsap.to(".gsap-float", {
+    y: -7,
+    duration: 2.6,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut",
+    stagger: 0.3
+  });
+
+  // ScrollTrigger section reveals
+  if (typeof ScrollTrigger !== "undefined") {
+    gsap.utils.toArray(".gsap-reveal").forEach((el) => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: "top 86%",
+          toggleActions: "play none none none"
+        },
+        y: 28,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out"
+      });
+    });
+  }
+}
+
+/* ───────── 9. Navigation & Modals ───────── */
 function initNavigation() {
   const header = document.getElementById("siteHeader");
   const mobileBtn = document.getElementById("mobileMenuBtn");
   const navLinks = document.getElementById("navLinks");
 
   window.addEventListener("scroll", () => {
-    if (!header) return;
-    header.classList.toggle("scrolled", window.scrollY > 20);
+    if (header) header.classList.toggle("scrolled", window.scrollY > 16);
   }, { passive: true });
 
   if (mobileBtn && navLinks) {
-    mobileBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("mobile-open");
-    });
+    mobileBtn.addEventListener("click", () => navLinks.classList.toggle("mobile-open"));
     navLinks.querySelectorAll("a").forEach(a => {
       a.addEventListener("click", () => navLinks.classList.remove("mobile-open"));
     });
   }
 
-  // Close modals on backdrop click or Escape
-  document.querySelectorAll(".modal-backdrop").forEach(backdrop => {
-    backdrop.addEventListener("click", (e) => {
-      if (e.target === backdrop) backdrop.classList.remove("open");
+  document.querySelectorAll(".modal-backdrop").forEach(b => {
+    b.addEventListener("click", (e) => {
+      if (e.target === b) b.classList.remove("open");
     });
-  });
-
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      document.querySelectorAll(".modal-backdrop.open").forEach(m => m.classList.remove("open"));
-    }
   });
 }
 
@@ -634,7 +692,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderSpecialties("todos");
   initSpecialtyFilters();
   initDsdSlider();
+  initVisualAgenda();
   renderQuiz();
-  initBookingForm();
+  initModalForm();
   initNavigation();
+  initGsapAnimations();
 });
