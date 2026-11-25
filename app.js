@@ -469,7 +469,10 @@ function smoothScrollTo(el) {
 
 window.scrollToAgendaWithSpec = function(specTitle) {
   const sel = document.getElementById("agSpecialty");
-  if (sel && specTitle) sel.value = resolveSpecOption(specTitle);
+  if (sel && specTitle) {
+    sel.value = resolveSpecOption(specTitle);
+    syncCustomSelect(sel);
+  }
   smoothScrollTo(document.getElementById("agenda"));
 };
 
@@ -951,7 +954,177 @@ function initNavigation() {
   });
 }
 
+/* ───────── 12. Themed dropdowns (replace the browser's native list) ───────── */
+let cselectUid = 0;
+
+function syncCustomSelect(sel) {
+  const wrap = sel && sel.closest(".cselect");
+  if (!wrap) return;
+  const label = wrap.querySelector(".cselect-value");
+  const opt = sel.options[sel.selectedIndex];
+  if (label && opt) label.textContent = opt.textContent;
+  wrap.querySelectorAll(".cselect-option").forEach(li => {
+    const on = li.dataset.value === sel.value;
+    li.classList.toggle("selected", on);
+    li.setAttribute("aria-selected", String(on));
+  });
+}
+
+function closeAllCustomSelects(except) {
+  document.querySelectorAll(".cselect.open").forEach(w => {
+    if (w === except) return;
+    w.classList.remove("open", "drop-up");
+    w.querySelector(".cselect-btn")?.setAttribute("aria-expanded", "false");
+  });
+}
+
+function enhanceSelect(sel) {
+  const id = ++cselectUid;
+  const isQuick = sel.classList.contains("qb-select");
+  const wrap = document.createElement("div");
+  wrap.className = "cselect" + (isQuick ? " cselect-quick" : "");
+  sel.parentNode.insertBefore(wrap, sel);
+  wrap.appendChild(sel);
+  sel.classList.add("cselect-native");
+  sel.tabIndex = -1;
+  sel.setAttribute("aria-hidden", "true");
+
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.id = `cselect-btn-${id}`;
+  btn.className = "cselect-btn" + (isQuick ? "" : " form-input");
+  btn.setAttribute("aria-haspopup", "listbox");
+  btn.setAttribute("aria-expanded", "false");
+  btn.innerHTML = `<span class="cselect-value"></span>
+    <svg class="cselect-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>`;
+
+  // Point the visible <label> to the new button
+  const label = sel.id ? document.querySelector(`label[for="${sel.id}"]`) : null;
+  if (label) {
+    label.htmlFor = btn.id;
+    if (!label.id) label.id = `cselect-label-${id}`;
+    btn.setAttribute("aria-labelledby", `${label.id} ${btn.id}`);
+  }
+
+  const list = document.createElement("ul");
+  list.className = "cselect-list";
+  list.id = `cselect-list-${id}`;
+  list.setAttribute("role", "listbox");
+  list.setAttribute("data-lenis-prevent", "");
+  btn.setAttribute("aria-controls", list.id);
+  list.innerHTML = [...sel.options].map((o, i) => `
+    <li class="cselect-option" role="option" id="cselect-${id}-opt-${i}" data-value="${o.value.replace(/"/g, "&quot;")}" aria-selected="false">
+      <span>${o.textContent}</span>
+      <svg class="cselect-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>
+    </li>`).join("");
+
+  wrap.appendChild(btn);
+  wrap.appendChild(list);
+
+  const options = () => [...list.querySelectorAll(".cselect-option")];
+  let activeIdx = -1;
+
+  const setActive = (idx) => {
+    const opts = options();
+    activeIdx = Math.max(0, Math.min(opts.length - 1, idx));
+    opts.forEach((li, i) => li.classList.toggle("active", i === activeIdx));
+    const cur = opts[activeIdx];
+    if (cur) {
+      btn.setAttribute("aria-activedescendant", cur.id);
+      cur.scrollIntoView({ block: "nearest" });
+    }
+  };
+
+  const open = () => {
+    closeAllCustomSelects(wrap);
+    // Open upwards when there is not enough room below (e.g. above the mobile action bar)
+    const r = btn.getBoundingClientRect();
+    const spaceBelow = window.innerHeight - r.bottom;
+    wrap.classList.toggle("drop-up", spaceBelow < 320 && r.top > spaceBelow);
+    wrap.classList.add("open");
+    btn.setAttribute("aria-expanded", "true");
+    setActive(sel.selectedIndex);
+  };
+
+  const close = (focusBtn) => {
+    wrap.classList.remove("open", "drop-up");
+    btn.setAttribute("aria-expanded", "false");
+    btn.removeAttribute("aria-activedescendant");
+    if (focusBtn) btn.focus();
+  };
+
+  const choose = (idx) => {
+    const li = options()[idx];
+    if (!li) return;
+    sel.value = li.dataset.value;
+    sel.dispatchEvent(new Event("change", { bubbles: true }));
+    syncCustomSelect(sel);
+    close(true);
+  };
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    wrap.classList.contains("open") ? close(false) : open();
+  });
+
+  list.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const li = e.target.closest(".cselect-option");
+    if (li) choose(options().indexOf(li));
+  });
+
+  list.addEventListener("mousemove", (e) => {
+    const li = e.target.closest(".cselect-option");
+    if (li) {
+      const idx = options().indexOf(li);
+      if (idx !== activeIdx) {
+        activeIdx = idx;
+        options().forEach((o, i) => o.classList.toggle("active", i === idx));
+      }
+    }
+  });
+
+  btn.addEventListener("keydown", (e) => {
+    const isOpen = wrap.classList.contains("open");
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        isOpen ? setActive(activeIdx + 1) : open();
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        isOpen ? setActive(activeIdx - 1) : open();
+        break;
+      case "Home":
+        if (isOpen) { e.preventDefault(); setActive(0); }
+        break;
+      case "End":
+        if (isOpen) { e.preventDefault(); setActive(options().length - 1); }
+        break;
+      case "Enter":
+      case " ":
+        e.preventDefault();
+        isOpen ? choose(activeIdx) : open();
+        break;
+      case "Escape":
+        if (isOpen) { e.preventDefault(); e.stopPropagation(); close(true); }
+        break;
+      case "Tab":
+        if (isOpen) close(false);
+        break;
+    }
+  });
+
+  syncCustomSelect(sel);
+}
+
+function initCustomSelects() {
+  document.querySelectorAll("select.qb-select, select.form-input").forEach(enhanceSelect);
+  document.addEventListener("click", () => closeAllCustomSelects());
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  initCustomSelects();
   initLenisSmoothScroll();
   updateLiveStatus();
   renderSpecialties("todos");

@@ -2162,6 +2162,160 @@ summary:focus-visible {
   }
 }
 
+/* ───────── Themed dropdown (custom select) ───────── */
+.cselect {
+  position: relative;
+  width: 100%;
+}
+
+/* Let the open list float above following sections instead of being clipped */
+.hero {
+  overflow: visible;
+}
+
+.quick-bar {
+  position: relative;
+  z-index: 20;
+}
+
+.gsap-reveal:has(.cselect.open),
+.quick-bar:has(.cselect.open) {
+  position: relative;
+  z-index: 60;
+}
+
+.cselect-native {
+  display: none !important;
+}
+
+.cselect-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cselect-btn.form-input:hover {
+  border-color: var(--emerald-700);
+}
+
+.cselect.open .cselect-btn.form-input {
+  border-color: var(--emerald-800);
+  background: var(--bg-pure);
+  box-shadow: 0 0 0 4px rgba(15, 61, 53, 0.08);
+}
+
+.cselect-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.cselect-chevron {
+  flex-shrink: 0;
+  color: var(--emerald-800);
+  transition: transform 0.25s var(--ease-out);
+}
+
+.cselect.open .cselect-chevron {
+  transform: rotate(180deg);
+}
+
+/* Quick bar variant: borderless, bold, like the original look */
+.cselect-quick .cselect-btn {
+  background: transparent;
+  border: none;
+  padding: 0.15rem 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink-950);
+  border-radius: 6px;
+}
+
+.cselect-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 100%;
+  width: max-content;
+  max-width: min(380px, calc(100vw - 2rem));
+  z-index: 80;
+  list-style: none;
+  margin: 0;
+  padding: 0.4rem;
+  max-height: 320px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--bg-pure);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px) scale(0.98);
+  transform-origin: top center;
+  transition: opacity 0.2s ease, transform 0.25s var(--ease-out), visibility 0.2s;
+}
+
+.cselect.drop-up .cselect-list {
+  top: auto;
+  bottom: calc(100% + 8px);
+  transform-origin: bottom center;
+  transform: translateY(6px) scale(0.98);
+}
+
+.cselect.open .cselect-list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.cselect-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-xs);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink-700);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.cselect-option.active {
+  background: var(--emerald-50);
+  color: var(--emerald-800);
+}
+
+.cselect-option.selected {
+  color: var(--emerald-800);
+  font-weight: 800;
+}
+
+.cselect-check {
+  flex-shrink: 0;
+  opacity: 0;
+  color: var(--gold-600);
+}
+
+.cselect-option.selected .cselect-check {
+  opacity: 1;
+}
+
+.cselect-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cselect-list::-webkit-scrollbar-thumb {
+  border: none;
+}
+
 /* Respect users who prefer less motion */
 @media (prefers-reduced-motion: reduce) {
   .status-dot {
