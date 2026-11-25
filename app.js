@@ -1,6 +1,6 @@
 /* ==========================================================================
    IASO — INSTITUTO ALTAMIRENSE DE SAÚDE E ODONTOLOGIA
-   Interactive Engine: GSAP Animations, Visual Agenda, DSD Slider & Quiz
+   Interactive Engine: Lenis Smooth Scroll, GSAP, 3D Explorer, Agenda & Quiz
    ========================================================================== */
 
 const IASO_CONFIG = {
@@ -14,6 +14,39 @@ const IASO_CONFIG = {
   email: "iasoodontologia@hotmail.com",
   rating: "4,9",
   reviewsCount: 37
+};
+
+const EXPLORER_ITEMS = {
+  lentes: {
+    badge: "Estética Dental · Alta Naturalidade",
+    title: "Lentes em Porcelana & Resina Estratificada",
+    img: "assets/tooth-3d.png",
+    desc: "Planejamento Digital do Sorriso (DSD) com teste em boca (Mock-up) antes de iniciar. Corrigimos formato, cor e pequenos espaços preservando a estrutura saudável do dente.",
+    meta1: "2 a 3 sessões",
+    meta2: "Sem desgaste excessivo",
+    meta3: "Brilho biomimético natural",
+    specTitle: "Lentes de Contato Dental & Facetas"
+  },
+  implantes: {
+    badge: "Reabilitação Fixa · Laboratório Integrado",
+    title: "Implante de Titânio & Coroa em Zircônia",
+    img: "assets/spec-implant.png",
+    desc: "Recupere a segurança de mastigar e sorrir. Realizamos a radiografia digital no próprio Instituto e confeccionamos próteses livres de metal com encaixe milimétrico.",
+    meta1: "Raio-X no local",
+    meta2: "Anestesia confortável",
+    meta3: "Zircônia livre de metal",
+    specTitle: "Implantes Dentários & Carga Imediata"
+  },
+  alinhadores: {
+    badge: "Ortodontia Digital · Transparente",
+    title: "Alinhadores Invisíveis Removíveis",
+    img: "assets/spec-aligner.png",
+    desc: "Alinhe seus dentes sem bráquetes metálicos. Placas transparentes sob medida que você remove para comer e higienizar, com acompanhamento mensal rápido.",
+    meta1: "Quase imperceptível",
+    meta2: "Removível nas refeições",
+    meta3: "Sem fios ou aftas",
+    specTitle: "Alinhadores Invisíveis & Ortodontia"
+  }
 };
 
 const SPECIALTIES = [
@@ -199,14 +232,68 @@ const SPECIALTIES = [
   }
 ];
 
-/* ───────── 1. Live Opening Status (Google Maps Verified Hours) ───────── */
+let lenisInstance = null;
+
+/* ───────── 1. Buttery-Smooth Lenis Scroll + Top Progress Bar ───────── */
+function initLenisSmoothScroll() {
+  const progressBar = document.getElementById("scrollProgressBar");
+
+  const updateProgress = () => {
+    if (!progressBar) return;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+    progressBar.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+  };
+
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  updateProgress();
+
+  if (typeof Lenis === "undefined") return;
+
+  lenisInstance = new Lenis({
+    duration: 1.25,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    wheelMultiplier: 0.95,
+    touchMultiplier: 1.5
+  });
+
+  if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+    lenisInstance.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenisInstance.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+  } else {
+    function raf(time) {
+      lenisInstance.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }
+
+  // Smooth anchor scrolling via Lenis
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const targetId = anchor.getAttribute("href");
+      if (!targetId || targetId === "#") return;
+      const targetEl = document.querySelector(targetId);
+      if (targetEl && lenisInstance) {
+        e.preventDefault();
+        lenisInstance.scrollTo(targetEl, { offset: -84, duration: 1.3 });
+      }
+    });
+  });
+}
+
+/* ───────── 2. Live Opening Status (Altamira/PA Verified Hours) ───────── */
 function updateLiveStatus() {
   const dot = document.getElementById("liveStatusDot");
   const text = document.getElementById("liveStatusText");
   if (!dot || !text) return;
 
   const now = new Date();
-  const day = now.getDay(); // 0=Sun, 1..5=Mon..Fri, 6=Sat
+  const day = now.getDay();
   const hour = now.getHours() + now.getMinutes() / 60;
 
   let isOpen = false;
@@ -236,7 +323,39 @@ function updateLiveStatus() {
   text.textContent = msg;
 }
 
-/* ───────── 2. Specialties Grid & Filters ───────── */
+/* ───────── 3. Interactive 3D Tooth & Treatment Explorer ───────── */
+window.selectExplorerTab = function(key) {
+  const data = EXPLORER_ITEMS[key];
+  if (!data) return;
+
+  document.querySelectorAll(".exp-pill").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.key === key);
+  });
+
+  const img = document.getElementById("explorerImg");
+  const badge = document.getElementById("explorerBadge");
+  const title = document.getElementById("explorerTitle");
+  const desc = document.getElementById("explorerDesc");
+  const m1 = document.getElementById("explorerMeta1");
+  const m2 = document.getElementById("explorerMeta2");
+  const m3 = document.getElementById("explorerMeta3");
+  const cta = document.getElementById("explorerCta");
+
+  if (typeof gsap !== "undefined" && img) {
+    gsap.fromTo(img, { scale: 0.88, opacity: 0.3 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.6)" });
+  }
+
+  if (img) img.src = data.img;
+  if (badge) badge.textContent = data.badge;
+  if (title) title.textContent = data.title;
+  if (desc) desc.textContent = data.desc;
+  if (m1) m1.textContent = "✓ " + data.meta1;
+  if (m2) m2.textContent = "✓ " + data.meta2;
+  if (m3) m3.textContent = "✓ " + data.meta3;
+  if (cta) cta.setAttribute("onclick", `scrollToAgendaWithSpec('${data.specTitle}')`);
+};
+
+/* ───────── 4. Specialties Grid, Cursor Spotlight & Filters ───────── */
 function renderSpecialties(filter = "todos") {
   const grid = document.getElementById("specialtiesGrid");
   if (!grid) return;
@@ -269,6 +388,15 @@ function renderSpecialties(filter = "todos") {
       </div>
     </article>
   `).join("");
+
+  // Attach cursor spotlight tracking to cards
+  grid.querySelectorAll(".spec-card").forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+      card.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+    });
+  });
 }
 
 function initSpecialtyFilters() {
@@ -304,13 +432,15 @@ window.scrollToAgendaWithSpec = function(specTitle) {
   }
   const agendaEl = document.getElementById("agenda");
   if (agendaEl) {
-    agendaEl.scrollIntoView({ behavior: "smooth" });
-  } else {
-    openBookingModal(specTitle);
+    if (lenisInstance) {
+      lenisInstance.scrollTo(agendaEl, { offset: -84, duration: 1.25 });
+    } else {
+      agendaEl.scrollIntoView({ behavior: "smooth" });
+    }
   }
 };
 
-/* ───────── 3. Protocol Detail Modal ───────── */
+/* ───────── 5. Protocol Detail Modal ───────── */
 window.openProtocolModal = function(specId) {
   const item = SPECIALTIES.find(s => s.id === specId);
   if (!item) return;
@@ -352,7 +482,7 @@ window.closeProtocolModal = function() {
   if (modal) modal.classList.remove("open");
 };
 
-/* ───────── 4. Interactive DSD Photo Comparator ───────── */
+/* ───────── 6. Interactive DSD Photo Comparator ───────── */
 function initDsdSlider() {
   const range = document.getElementById("dsdRange");
   const beforeLayer = document.getElementById("dsdBeforeLayer");
@@ -372,7 +502,7 @@ function initDsdSlider() {
   updateSlider(50);
 }
 
-/* ───────── 5. Interactive On-Page Visual Agenda & Slot Picker ───────── */
+/* ───────── 7. Interactive On-Page Visual Agenda & Slot Picker ───────── */
 let selectedAgendaDay = "";
 let selectedAgendaSlot = "09:30";
 
@@ -388,7 +518,7 @@ function initVisualAgenda() {
   const days = [];
   let cursor = new Date();
   while (days.length < 5) {
-    if (cursor.getDay() !== 0) { // Skip Sundays
+    if (cursor.getDay() !== 0) {
       const w = weekNames[cursor.getDay()];
       const d = String(cursor.getDate()).padStart(2, "0");
       const m = monthNames[cursor.getMonth()];
@@ -465,7 +595,7 @@ function initVisualAgenda() {
   }
 }
 
-/* ───────── 6. Interactive 3-Step Triage Quiz ───────── */
+/* ───────── 8. Interactive 3-Step Triage Quiz ───────── */
 const QUIZ_QUESTIONS = [
   {
     step: 1,
@@ -562,35 +692,15 @@ window.resetQuiz = function() {
   renderQuiz();
 };
 
-/* ───────── 7. Modal Booking & Quick Bar ───────── */
-window.openBookingModal = function(specialty = "", shift = "") {
-  const modal = document.getElementById("bookingModal");
-  const specSelect = document.getElementById("bookSpecialty");
-  const shiftSelect = document.getElementById("bookShift");
-  if (!modal) return;
-
-  if (specSelect && specialty) {
-    for (const opt of specSelect.options) {
-      if (opt.value.toLowerCase().includes(specialty.toLowerCase().slice(0, 8))) {
-        specSelect.value = opt.value;
-        break;
-      }
-    }
-  }
-  if (shiftSelect && shift) {
-    for (const opt of shiftSelect.options) {
-      if (shift.toLowerCase().includes(opt.value.toLowerCase().slice(0, 5))) {
-        shiftSelect.value = opt.value;
-        break;
-      }
-    }
-  }
-  modal.classList.add("open");
+/* ───────── 9. Floating Concierge Drawer & Quick Booking ───────── */
+window.toggleConcierge = function() {
+  const popup = document.getElementById("conciergePopup");
+  if (popup) popup.classList.toggle("open");
 };
 
-window.closeBookingModal = function() {
-  const modal = document.getElementById("bookingModal");
-  if (modal) modal.classList.remove("open");
+window.sendQuickConcierge = function(topic) {
+  const msg = `Olá, recepção do IASO! Estou no site e gostaria de informações/agendamento sobre: ${topic}.`;
+  window.open(`https://wa.me/${IASO_CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
 };
 
 window.triggerQuickBooking = function() {
@@ -598,33 +708,13 @@ window.triggerQuickBooking = function() {
   scrollToAgendaWithSpec(spec);
 };
 
-function initModalForm() {
-  const form = document.getElementById("bookingForm");
-  if (!form) return;
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("bookName").value.trim();
-    const phone = document.getElementById("bookPhone").value.trim();
-    const spec = document.getElementById("bookSpecialty").value;
-    const shift = document.getElementById("bookShift").value;
-
-    const protocol = "IASO-" + Math.floor(100000 + Math.random() * 900000);
-    const waText = `Olá, Clínica IASO! Gostaria de agendar uma consulta:\n• Protocolo: #${protocol}\n• Paciente: ${name}\n• Telefone: ${phone}\n• Especialidade: ${spec}\n• Turno: ${shift}`;
-    const waUrl = `https://wa.me/${IASO_CONFIG.whatsapp}?text=${encodeURIComponent(waText)}`;
-    window.open(waUrl, "_blank", "noopener");
-    closeBookingModal();
-  });
-}
-
-/* ───────── 8. Elegant GSAP + ScrollTrigger Animations ───────── */
+/* ───────── 10. Elegant GSAP + ScrollTrigger Animations ───────── */
 function initGsapAnimations() {
   if (typeof gsap === "undefined") return;
   if (typeof ScrollTrigger !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
   }
 
-  // Hero entrance timeline
   const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 0.85 } });
   tl.from(".gsap-hero-badge", { y: 18, opacity: 0 })
     .from(".hero-title", { y: 26, opacity: 0 }, "-=0.6")
@@ -635,26 +725,24 @@ function initGsapAnimations() {
     .from(".hero-float-card", { y: 20, opacity: 0, stagger: 0.15 }, "-=0.6")
     .from(".quick-bar", { y: 24, opacity: 0 }, "-=0.5");
 
-  // Subtle floating motion for 3D cutouts
   gsap.to(".gsap-float", {
-    y: -7,
-    duration: 2.6,
+    y: -6,
+    duration: 2.5,
     repeat: -1,
     yoyo: true,
     ease: "sine.inOut",
-    stagger: 0.3
+    stagger: 0.25
   });
 
-  // ScrollTrigger section reveals
   if (typeof ScrollTrigger !== "undefined") {
     gsap.utils.toArray(".gsap-reveal").forEach((el) => {
       gsap.from(el, {
         scrollTrigger: {
           trigger: el,
-          start: "top 86%",
+          start: "top 87%",
           toggleActions: "play none none none"
         },
-        y: 28,
+        y: 26,
         opacity: 0,
         duration: 0.8,
         ease: "power3.out"
@@ -663,7 +751,7 @@ function initGsapAnimations() {
   }
 }
 
-/* ───────── 9. Navigation & Modals ───────── */
+/* ───────── 11. Navigation & Modals ───────── */
 function initNavigation() {
   const header = document.getElementById("siteHeader");
   const mobileBtn = document.getElementById("mobileMenuBtn");
@@ -688,13 +776,13 @@ function initNavigation() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  initLenisSmoothScroll();
   updateLiveStatus();
   renderSpecialties("todos");
   initSpecialtyFilters();
   initDsdSlider();
   initVisualAgenda();
   renderQuiz();
-  initModalForm();
   initNavigation();
   initGsapAnimations();
 });

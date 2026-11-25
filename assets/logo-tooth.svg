@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="toothGold" x1="16" y1="14" x2="104" y2="106" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#E5CFA4"/>
+      <stop offset="0.5" stop-color="#C5A368"/>
+      <stop offset="1" stop-color="#937037"/>
+    </linearGradient>
+    <linearGradient id="toothEmerald" x1="20" y1="18" x2="96" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0F3D35"/>
+      <stop offset="1" stop-color="#1B6B5C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Subtle Outer Architectural Ring -->
+  <circle cx="60" cy="60" r="54" stroke="url(#toothGold)" stroke-width="1.5" opacity="0.38"/>
+
+  <!-- Continuous Monoline Tooth Silhouette (Left & Right Crown + Dual Roots) -->
+  <path
+    d="M60 26
+       C51 26 44 21 36 22
+       C26 23.5 21 33 22 44.5
+       C23 55 29 63 33.5 76
+       C36.8 85.5 39.5 96 44.5 96
+       C48.8 96 50.5 84.5 54.5 78.5
+       C56.8 75 58.2 74 60 74
+       C61.8 74 63.2 75 65.5 78.5
+       C69.5 84.5 71.2 96 75.5 96
+       C80.5 96 83.2 85.5 86.5 76
+       C91 63 97 55 98 44.5
+       C99 33 94 23.5 84 22
+       C76 21 69 26 60 26Z"
+    stroke="url(#toothEmerald)"
+    stroke-width="4.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Inner Champagne Gold Smile & Cusp Contour Line -->
+  <path
+    d="M34 39C43 48 53 50 60 50C67 50 77 48 86 39"
+    stroke="url(#toothGold)"
+    stroke-width="3.6"
+    stroke-linecap="round"
+  />
+
+  <!-- Secondary Delicate Crown Reflection Stroke -->
+  <path
+    d="M42 30.5C49 35 55 36.5 60 36.5C65 36.5 71 35 78 30.5"
+    stroke="url(#toothGold)"
+    stroke-width="2.2"
+    stroke-linecap="round"
+    opacity="0.85"
+  />
+</svg>

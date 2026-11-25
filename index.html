@@ -6,7 +6,7 @@
   <title>IASO — Instituto Altamirense de Saúde e Odontologia | Altamira, PA</title>
   <meta name="description" content="IASO — Instituto Altamirense de Saúde e Odontologia em Altamira/PA. Odontologia estética, implantes, prótese dentária, raio-x digital, harmonização orofacial e agenda online na Av. Djalma Dutra, 1767." />
   <meta name="theme-color" content="#FFFFFF" />
-  <link rel="icon" type="image/png" href="assets/logo-iaso.png" />
+  <link rel="icon" type="image/svg+xml" href="assets/logo-tooth.svg" />
 
   <!-- 100% Modern Sans-Serif Typography: Plus Jakarta Sans & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,7 +15,7 @@
 
   <!-- Preload Hero Visuals for Instant LCP -->
   <link rel="preload" as="image" href="assets/hero-patient.png" />
-  <link rel="preload" as="image" href="assets/logo-iaso.png" />
+  <link rel="preload" as="image" href="assets/logo-tooth.svg" />
 
   <link rel="stylesheet" href="styles.css" />
 
@@ -52,6 +52,11 @@
 </head>
 <body>
 
+  <!-- Top Scroll Progress Indicator Bar -->
+  <div class="scroll-progress-wrap" aria-hidden="true">
+    <div id="scrollProgressBar" class="scroll-progress-bar"></div>
+  </div>
+
   <!-- ───────── 1. TOP BAR ───────── -->
   <div class="topbar">
     <div class="container topbar-inner">
@@ -81,7 +86,7 @@
     <div class="container header-inner">
       <a href="#inicio" class="brand" aria-label="IASO - Página Inicial">
         <div class="brand-logo-wrap">
-          <img src="assets/logo-iaso.png" alt="Logo IASO" width="42" height="42" />
+          <img src="assets/logo-tooth.svg" alt="Ícone IASO Odontologia" width="34" height="34" />
         </div>
         <div class="brand-text">
           <span class="brand-name">IASO</span>
@@ -164,7 +169,7 @@
               <!-- Floating Card 1: 3D Ceramic Tooth Cutout -->
               <div class="hero-float-card hero-float-top">
                 <div class="hero-float-tooth gsap-float">
-                  <img src="assets/tooth-3d.png" alt="Odontologia de Alta Precisão 3D" width="44" height="44" class="cutout-img" />
+                  <img src="assets/tooth-3d.png" alt="Odontologia de Alta Precisão 3D" width="38" height="38" class="cutout-img" />
                 </div>
                 <div>
                   <p style="font-size:0.7rem;font-weight:800;text-transform:uppercase;color:var(--emerald-800);letter-spacing:0.08em;">Alta Precisão</p>
@@ -174,7 +179,7 @@
               </div>
 
               <!-- Main Cutout Portrait -->
-              <img src="assets/hero-patient.png" alt="Sorriso saudável e natural no Instituto IASO Altamira" class="hero-patient-img cutout-img" width="410" height="420" />
+              <img src="assets/hero-patient.png" alt="Sorriso saudável e natural no Instituto IASO Altamira" class="hero-patient-img cutout-img" width="400" height="420" />
 
               <!-- Floating Card 2: Verified Clinic Badge -->
               <div class="hero-float-card hero-float-bottom">
@@ -269,75 +274,107 @@
       </div>
     </section>
 
-    <!-- ───────── 5. ABOUT THE CLINIC + ARCHITECTURAL PHOTO ───────── -->
+    <!-- ───────── 5. ABOUT THE CLINIC + BENTO TECHNOLOGY GALLERY ───────── -->
     <section id="instituto" class="section">
-      <div class="container about-grid">
-        <div class="about-photo-frame gsap-reveal">
-          <img src="assets/clinic-interior.jpg" alt="Estrutura moderna e white da Clínica IASO em Altamira" loading="lazy" width="640" height="440" />
-          <div class="about-photo-badge">
-            <div style="display:flex;align-items:center;gap:0.75rem;">
-              <img src="assets/logo-iaso.png" alt="IASO" width="38" height="38" style="object-fit:contain;" />
-              <div>
-                <p style="font-size:0.84rem;font-weight:800;color:var(--ink-950);">Estrutura Completa no Centro</p>
-                <p style="font-size:0.75rem;color:var(--ink-500);">Av. Djalma Dutra, 1767 · Altamira - PA</p>
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-photo-frame gsap-reveal">
+            <img src="assets/clinic-interior.jpg" alt="Estrutura moderna e white da Clínica IASO em Altamira" loading="lazy" width="640" height="440" />
+            <div class="about-photo-badge">
+              <div style="display:flex;align-items:center;gap:0.75rem;">
+                <img src="assets/logo-tooth.svg" alt="IASO" width="36" height="36" style="object-fit:contain;" />
+                <div>
+                  <p style="font-size:0.84rem;font-weight:800;color:var(--ink-950);">Estrutura Completa no Centro</p>
+                  <p style="font-size:0.75rem;color:var(--ink-500);">Av. Djalma Dutra, 1767 · Altamira - PA</p>
+                </div>
+              </div>
+              <span class="badge-pill" style="background:var(--emerald-50);color:var(--emerald-800);font-weight:800;">5 Núcleos</span>
+            </div>
+          </div>
+
+          <div class="gsap-reveal">
+            <span class="eyebrow">Sobre o Instituto IASO</span>
+            <h2 class="section-title">
+              Odontologia moderna e saúde integrada <span class="text-gradient-emerald">sem você precisar sair da clínica</span>.
+            </h2>
+            <p class="section-lead">
+              O <strong>IASO — Instituto Altamirense de Saúde e Odontologia</strong> reúne consultórios modernos, radiologia digital própria, laboratório de prótese, harmonização facial e atendimento ambulatorial no mesmo endereço.
+            </p>
+
+            <div class="feature-cards-2x2">
+              <div class="f-box">
+                <div style="color:var(--emerald-800);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <h4>Diagnóstico na 1ª Consulta</h4>
+                <p>Câmera intraoral HD e raio-x digital para você ver cada detalhe na tela.</p>
+              </div>
+
+              <div class="f-box">
+                <div style="color:var(--emerald-800);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </div>
+                <h4>Anestesia Confortável</h4>
+                <p>Técnica gentil e sem pressa para pacientes que têm receio de dentista.</p>
+              </div>
+
+              <div class="f-box">
+                <div style="color:var(--emerald-800);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <h4>Pontualidade & Clareza</h4>
+                <p>Cronograma de sessões e valores explicados com transparência antes de iniciar.</p>
+              </div>
+
+              <div class="f-box">
+                <div style="color:var(--emerald-800);">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <h4>Destaque Regional</h4>
+                <p>Reconhecida na premiação Melhores do Ano (Vale do Xingu) e nota 4,9 ★ no Google.</p>
               </div>
             </div>
-            <span class="badge-pill" style="background:var(--emerald-50);color:var(--emerald-800);font-weight:800;">5 Núcleos</span>
+
+            <div style="margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:0.75rem;">
+              <a href="#agenda" class="btn btn-primary">Agendar Minha Consulta</a>
+              <a href="#especialidades" class="btn btn-outline">Conhecer Tratamentos</a>
+            </div>
           </div>
         </div>
 
-        <div class="gsap-reveal">
-          <span class="eyebrow">Sobre o Instituto IASO</span>
-          <h2 class="section-title">
-            Odontologia moderna e saúde integrada <span class="text-gradient-emerald">sem você precisar sair da clínica</span>.
-          </h2>
-          <p class="section-lead">
-            O <strong>IASO — Instituto Altamirense de Saúde e Odontologia</strong> reúne consultórios modernos, radiologia digital própria, laboratório de prótese, harmonização facial e atendimento ambulatorial no mesmo endereço.
-          </p>
-
-          <div class="feature-cards-2x2">
-            <div class="f-box">
-              <div style="color:var(--emerald-800);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              </div>
-              <h4>Diagnóstico na 1ª Consulta</h4>
-              <p>Câmera intraoral HD e raio-x digital para você ver cada detalhe na tela.</p>
-            </div>
-
-            <div class="f-box">
-              <div style="color:var(--emerald-800);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-              </div>
-              <h4>Anestesia Confortável</h4>
-              <p>Técnica gentil e sem pressa para pacientes que têm receio de dentista.</p>
-            </div>
-
-            <div class="f-box">
-              <div style="color:var(--emerald-800);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              </div>
-              <h4>Pontualidade & Clareza</h4>
-              <p>Cronograma de sessões e valores explicados com transparência antes de iniciar.</p>
-            </div>
-
-            <div class="f-box">
-              <div style="color:var(--emerald-800);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              </div>
-              <h4>Destaque Regional</h4>
-              <p>Reconhecida na premiação Melhores do Ano (Vale do Xingu) e nota 4,9 ★ no Google.</p>
+        <!-- Bento Architectural & Technology Tour Gallery -->
+        <div class="bento-tour-grid gsap-reveal">
+          <div class="bento-tour-card">
+            <img src="assets/clinic-interior.jpg" alt="Arquitetura Clínica White IASO" loading="lazy" width="420" height="250" />
+            <span class="bento-tour-tag">Ambiente White</span>
+            <div class="bento-tour-overlay">
+              <h3 style="font-size:1.08rem;font-weight:800;color:#fff;">Salas Clínicas Climatizadas</h3>
+              <p style="font-size:0.78rem;color:rgba(255,255,255,0.85);margin-top:0.2rem;">Projetadas para transmitir calma, privacidade e conforto acústico.</p>
             </div>
           </div>
 
-          <div style="margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:0.75rem;">
-            <a href="#agenda" class="btn btn-primary">Agendar Minha Consulta</a>
-            <a href="#especialidades" class="btn btn-outline">Conhecer Tratamentos</a>
+          <div class="bento-tour-card">
+            <img src="assets/harmonizacao-suite.jpg" alt="Explicação de Raio-X Digital na Tela" loading="lazy" width="420" height="250" />
+            <span class="bento-tour-tag">Raio-X Digital</span>
+            <div class="bento-tour-overlay">
+              <h3 style="font-size:1.08rem;font-weight:800;color:#fff;">Diagnóstico Explicado no Monitor</h3>
+              <p style="font-size:0.78rem;color:rgba(255,255,255,0.85);margin-top:0.2rem;">Você acompanha suas imagens radiográficas junto com o especialista.</p>
+            </div>
+          </div>
+
+          <div class="bento-tour-card">
+            <img src="assets/tech-scanner.jpg" alt="Tecnologia Odontológica e Biossegurança" loading="lazy" width="420" height="250" />
+            <span class="bento-tour-tag">Tecnologia & Prótese</span>
+            <div class="bento-tour-overlay">
+              <h3 style="font-size:1.08rem;font-weight:800;color:#fff;">Equipamentos de Alta Precisão</h3>
+              <p style="font-size:0.78rem;color:rgba(255,255,255,0.85);margin-top:0.2rem;">Endodontia mecanizada, ultrassom e laboratório protético integrado.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ───────── 6. SPECIALTIES + 3D TRANSPARENT CUTOUT RENDERS ───────── -->
+    <!-- ───────── 6. SPECIALTIES + 3D TRANSPARENT CUTOUT RENDERS & EXPLORER ───────── -->
     <section id="especialidades" class="section section-soft">
       <div class="container">
         <div class="section-header gsap-reveal">
@@ -352,11 +389,11 @@
           </div>
         </div>
 
-        <!-- 3D Cutout Featured Highlights (No-background PNGs!) -->
+        <!-- 3D Cutout Featured Highlights (1:1 Square Contained PNGs!) -->
         <div class="visual-pillars-grid gsap-reveal">
-          <div class="v-pillar-card">
+          <div class="v-pillar-card" onclick="selectExplorerTab('lentes')" style="cursor:pointer;">
             <div class="v-pillar-thumb gsap-float">
-              <img src="assets/tooth-3d.png" alt="Estética Dental e Lentes em Porcelana" class="cutout-img" loading="lazy" width="72" height="72" />
+              <img src="assets/tooth-3d.png" alt="Estética Dental e Lentes em Porcelana" class="cutout-img" loading="lazy" width="68" height="68" />
             </div>
             <div>
               <span style="font-size:0.7rem;font-weight:800;text-transform:uppercase;color:var(--gold-700);">Estética Avançada</span>
@@ -365,9 +402,9 @@
             </div>
           </div>
 
-          <div class="v-pillar-card">
+          <div class="v-pillar-card" onclick="selectExplorerTab('implantes')" style="cursor:pointer;">
             <div class="v-pillar-thumb gsap-float">
-              <img src="assets/spec-implant.png" alt="Implante Dentário de Titânio e Coroa em Zircônia" class="cutout-img" loading="lazy" width="72" height="72" />
+              <img src="assets/spec-implant.png" alt="Implante Dentário de Titânio e Coroa em Zircônia" class="cutout-img" loading="lazy" width="68" height="68" />
             </div>
             <div>
               <span style="font-size:0.7rem;font-weight:800;text-transform:uppercase;color:var(--emerald-800);">Reabilitação Fixa</span>
@@ -376,14 +413,45 @@
             </div>
           </div>
 
-          <div class="v-pillar-card">
+          <div class="v-pillar-card" onclick="selectExplorerTab('alinhadores')" style="cursor:pointer;">
             <div class="v-pillar-thumb gsap-float">
-              <img src="assets/spec-aligner.png" alt="Alinhadores Invisíveis Transparentes" class="cutout-img" loading="lazy" width="72" height="72" />
+              <img src="assets/spec-aligner.png" alt="Alinhadores Invisíveis Transparentes" class="cutout-img" loading="lazy" width="68" height="68" />
             </div>
             <div>
               <span style="font-size:0.7rem;font-weight:800;text-transform:uppercase;color:var(--emerald-800);">Ortodontia Digital</span>
               <h3 style="font-size:1.08rem;font-weight:800;margin-top:0.15rem;">Alinhadores Invisíveis</h3>
               <p style="font-size:0.8rem;color:var(--ink-500);margin-top:0.2rem;">Placas transparentes removíveis, confortáveis e discretas.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive 3D Treatment Explorer -->
+        <div class="explorer-card gsap-reveal">
+          <div class="explorer-stage">
+            <img id="explorerImg" src="assets/tooth-3d.png" alt="Visualização 3D do Tratamento" class="cutout-img gsap-float" width="220" height="220" />
+          </div>
+          <div>
+            <span id="explorerBadge" class="eyebrow eyebrow-gold">Estética Dental · Alta Naturalidade</span>
+            <div class="explorer-pills" role="tablist">
+              <button type="button" class="exp-pill active" data-key="lentes" onclick="selectExplorerTab('lentes')">01 · Lentes & Estética</button>
+              <button type="button" class="exp-pill" data-key="implantes" onclick="selectExplorerTab('implantes')">02 · Implante & Zircônia</button>
+              <button type="button" class="exp-pill" data-key="alinhadores" onclick="selectExplorerTab('alinhadores')">03 · Alinhador Invisível</button>
+            </div>
+            <div class="explorer-detail-box">
+              <h3 id="explorerTitle" style="font-size:1.35rem;font-weight:800;">Lentes em Porcelana & Resina Estratificada</h3>
+              <p id="explorerDesc" style="font-size:0.88rem;color:var(--ink-500);margin-top:0.45rem;">
+                Planejamento Digital do Sorriso (DSD) com teste em boca (Mock-up) antes de iniciar. Corrigimos formato, cor e pequenos espaços preservando a estrutura saudável do dente.
+              </p>
+              <div style="margin-top:0.9rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
+                <span id="explorerMeta1" class="badge-pill" style="background:var(--emerald-50);color:var(--emerald-800);">✓ 2 a 3 sessões</span>
+                <span id="explorerMeta2" class="badge-pill" style="background:var(--emerald-50);color:var(--emerald-800);">✓ Sem desgaste excessivo</span>
+                <span id="explorerMeta3" class="badge-pill" style="background:var(--emerald-50);color:var(--emerald-800);">✓ Brilho biomimético natural</span>
+              </div>
+              <div style="margin-top:1.15rem;">
+                <button id="explorerCta" type="button" class="btn btn-primary btn-sm" onclick="scrollToAgendaWithSpec('Lentes de Contato Dental & Facetas')">
+                  Agendar Avaliação desta Especialidade
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -829,7 +897,7 @@
         <div>
           <div class="brand">
             <div class="brand-logo-wrap">
-              <img src="assets/logo-iaso.png" alt="Logo IASO" width="40" height="40" />
+              <img src="assets/logo-tooth.svg" alt="Ícone IASO" width="34" height="34" />
             </div>
             <div class="brand-text">
               <span class="brand-name">IASO</span>
@@ -885,11 +953,48 @@
     </div>
   </footer>
 
-  <!-- ───────── FLOATING CONCIERGE FAB ───────── -->
-  <a href="#agenda" class="concierge-fab" aria-label="Agendar consulta online">
-    <span class="status-dot"></span>
-    <span>Agendar Consulta · (93) 99162-9079</span>
-  </a>
+  <!-- ───────── INTERACTIVE FLOATING CONCIERGE WIDGET ───────── -->
+  <div class="concierge-widget">
+    <div id="conciergePopup" class="concierge-popup" role="dialog" aria-label="Atendimento Rápido IASO">
+      <div class="concierge-head">
+        <div style="display:flex;align-items:center;gap:0.6rem;">
+          <img src="assets/logo-tooth.svg" alt="IASO" width="28" height="28" style="background:#fff;border-radius:8px;padding:3px;" />
+          <div>
+            <p style="font-size:0.84rem;font-weight:800;line-height:1.1;">Recepção IASO Altamira</p>
+            <p style="font-size:0.7rem;color:rgba(255,255,255,0.8);">Resposta rápida via WhatsApp</p>
+          </div>
+        </div>
+        <button type="button" onclick="toggleConcierge()" style="background:none;border:none;color:#fff;cursor:pointer;font-size:1rem;">✕</button>
+      </div>
+      <div class="concierge-body">
+        <p style="font-size:0.76rem;color:var(--ink-500);margin-bottom:0.2rem;">Toque em uma opção para iniciar:</p>
+        <button type="button" class="concierge-chip" onclick="sendQuickConcierge('Lentes de Contato Dental ou Clareamento')">
+          <span>✦ Lentes & Clareamento Dental</span>
+          <span>→</span>
+        </button>
+        <button type="button" class="concierge-chip" onclick="sendQuickConcierge('Implantes Dentários ou Prótese Fixa')">
+          <span>✦ Implantes & Prótese em Zircônia</span>
+          <span>→</span>
+        </button>
+        <button type="button" class="concierge-chip" onclick="sendQuickConcierge('Alinhadores Invisíveis / Ortodontia')">
+          <span>✦ Alinhadores & Ortodontia</span>
+          <span>→</span>
+        </button>
+        <button type="button" class="concierge-chip" onclick="sendQuickConcierge('Dor de Dente / Urgência / Canal')">
+          <span>✦ Alívio de Dor / Urgência</span>
+          <span>→</span>
+        </button>
+        <a href="#agenda" onclick="toggleConcierge()" class="btn btn-primary btn-sm" style="margin-top:0.35rem;width:100%;">
+          Abrir Agenda de Horários no Site
+        </a>
+      </div>
+    </div>
+
+    <button type="button" class="concierge-fab" onclick="toggleConcierge()" aria-label="Abrir Atendimento Rápido IASO">
+      <span class="status-dot"></span>
+      <span>Atendimento Rápido · (93) 99162-9079</span>
+    </button>
+  </div>
 
   <!-- ───────── MODAL: PROTOCOL DETAILS ───────── -->
   <div id="protocolModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Detalhes do Tratamento">
@@ -899,50 +1004,8 @@
     </div>
   </div>
 
-  <!-- ───────── MODAL: QUICK BOOKING ───────── -->
-  <div id="bookingModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Agendamento Rápido">
-    <div class="modal-card">
-      <button type="button" class="modal-close" onclick="closeBookingModal()" aria-label="Fechar">✕</button>
-      <span class="eyebrow">Agendamento Rápido · IASO Altamira</span>
-      <h3 style="font-size:1.55rem;font-weight:800;margin-top:0.6rem;">Agendar Avaliação</h3>
-      <form id="bookingForm" class="form-grid">
-        <div class="form-group">
-          <label for="bookName" class="form-label">Nome Completo *</label>
-          <input id="bookName" type="text" class="form-input" required />
-        </div>
-        <div class="form-group">
-          <label for="bookPhone" class="form-label">WhatsApp *</label>
-          <input id="bookPhone" type="tel" class="form-input" required />
-        </div>
-        <div class="form-group">
-          <label for="bookSpecialty" class="form-label">Especialidade</label>
-          <select id="bookSpecialty" class="form-input">
-            <option value="Avaliação Geral & Check-up Digital">Avaliação Geral & Check-up Digital</option>
-            <option value="Lentes de Contato Dental & Facetas">Lentes de Contato Dental & Facetas</option>
-            <option value="Implantes Dentários & Carga Imediata">Implantes Dentários & Carga Imediata</option>
-            <option value="Prótese Dentária & Reabilitação Oral">Prótese Dentária & Reabilitação Oral</option>
-            <option value="Alinhadores Invisíveis & Ortodontia">Alinhadores Invisíveis & Ortodontia</option>
-            <option value="Clareamento Clínico a Laser">Clareamento Clínico a Laser</option>
-            <option value="Harmonização Orofacial & Botox">Harmonização Orofacial & Botox</option>
-            <option value="Radiologia & Diagnóstico por Imagem">Radiologia & Diagnóstico por Imagem</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="bookShift" class="form-label">Turno</label>
-          <select id="bookShift" class="form-input">
-            <option value="Manhã (08h às 12h)">Manhã (08h às 12h)</option>
-            <option value="Tarde (14h às 18h)">Tarde (14h às 18h)</option>
-            <option value="Sábado (08h às 12h30)">Sábado (08h às 12h30)</option>
-          </select>
-        </div>
-        <div class="form-group full" style="margin-top:0.4rem;">
-          <button type="submit" class="btn btn-primary" style="width:100%;">Confirmar no WhatsApp</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- GSAP + ScrollTrigger CDN for Silky Smooth Animations -->
+  <!-- Lenis Smooth Scroll ("Efeito Manteiga") + GSAP + ScrollTrigger -->
+  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="app.js" defer></script>
