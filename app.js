@@ -20,7 +20,7 @@ const EXPLORER_ITEMS = {
   lentes: {
     badge: "Estética Dental · Alta Naturalidade",
     title: "Lentes em Porcelana & Resina Estratificada",
-    img: "assets/tooth-3d.png",
+    img: "assets/tooth-3d.webp",
     desc: "Planejamento Digital do Sorriso (DSD) com teste em boca (Mock-up) antes de iniciar. Corrigimos formato, cor e pequenos espaços preservando a estrutura saudável do dente.",
     meta1: "2 a 3 sessões",
     meta2: "Sem desgaste excessivo",
@@ -30,7 +30,7 @@ const EXPLORER_ITEMS = {
   implantes: {
     badge: "Reabilitação Fixa · Laboratório Integrado",
     title: "Implante de Titânio & Coroa em Zircônia",
-    img: "assets/spec-implant.png",
+    img: "assets/spec-implant.webp",
     desc: "Recupere a segurança de mastigar e sorrir. Realizamos a radiografia digital no próprio Instituto e confeccionamos próteses livres de metal com encaixe milimétrico.",
     meta1: "Raio-X no local",
     meta2: "Anestesia confortável",
@@ -40,7 +40,7 @@ const EXPLORER_ITEMS = {
   alinhadores: {
     badge: "Ortodontia Digital · Transparente",
     title: "Alinhadores Invisíveis Removíveis",
-    img: "assets/spec-aligner.png",
+    img: "assets/spec-aligner.webp",
     desc: "Alinhe seus dentes sem bráquetes metálicos. Placas transparentes sob medida que você remove para comer e higienizar, com acompanhamento mensal rápido.",
     meta1: "Quase imperceptível",
     meta2: "Removível nas refeições",
@@ -233,6 +233,38 @@ const SPECIALTIES = [
 ];
 
 let lenisInstance = null;
+const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* Current wall-clock time in Altamira/PA (UTC-3, no DST), regardless of the visitor's timezone */
+function altamiraNow() {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Belem",
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", hour12: false
+  }).formatToParts(new Date()).reduce((acc, p) => { acc[p.type] = p.value; return acc; }, {});
+  return new Date(+parts.year, +parts.month - 1, +parts.day, +parts.hour % 24, +parts.minute);
+}
+
+/* Agenda options, used to map any treatment name to a real <option> */
+const SPEC_ALIASES = [
+  { match: ["lente", "faceta", "estética", "estetica"], value: "Lentes de Contato Dental & Facetas" },
+  { match: ["clareamento"], value: "Clareamento Clínico a Laser" },
+  { match: ["implante"], value: "Implantes Dentários & Carga Imediata" },
+  { match: ["prótese", "protese", "reabilitação"], value: "Prótese Dentária & Reabilitação Oral" },
+  { match: ["alinha", "ortodon"], value: "Alinhadores Invisíveis & Ortodontia" },
+  { match: ["harmoniza", "botox"], value: "Harmonização Orofacial & Botox" },
+  { match: ["canal", "dor", "urgência", "endodon"], value: "Tratamento de Canal / Alívio de Dor" },
+  { match: ["radiolog", "imagem"], value: "Radiologia & Diagnóstico por Imagem" },
+  { match: ["check-up", "limpeza", "avaliação"], value: "Avaliação Geral & Check-up Digital" }
+];
+
+function resolveSpecOption(specTitle) {
+  const t = (specTitle || "").toLowerCase();
+  const exact = SPEC_ALIASES.find(a => a.value.toLowerCase() === t);
+  if (exact) return exact.value;
+  const hit = SPEC_ALIASES.find(a => a.match.some(m => t.includes(m)));
+  return hit ? hit.value : "Avaliação Geral & Check-up Digital";
+}
 
 /* ───────── 1. Buttery-Smooth Lenis Scroll + Top Progress Bar ───────── */
 function initLenisSmoothScroll() {
@@ -248,7 +280,7 @@ function initLenisSmoothScroll() {
   window.addEventListener("scroll", updateProgress, { passive: true });
   updateProgress();
 
-  if (typeof Lenis === "undefined") return;
+  if (typeof Lenis === "undefined" || prefersReducedMotion) return;
 
   lenisInstance = new Lenis({
     duration: 1.25,
@@ -280,7 +312,7 @@ function initLenisSmoothScroll() {
       const targetEl = document.querySelector(targetId);
       if (targetEl && lenisInstance) {
         e.preventDefault();
-        lenisInstance.scrollTo(targetEl, { offset: -84, duration: 1.3 });
+        lenisInstance.scrollTo(targetEl, { offset: headerOffset(), duration: 1.3 });
       }
     });
   });
@@ -292,7 +324,7 @@ function updateLiveStatus() {
   const text = document.getElementById("liveStatusText");
   if (!dot || !text) return;
 
-  const now = new Date();
+  const now = altamiraNow();
   const day = now.getDay();
   const hour = now.getHours() + now.getMinutes() / 60;
 
@@ -302,21 +334,25 @@ function updateLiveStatus() {
   if (day >= 1 && day <= 5) {
     if (hour >= 8 && hour < 18) {
       isOpen = true;
-      msg = "Aberto agora em Altamira · Atendimento hoje até 18h";
+      msg = "Aberto agora · Atendimento hoje até 18h";
     } else if (hour < 8) {
-      msg = "Abre hoje às 08h00 · Agendamento online disponível";
+      msg = "Abre hoje às 08h · Agende online agora";
     } else {
-      msg = "Encerrado hoje · Abre amanhã às 08h00";
+      msg = day === 5
+        ? "Encerrado agora · Abre sábado às 08h"
+        : "Encerrado agora · Abre amanhã às 08h";
     }
   } else if (day === 6) {
     if (hour >= 8 && hour < 12.5) {
       isOpen = true;
-      msg = "Aberto agora (Sábado) · Atendimento até 12h30";
+      msg = "Aberto agora (sábado) · Atendimento até 12h30";
+    } else if (hour < 8) {
+      msg = "Abre hoje às 08h · Agende online agora";
     } else {
-      msg = "Fim de semana · Agendamento online aberto 24h";
+      msg = "Encerrado agora · Abre segunda às 08h";
     }
   } else {
-    msg = "Domingo · Agende online para Segunda-feira às 08h";
+    msg = "Domingo · Abre segunda às 08h · Agende online";
   }
 
   dot.classList.toggle("closed", !isOpen);
@@ -352,7 +388,13 @@ window.selectExplorerTab = function(key) {
   if (m1) m1.textContent = "✓ " + data.meta1;
   if (m2) m2.textContent = "✓ " + data.meta2;
   if (m3) m3.textContent = "✓ " + data.meta3;
-  if (cta) cta.setAttribute("onclick", `scrollToAgendaWithSpec('${data.specTitle}')`);
+  if (cta) cta.dataset.spec = data.specTitle;
+};
+
+/* Pillar cards switch the explorer and bring it into view so the change is visible */
+window.openExplorer = function(key) {
+  selectExplorerTab(key);
+  smoothScrollTo(document.querySelector(".explorer-card"));
 };
 
 /* ───────── 4. Specialties Grid, Cursor Spotlight & Filters ───────── */
@@ -382,7 +424,7 @@ function renderSpecialties(filter = "todos") {
           Como funciona
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
-        <button type="button" class="btn btn-outline btn-sm" onclick="scrollToAgendaWithSpec('${item.title}')">
+        <button type="button" class="btn btn-outline btn-sm" data-spec="${item.title}" onclick="scrollToAgendaWithSpec(this.dataset.spec)">
           Agendar
         </button>
       </div>
@@ -410,34 +452,25 @@ function initSpecialtyFilters() {
   });
 }
 
+function headerOffset() {
+  const header = document.getElementById("siteHeader");
+  return -((header ? header.offsetHeight : 80) + 12);
+}
+
+function smoothScrollTo(el) {
+  if (!el) return;
+  if (lenisInstance) {
+    lenisInstance.scrollTo(el, { offset: headerOffset(), duration: 1.2 });
+  } else {
+    const y = el.getBoundingClientRect().top + window.scrollY + headerOffset();
+    window.scrollTo({ top: y, behavior: prefersReducedMotion ? "auto" : "smooth" });
+  }
+}
+
 window.scrollToAgendaWithSpec = function(specTitle) {
   const sel = document.getElementById("agSpecialty");
-  if (sel && specTitle) {
-    let found = false;
-    for (const opt of sel.options) {
-      if (opt.value.toLowerCase().includes(specTitle.toLowerCase().slice(0, 8)) ||
-          specTitle.toLowerCase().includes(opt.value.toLowerCase().slice(0, 8))) {
-        sel.value = opt.value;
-        found = true;
-        break;
-      }
-    }
-    if (!found) {
-      const o = document.createElement("option");
-      o.value = specTitle;
-      o.textContent = specTitle;
-      sel.appendChild(o);
-      sel.value = specTitle;
-    }
-  }
-  const agendaEl = document.getElementById("agenda");
-  if (agendaEl) {
-    if (lenisInstance) {
-      lenisInstance.scrollTo(agendaEl, { offset: -84, duration: 1.25 });
-    } else {
-      agendaEl.scrollIntoView({ behavior: "smooth" });
-    }
-  }
+  if (sel && specTitle) sel.value = resolveSpecOption(specTitle);
+  smoothScrollTo(document.getElementById("agenda"));
 };
 
 /* ───────── 5. Protocol Detail Modal ───────── */
@@ -468,18 +501,25 @@ window.openProtocolModal = function(specId) {
 
     <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:0.65rem;justify-content:flex-end;">
       <button type="button" class="btn btn-outline btn-sm" onclick="closeProtocolModal()">Fechar</button>
-      <button type="button" class="btn btn-primary btn-sm" onclick="closeProtocolModal(); scrollToAgendaWithSpec('${item.title}')">
+      <button type="button" class="btn btn-primary btn-sm" data-spec="${item.title}" onclick="closeProtocolModal(); scrollToAgendaWithSpec(this.dataset.spec)">
         Escolher Horário para este Procedimento
       </button>
     </div>
   `;
 
   modal.classList.add("open");
+  if (lenisInstance) lenisInstance.stop();
+  document.body.style.overflow = "hidden";
+  const closeBtn = modal.querySelector(".modal-close");
+  if (closeBtn) closeBtn.focus();
 };
 
 window.closeProtocolModal = function() {
   const modal = document.getElementById("protocolModal");
-  if (modal) modal.classList.remove("open");
+  if (!modal || !modal.classList.contains("open")) return;
+  modal.classList.remove("open");
+  document.body.style.overflow = "";
+  if (lenisInstance) lenisInstance.start();
 };
 
 /* ───────── 6. Interactive DSD Photo Comparator ───────── */
@@ -515,76 +555,136 @@ function initVisualAgenda() {
   const weekNames = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
   const monthNames = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
 
+  const now = altamiraNow();
+  const nowHour = now.getHours() + now.getMinutes() / 60;
   const days = [];
-  let cursor = new Date();
-  while (days.length < 5) {
-    if (cursor.getDay() !== 0) {
-      const w = weekNames[cursor.getDay()];
+  const cursor = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  let offset = 0;
+  while (days.length < 6) {
+    const dow = cursor.getDay();
+    const closesAt = dow === 6 ? 12.5 : 18;
+    // Skip Sundays and today when the clinic has already closed (no bookable slot left)
+    const isToday = offset === 0;
+    if (dow !== 0 && !(isToday && nowHour >= closesAt - 1)) {
+      const w = weekNames[dow];
       const d = String(cursor.getDate()).padStart(2, "0");
+      const mm = String(cursor.getMonth() + 1).padStart(2, "0");
       const m = monthNames[cursor.getMonth()];
-      days.push({ label: `${w}, ${d} ${m}`, shortWeek: w, dayNum: `${d}/${cursor.getMonth() + 1}` });
+      const tag = isToday ? "Hoje" : (offset === 1 ? "Amanhã" : w);
+      days.push({ label: `${w}, ${d} ${m}`, tag, dayNum: `${d}/${mm}`, isToday, isSaturday: dow === 6 });
     }
     cursor.setDate(cursor.getDate() + 1);
+    offset += 1;
   }
+
+  const slotNote = document.getElementById("slotNote");
+
+  const refreshSlots = (day) => {
+    let firstEnabled = null;
+    let activeStillValid = false;
+    slotContainer.querySelectorAll(".slot-pill").forEach(btn => {
+      const [h, m] = btn.dataset.slot.split(":").map(Number);
+      const t = h + m / 60;
+      const closedSaturday = day.isSaturday && t >= 12;
+      const past = day.isToday && t <= nowHour + 0.5;
+      btn.disabled = closedSaturday || past;
+      btn.title = closedSaturday ? "Sábado: atendimento até 12h30" : (past ? "Horário já passou" : "");
+      if (!btn.disabled && !firstEnabled) firstEnabled = btn;
+      if (!btn.disabled && btn.dataset.slot === selectedAgendaSlot) activeStillValid = true;
+    });
+    if (!activeStillValid && firstEnabled) selectedAgendaSlot = firstEnabled.dataset.slot;
+    slotContainer.querySelectorAll(".slot-pill").forEach(b => b.classList.toggle("active", b.dataset.slot === selectedAgendaSlot));
+    if (slotNote) {
+      slotNote.textContent = day.isSaturday
+        ? "Aos sábados o atendimento é das 08h às 12h30."
+        : "Horários sujeitos à confirmação da recepção.";
+    }
+  };
 
   selectedAgendaDay = days[0].label;
 
   dayContainer.innerHTML = days.map((d, i) => `
-    <button type="button" class="day-pill ${i === 0 ? "active" : ""}" data-day="${d.label}">
-      <span class="d-week">${i === 0 ? "Hoje/Próx" : d.shortWeek}</span>
+    <button type="button" class="day-pill ${i === 0 ? "active" : ""}" data-index="${i}" data-sat="${d.isSaturday}" aria-pressed="${i === 0}">
+      <span class="d-week">${d.tag}</span>
       <span class="d-num">${d.dayNum}</span>
     </button>
   `).join("");
 
   dayContainer.querySelectorAll(".day-pill").forEach(btn => {
     btn.addEventListener("click", () => {
-      dayContainer.querySelectorAll(".day-pill").forEach(b => b.classList.remove("active"));
+      dayContainer.querySelectorAll(".day-pill").forEach(b => { b.classList.remove("active"); b.setAttribute("aria-pressed", "false"); });
       btn.classList.add("active");
-      selectedAgendaDay = btn.dataset.day;
+      btn.setAttribute("aria-pressed", "true");
+      const day = days[Number(btn.dataset.index)];
+      selectedAgendaDay = day.label;
+      refreshSlots(day);
     });
   });
 
   slotContainer.querySelectorAll(".slot-pill").forEach(btn => {
     btn.addEventListener("click", () => {
+      if (btn.disabled) return;
       slotContainer.querySelectorAll(".slot-pill").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       selectedAgendaSlot = btn.dataset.slot;
     });
   });
 
+  refreshSlots(days[0]);
+
+  // Brazilian phone mask: (93) 99999-9999
+  const phoneInput = document.getElementById("agPhone");
+  const phoneHint = document.getElementById("agPhoneHint");
+  if (phoneInput) {
+    phoneInput.addEventListener("input", () => {
+      const digits = phoneInput.value.replace(/\D/g, "").slice(0, 11);
+      let out = digits;
+      if (digits.length > 2) out = `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+      if (digits.length > 7) out = `(${digits.slice(0, 2)}) ${digits.slice(2, digits.length - 4)}-${digits.slice(-4)}`;
+      phoneInput.value = out;
+      phoneInput.classList.remove("invalid");
+      if (phoneHint) phoneHint.textContent = "";
+    });
+  }
+
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const name = document.getElementById("agName").value.trim();
-      const phone = document.getElementById("agPhone").value.trim();
+      const phone = phoneInput ? phoneInput.value.trim() : "";
       const spec = document.getElementById("agSpecialty").value;
       const notes = document.getElementById("agNotes").value.trim();
 
-      const protocol = "IASO-" + Math.floor(100000 + Math.random() * 900000);
-      const text = `Olá, equipe da Clínica IASO! Fiz meu agendamento na agenda online do site:\n\n` +
-        `• *Protocolo:* #${protocol}\n` +
+      if (phone.replace(/\D/g, "").length < 10) {
+        if (phoneInput) { phoneInput.classList.add("invalid"); phoneInput.focus(); }
+        if (phoneHint) phoneHint.textContent = "Informe o WhatsApp com DDD, ex.: (93) 99999-9999";
+        return;
+      }
+
+      const text = `Olá, equipe do IASO! Gostaria de agendar pelo site:\n\n` +
         `• *Paciente:* ${name}\n` +
         `• *WhatsApp:* ${phone}\n` +
         `• *Procedimento:* ${spec}\n` +
-        `• *Data solicitada:* ${selectedAgendaDay}\n` +
+        `• *Data desejada:* ${selectedAgendaDay}\n` +
         `• *Horário preferido:* ${selectedAgendaSlot}\n` +
         (notes ? `• *Observação:* ${notes}\n` : "") +
-        `\nAguardo confirmação na unidade Av. Djalma Dutra, 1767.`;
+        `\nAguardo a confirmação. Obrigado(a)!`;
 
       const waUrl = `https://wa.me/${IASO_CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
 
       const feedback = document.getElementById("agendaFeedback");
       if (feedback) {
+        const safeName = name.replace(/[<>&"]/g, "");
         feedback.style.display = "block";
         feedback.innerHTML = `
-          <div style="margin-top:1rem;padding:1.25rem;background:var(--emerald-50);border:1px solid var(--emerald-800);border-radius:var(--radius-md);">
-            <p style="font-size:0.75rem;font-weight:800;text-transform:uppercase;color:var(--emerald-800);">✓ Horário Pré-Reservado · Protocolo #${protocol}</p>
+          <div role="status" style="margin-top:1rem;padding:1.25rem;background:var(--emerald-50);border:1px solid var(--emerald-800);border-radius:var(--radius-md);">
+            <p style="font-size:0.75rem;font-weight:800;text-transform:uppercase;color:var(--emerald-800);">✓ Pedido pronto para envio</p>
             <p style="font-size:0.88rem;color:var(--ink-700);margin-top:0.3rem;">
-              <strong>${name}</strong>, sua solicitação para <strong>${selectedAgendaDay} às ${selectedAgendaSlot}</strong> (${spec}) está pronta. Clique para enviar à recepção:
+              <strong>${safeName}</strong>, abrimos o WhatsApp com o seu pedido para <strong>${selectedAgendaDay} às ${selectedAgendaSlot}</strong>. É só tocar em enviar. Se não abriu, use o botão abaixo:
             </p>
             <div style="margin-top:0.85rem;display:flex;gap:0.65rem;flex-wrap:wrap;">
-              <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
-                Confirmar no WhatsApp (93) 99162-9079
+              <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm">
+                Enviar no WhatsApp (93) 99162-9079
               </a>
             </div>
           </div>
@@ -653,7 +753,7 @@ function renderQuiz() {
           <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
             Agendar pelo WhatsApp com este Resumo
           </a>
-          <button type="button" class="btn btn-outline btn-sm" onclick="scrollToAgendaWithSpec('${a1.title}')">
+          <button type="button" class="btn btn-outline btn-sm" data-spec="${a1.title}" onclick="scrollToAgendaWithSpec(this.dataset.spec)">
             Escolher Dia e Horário na Agenda
           </button>
           <button type="button" class="link-btn" style="margin-left:auto;" onclick="resetQuiz()">
@@ -678,8 +778,16 @@ function renderQuiz() {
         </button>
       `).join("")}
     </div>
+    ${quizState.step > 0 ? `<button type="button" class="link-btn" style="margin-top:1rem;" onclick="quizBack()">← Voltar</button>` : ""}
   `;
 }
+
+window.quizBack = function() {
+  if (quizState.step === 0) return;
+  quizState.step -= 1;
+  quizState.answers.pop();
+  renderQuiz();
+};
 
 window.selectQuizOption = function(idx) {
   quizState.answers.push(QUIZ_QUESTIONS[quizState.step].options[idx]);
@@ -693,9 +801,13 @@ window.resetQuiz = function() {
 };
 
 /* ───────── 9. Floating Concierge Drawer & Quick Booking ───────── */
-window.toggleConcierge = function() {
+window.toggleConcierge = function(force) {
   const popup = document.getElementById("conciergePopup");
-  if (popup) popup.classList.toggle("open");
+  const fab = document.getElementById("conciergeFab");
+  if (!popup) return;
+  const open = typeof force === "boolean" ? force : !popup.classList.contains("open");
+  popup.classList.toggle("open", open);
+  if (fab) fab.setAttribute("aria-expanded", String(open));
 };
 
 window.sendQuickConcierge = function(topic) {
@@ -705,6 +817,28 @@ window.sendQuickConcierge = function(topic) {
 
 window.triggerQuickBooking = function() {
   const spec = document.getElementById("qbSpecialty")?.value || "";
+  const shift = document.getElementById("qbShift")?.value || "";
+  // Carry the preferred period into the agenda: pick a Saturday if asked, then the first free slot in that period
+  const dayPills = [...document.querySelectorAll("#agendaDays .day-pill")];
+  if (shift.startsWith("Sábado")) {
+    dayPills.find(b => b.dataset.sat === "true")?.click();
+  } else if (shift.startsWith("Tarde")) {
+    // Afternoons exist only Mon–Fri: move to the first weekday that still has an afternoon slot
+    const active = dayPills.find(b => b.classList.contains("active"));
+    const hasAfternoon = () => [...document.querySelectorAll("#agendaSlots .slot-pill")]
+      .some(b => !b.disabled && parseInt(b.dataset.slot, 10) >= 14);
+    if (active?.dataset.sat === "true" || !hasAfternoon()) {
+      for (const pill of dayPills) {
+        if (pill.dataset.sat === "true") continue;
+        pill.click();
+        if (hasAfternoon()) break;
+      }
+    }
+  }
+  const wantAfternoon = shift.startsWith("Tarde");
+  const slot = [...document.querySelectorAll("#agendaSlots .slot-pill")]
+    .find(b => !b.disabled && (wantAfternoon ? parseInt(b.dataset.slot, 10) >= 14 : parseInt(b.dataset.slot, 10) < 12));
+  if (slot) slot.click();
   scrollToAgendaWithSpec(spec);
 };
 
@@ -725,7 +859,7 @@ function initGsapAnimations() {
     .from(".hero-float-card", { y: 20, opacity: 0, stagger: 0.15 }, "-=0.6")
     .from(".quick-bar", { y: 24, opacity: 0 }, "-=0.5");
 
-  gsap.to(".gsap-float", {
+  if (!prefersReducedMotion) gsap.to(".gsap-float", {
     y: -6,
     duration: 2.5,
     repeat: -1,
@@ -761,16 +895,58 @@ function initNavigation() {
     if (header) header.classList.toggle("scrolled", window.scrollY > 16);
   }, { passive: true });
 
+  const setMenu = (open) => {
+    if (!navLinks || !mobileBtn) return;
+    navLinks.classList.toggle("mobile-open", open);
+    mobileBtn.setAttribute("aria-expanded", String(open));
+    mobileBtn.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+  };
+
   if (mobileBtn && navLinks) {
-    mobileBtn.addEventListener("click", () => navLinks.classList.toggle("mobile-open"));
-    navLinks.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", () => navLinks.classList.remove("mobile-open"));
+    mobileBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setMenu(!navLinks.classList.contains("mobile-open"));
     });
+    navLinks.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+  }
+
+  // Close menus/popups when clicking elsewhere
+  document.addEventListener("click", (e) => {
+    if (navLinks && navLinks.classList.contains("mobile-open") && !navLinks.contains(e.target)) setMenu(false);
+    const widget = document.querySelector(".concierge-widget");
+    if (widget && !widget.contains(e.target)) toggleConcierge(false);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    setMenu(false);
+    toggleConcierge(false);
+    closeProtocolModal();
+  });
+
+  // Highlight the menu item of the section in view
+  const links = [...document.querySelectorAll(".nav-link")];
+  const sections = links.map(l => document.querySelector(l.getAttribute("href"))).filter(Boolean);
+  if ("IntersectionObserver" in window && sections.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        links.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + entry.target.id));
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    sections.forEach(s => io.observe(s));
   }
 
   document.querySelectorAll(".modal-backdrop").forEach(b => {
     b.addEventListener("click", (e) => {
-      if (e.target === b) b.classList.remove("open");
+      if (e.target === b) closeProtocolModal();
+    });
+  });
+
+  // Keyboard support for clickable cards
+  document.querySelectorAll('[role="button"][tabindex="0"]').forEach(el => {
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); el.click(); }
     });
   });
 }
